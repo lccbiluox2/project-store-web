@@ -22,7 +22,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
-<script type="text/javascript">
+
+	<link rel="stylesheet" type="text/css" href="admin/brand/css/brandmanage.css">
+	
+	
+	<script type="text/javascript">
 	function update(){
 		var form = document.forms[0];
 		alert("aa"+form);
@@ -30,16 +34,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		form.method="post";
 		form.submit();
 	}
+	
+function altRows(id){
+	if(document.getElementsByTagName){  
+		
+		var table = document.getElementById(id);  
+		var rows = table.getElementsByTagName("tr"); 
+		 
+		for(i = 0; i < rows.length; i++){          
+			if(i % 2 == 0){
+				rows[i].className = "evenrowcolor";
+			}else{
+				rows[i].className = "oddrowcolor";
+			}      
+		}
+	}
+}
+
+window.onload=function(){
+	altRows('alternatecolor');
+}
 </script>
+
+
 
   </head>
   
-  <body>
-  
-  
+   <body>
+  	<div id="body">
+  		<div id="top">
+  			<div id="top-menu1">
+  				
+  			</div>
+  		</div>
+  		<div id="content">
+  			<table width="90%" class="altrowstable" id="alternatecolor">
   
   <form action="" method="post">
-	<table width="90%" border="2">
+	
 	 	<tr>
 	 		<td>ID</td>
 	 		<td align = "center">
@@ -49,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	<tr>
 	 		<td>品牌图片</td>
 	 		<td align = "center">
-	 			<input type="text" name="b_img_path" value="${brand_detail.b_img_path}"/>
+	 			<img  src="${brand_detail.b_img_path}" width="100px" height="100px"/>
 	 		</td>  
 	 	</tr>
 	 	<tr>
@@ -78,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
   
    
-   
-   </body>
+  	</div>
+
+  </body>
 </html>
-  

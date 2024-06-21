@@ -72,6 +72,10 @@ public interface AdminDao {
 
 	public List<Category> getChildCategoryByFatherId(int integer);
 
+	public User getUserById(int id);
+
+	public boolean getUserById(User user);
+
 	
 
 	

@@ -74,11 +74,20 @@ window.onload=function(){
   			<form action="" method="post"  enctype="multipart/form-data">
     		<table width="90%" class="altrowstable" id="alternatecolor">
     			<tr>
-	    			<td>
+	    			<td>p_number
 	    				商品名称:
 	    			</td>
 	    			<td colspan="3">
 	    				<input class="myinput" type="text" name="p_name"/>
+	    			</td>
+	    			
+    			</tr>
+    			<tr>
+	    			<td>
+	    				商品编号:
+	    			</td>
+	    			<td colspan="3">
+	    				<input class="myinput" type="text" name="p_number"/>
 	    			</td>
 	    			
     			</tr>

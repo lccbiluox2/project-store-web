@@ -1,0 +1,60 @@
+#body{
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+	background-size:100% 100%;
+	background-color:#FFFFFF;
+
+}
+#body2{
+	width:1200px;
+	height:1000;
+	margin:0 auto;
+	text-align:center;
+	background-color:#FFFFFF;
+
+}
+#top{
+	width:1200px;
+	height:150px;
+	float:left;
+	background-color:#FFFFFF;
+	
+}
+
+#content{
+	width:100%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+.mynewProducts{
+	margin-left:5px;
+	margin-top:2px;
+	width:16%;
+	height:250px;
+	float:left;
+	border-style:groove;
+	border-width:1px; 
+	border-color:red; 
+	background-color:#FFFFFF;
+	
+}
+.mynewProducts-img{
+	width:100%;
+	height:190px;
+	float:left;
+	background-color:#FFFFFF;
+}
+.mynewProducts-name{
+	width:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.mynewProducts-price{
+	width:100%;
+	float:left;
+	color:red;
+	background-color:#FFFFFF;
+}

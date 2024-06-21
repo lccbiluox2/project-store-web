@@ -21,9 +21,9 @@
 		<div class="topPage-center-search">
 			<div class="topPage-center-search-nothing"></div>
 			<div class="topPage-center-search-real">
-				<form action="">
+				<form action="/mystory/ssSelectProduct">
 					<div class="topPage-center-search-real-searchtext">
-						<input type="text" id="mysearchtext">
+						<input type="text" name="searchText" id="mysearchtext">
 					</div>
 					<div class="topPage-center-search-real-searchbutton">
 						<input type="submit" id="mysearctbutton" value="">
@@ -53,7 +53,10 @@
 		<div class="topPage-buttom-name">
 			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/show_all_brand" >全部品牌</a>
 		</div>
-		<div class="topPage-buttom-name">全部商品</div>
+		<div class="topPage-buttom-name">
+
+		<a href="${pageContext.request.contextPath }/toJspPage?whatPage=/index/product_detail">全部商品</a>
+		</div>
 		<div class="topPage-buttom-name">
 			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/content_us" >联系我们</a>
 		</div>

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -57,6 +58,37 @@ public class AdminControl implements Controller {
 	
 	/******************用户处理************************************************/
 	
+	//修改用户准备
+	@RequestMapping("getUserById")
+	public String getUserById(int id,ServletRequest request) {
+		System.out.println(id+"------");
+		User user = adminService.getUserById(id);
+		if(user != null ){
+			
+			request.setAttribute("user", user);
+			return "admin/user/user_update";	
+		}else{
+			return "error";	
+		}	
+	}
+	
+	
+	    //修改用户
+		@RequestMapping("/updateUserById")
+		public String updateUserById(User user,RedirectAttributes attr) {
+			System.out.println("------");
+			boolean flag  = adminService.updateUserById(user);
+			if(flag){
+				attr.addAttribute("offset", 1);
+				attr.addAttribute("orientation", 1);
+				return "redirect:/userManage";//这里有些不同，这里是跳转到这个control的另外一个方法
+			}else{
+				attr.addAttribute("offset", 1);
+				attr.addAttribute("orientation", 1);
+				return "redirect:/userManage";//这里有些不同，这里是跳转到这个control的另外一个方法
+			}
+		}
+	
 	//用户登录
 	@RequestMapping("/getUser")
 	public String getUser(User user) {
@@ -100,6 +132,8 @@ public class AdminControl implements Controller {
 		return "user_login";	
 	}
 	
+	
+	/******************用户处理************************************************/
 	
 	//商标管理主页面
 	//offset 是默认显示第几页   toPage是跳转到哪一页

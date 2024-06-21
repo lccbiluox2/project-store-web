@@ -71,7 +71,7 @@ window.onload=function(){
 				 		<td>ID</td>
 				 	
 				 		<td>名称</td>
-				 	
+				 		<td>删除</td>
 				 		<td>删除</td>
 				 	</tr>
 				 	<c:forEach items="${userList}" var="userList" >  
@@ -81,7 +81,7 @@ window.onload=function(){
 				             <td align = "center">${userList.u_name}</td>  
 				            
 				           
-				           
+				           	<td><a href="/mystory/getUserById?id=${userList.u_id}">修改</a></td>
 				           	<td><a href="/mystory/delUserById?id=${userList.u_id}">删除</a></td>
 				         </tr>  
 					 </c:forEach>  

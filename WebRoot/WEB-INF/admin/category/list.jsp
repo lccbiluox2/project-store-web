@@ -34,49 +34,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<div class="one-top">
    			<div class="one-top-tab1" ></div>
    			<div class="one-top-grandfather" >
-   			
+   				${treeShow.category.c_name }
    			</div>
-   			${treeShow.category.c_name }
-   					<a href="categoryUpdateUI?id=${treeShow.category.c_id }">修改</a>
-   					<a href="categoryDelete?id=${treeShow.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a>
-   			
+   			<div class="one-top-tab2" ></div>
+   			<div class="one-top-tab3" ></div>
+   			<div class="one-top-grandfather_del" >
+   				
+   			</div>
+   			<div class="one-top-grandfather_update" >
+   				
+   			</div>
    		</div>
    		
    		
    		 <c:forEach items="${treeShow.childrens }" var="children">
    		 
-   		 
-   		 
-		   		 <div class="one-center">
-		   			<table>
-		   				<tr>
+   		 	<div class="two-top" >
+   		 		<div class="two-top-tab" ></div>
+   		 		<div class="two-top-tab2" ></div>
+	   			<div class="two-top-grandfather" >
+	   				${children.category.c_name }
+	   			</div>
+	   			<div class="two-top-tab3" ></div>
+	   			<div class="two-top-grandfather_del" >
+	   				<a href="categoryDelete?id=${children.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a>
+	   			</div>
+	   			<div class="two-top-grandfather_update" >
+	   				<a href="categoryUpdateUI?id=${children.category.c_id }">修改</a>
+	   			</div>
+   		 	</div>
 		   					
-		   					<td>
-		   					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		   					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		   					${children.category.c_name }
-		   					</td>
-		   					<td><a href="categoryUpdateUI?id=${children.category.c_id }">修改</a></td>
-		   					<td><a href="categoryDelete?id=${children.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a></td>
-		   				</tr>
-		   			</table>
-		   		</div>
-   		 
-  		 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   				
-   				
-   				
-   				
-   				
-   				
+		   		
    				<c:forEach items="${children.childrens }" var="children1">
-  		 			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   						${children1.category.c_name }
-   						
-   						<a href="categoryUpdateUI?id=${children1.category.c_id }">修改</a>
-   						<a href="categoryDelete?id=${children1.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a>
-   					
-   			
+  		 			   
+
+					<div class="tree-top" >
+		   		 		<div class="tree-top-tab" ></div>
+		   		 		<div class="tree-top-tab2" ></div>
+		   		 		<div class="tree-top-tab3" ></div>
+			   			<div class="tree-top-grandfather" >
+			   				${children1.category.c_name }
+			   			</div>
+			   			<div class="tree-top-grandfather_del" >
+			   				<a href="categoryDelete?id=${children1.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a>
+			   			</div>
+			   			<div class="tree-top-grandfather_update" >
+			   				<a href="categoryUpdateUI?id=${children1.category.c_id }">修改</a>
+			   			</div>
+		   		 	</div>
+
+
    				</c:forEach>
    			</c:forEach>
    	

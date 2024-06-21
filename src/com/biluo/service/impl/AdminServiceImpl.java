@@ -242,6 +242,18 @@ public class AdminServiceImpl implements AdminService{
 		return adminDao.getChildCategoryByFatherId(integer);
 	}
 
+	@Override
+	public User getUserById(int id) {
+		// TODO Auto-generated method stub
+		return adminDao.getUserById(id);
+	}
+
+	@Override
+	public boolean updateUserById(User user) {
+		// TODO Auto-generated method stub
+		return adminDao.getUserById(user);
+	}
+
 	
 	
 	

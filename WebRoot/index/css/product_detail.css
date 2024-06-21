@@ -1,0 +1,59 @@
+.body {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	background-size: 100% 100%;
+	background-color: blue;
+}
+
+#body2 {
+	width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+	background-color: gray;
+}
+
+#top {
+	width: 100%;
+	height: 150px;
+	float: left;
+	background-color: red;
+}
+
+#content_xiangxi_left {
+	width: 20%;
+	height: 800px;
+	float: left;
+	background: orange;
+}
+
+#content_show {
+	margin-left: 10px;
+	width: 79%;
+	float: left;
+	background: pink;
+}
+#content_show-left{
+	float: left;
+	width:50%;
+	height: 100%;
+
+	background: yellow;
+}
+#content_show_right {
+	
+	background:orange;
+	float: left;
+	width: 50%;
+	height: 100%;
+	
+	filter:alpha(Opacity=80);
+	-moz-opacity:0.5;
+	opacity: 0.5;
+	z-index:100;
+}
+
+iframe {
+	float: left;
+}
+

@@ -71,20 +71,22 @@ public class IndexControl {
 
 	// 搜索栏查询
 	@RequestMapping("/ssSelectProduct")
-	public ModelAndView ssSelectProduct(String str)
+	public ModelAndView ssSelectProduct(String searchText)
 			throws UnsupportedEncodingException {
 
+		System.out.println("str="+searchText);
+		
 		ModelAndView mav = new ModelAndView();
 		List<Product> productList = new ArrayList<Product>();
-		if (str == null || str == "") {
-			productList = indexService.finaProductBySearch(str);
+		if (searchText == null || searchText == "") {
+			productList = indexService.finaProductBySearch(searchText);
 		} else {
-			str = new String(str.getBytes("ISO-8859-1"), "UTF-8");
+			searchText = new String(searchText.getBytes("ISO-8859-1"), "UTF-8");
 
-			productList = indexService.finaProductBySearch(str);
+			productList = indexService.finaProductBySearch(searchText);
 		}
 		mav.addObject("productList", productList);
-		mav.setViewName("index/productList");
+		mav.setViewName("index/search_product_list");
 
 		return mav;
 	}

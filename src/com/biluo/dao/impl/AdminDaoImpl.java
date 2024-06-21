@@ -303,6 +303,31 @@ public class AdminDaoImpl implements AdminDao {
 		return  (ArrayList<Category>) query.list();
 	}
 
+	@Override
+	public User getUserById(int id) {
+		// TODO Auto-generated method stub
+		String hql = "from  User u where u.u_id=?";
+		Query query= sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		
+		return   (User) query.uniqueResult();
+	}
+
+	@Override
+	public boolean getUserById(User user) {
+		// TODO Auto-generated method stub
+		String hqlString= "update User u set u.u_name=?,u.u_passwd=?,u.u_phone=?,u.u_email=? where u.u_id=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hqlString);
+		query.setString(0, user.getU_name());
+		query.setString(1, user.getU_passwd());
+		query.setString(2, user.getU_phone());
+		query.setString(3, user.getU_email());
+		query.setInteger(4, user.getU_id());
+		
+		int flag = query.executeUpdate();
+		return (flag>0?true:false);
+	}
+
 	
 	
 

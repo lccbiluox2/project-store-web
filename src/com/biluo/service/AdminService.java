@@ -79,6 +79,10 @@ public interface AdminService {
 
 	public List<Category> getChildCategoryByFatherId(int integer);
 
+	public User getUserById(int id);
+
+	public boolean updateUserById(User user);
+
 	
 
 	
