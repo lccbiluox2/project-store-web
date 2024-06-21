@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="index/css/index.css">
 	<link rel="stylesheet" type="text/css" href="index/css/index_two.css">
 	<link rel="stylesheet" type="text/css" href="index/css/top.css">
+	<link rel="stylesheet" type="text/css" href="index/css/menu.css">
 	
 	<!-- 外来插件的css -->
 	
@@ -33,10 +34,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 <script type="text/javascript" src="index/js/jquery-2.1.1/jquery.js" ></script>
 	 <script type="text/javascript" src="index/js/jquery-2.1.1/jquery.min.js" ></script>
 	
+	
+
+	
 	 <!-- 自己写的插件的js -->
 	 <script type="text/javascript" src="index/js/index.js" ></script>
 	 <script type="text/javascript" src="index/js/index_two.js" ></script>
+	
 	 <!-- 外来插件的js -->
+	
 
   </head>
   
@@ -71,139 +77,147 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="content-float1-all-content-left-buttom"></div>
 							</div>
-							<div class="content-float1-all-content-center">
-								<div class="content-float1-left-menu-item-second1">
-								
+							
+							<div  class="content-float1-all-content-center">
+								<div class="a1">
+								<div id="content-float1-left-menu-item-second1" class="content-float1-left-menu-item-second1">
+									
 								   		 <c:forEach items="${map['treeCategoryList'][0].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
-								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+								   				<a class="menuhref" style="color:red;" href="clickCategorySelect" >${children.category.c_name }</a><hr/>
+								  
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
+								   					<a  class="menuhref" href="clickCategorySelect?id=${children1.category.c_id }&currentPage=1" >${children1.category.c_name }</a>
+								   					
+								   				    </c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
 								<div class="content-float1-left-menu-item-second2">
 										 <c:forEach items="${map['treeCategoryList'][1].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+								   					</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
 								<div class="content-float1-left-menu-item-second3">
 											 <c:forEach items="${map['treeCategoryList'][2].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+								   					</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 									
 								</div>
 								<div class="content-float1-left-menu-item-second4">
 											 <c:forEach items="${map['treeCategoryList'][3].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+								   					</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
 								<div class="content-float1-left-menu-item-second5">
 											 <c:forEach items="${map['treeCategoryList'][4].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+									   				</c:forEach>
+									   			</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
 								<div class="content-float1-left-menu-item-second6">
 									 <c:forEach items="${map['treeCategoryList'][5].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
 								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+								   					</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								
 								</div>
 								<div class="content-float1-left-menu-item-second7">
 											 <c:forEach items="${map['treeCategoryList'][6].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+								   					</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
 								<div class="content-float1-left-menu-item-second8">
 											 <c:forEach items="${map['treeCategoryList'][7].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+								   					</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
 								<div class="content-float1-left-menu-item-second9">
 											 <c:forEach items="${map['treeCategoryList'][8].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+								   					</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
 								<div class="content-float1-left-menu-item-second10">
 											 <c:forEach items="${map['treeCategoryList'][9].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
-								   				</c:forEach>
+								   				
+								   					</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
 								<div class="content-float1-left-menu-item-second11">
 											 <c:forEach items="${map['treeCategoryList'][10].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								   				<c:forEach items="${children.childrens }" var="children1">
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
+								   					<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
+								   					
 								   				</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
 								<div class="content-float1-left-menu-item-second12">
 											 <c:forEach items="${map['treeCategoryList'][11].childrens }" var="children">
-								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a>
-								   				<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								   				<a class="menuhref" style="color:red;" href="" >${children.category.c_name }</a><hr/>
+								   				<div class="content-float1">
 								   				<c:forEach items="${children.childrens }" var="children1">
 								   					<a  class="menuhref" href="" >${children1.category.c_name }</a>
-								   					&nbsp;&nbsp;&nbsp;&nbsp;
+								   					
 								   				</c:forEach>
+								   				</div>
 								   				<br/>
 								   			</c:forEach>
 								</div>
@@ -211,6 +225,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="content-float1-left-menu-item-picture">
 									<jsp:include page="/WEB-INF/index/plungs/mylinght/index.jsp"/>
 								</div>
+							</div>
 							</div>
 							<div class="content-float1-left-menu-item-right">
 								<div class="content-float1-left-menu-item-right-login" >
@@ -231,9 +246,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="">&nbsp;&nbsp;&nbsp;&nbsp;暂无</a>
 									</div>
 									<div class="content-float1-left-menu-item-right-ad-content">
-										<a href="">习近平来访中国</a><br>
-										<a href="">习近平来访中国</a><br>
-										<a href="">习近平来访中国</a><br>
+										<a href="">暂无</a><br>
+										
 									</div>
 								</div>
 								<div class="content-float1-left-menu-item-right-ad-buttom"></div>
@@ -291,7 +305,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   			${product.p_attr }
 						   		</div>
 						   		<div class="mynewProducts-price">
-						   			￥:${product.p_shop_price }
+						   			
 						   		</div>
 						   		
 						   		</div>
@@ -311,7 +325,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   			${product.p_attr }
 						   		</div>
 						   		<div class="mynewProducts-price">
-						   			￥:${product.p_shop_price }
+						   			
 						   		</div>
 						   		</div>
 						   		</a>
@@ -330,7 +344,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   			${product.p_attr }
 						   		</div>
 						   		<div class="mynewProducts-price">
-						   			￥:${product.p_shop_price }
+						   			
 						   		</div>
 						   		</div>
 						   		</a>
@@ -350,7 +364,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   			${product.p_attr }
 						   		</div>
 						   		<div class="mynewProducts-price">
-						   			￥:${product.p_shop_price }
+						   			
 						   		</div>
 						   		</div>
 						   		</a>
@@ -396,7 +410,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -439,7 +453,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -477,7 +491,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -515,7 +529,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -554,7 +568,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -593,7 +607,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -632,7 +646,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -673,7 +687,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -714,7 +728,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -756,7 +770,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -801,7 +815,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>
@@ -847,7 +861,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			${product.p_attr }
 								   		</div>
 								   		<div class="mynewProducts-price">
-								   			￥:${product.p_shop_price }
+								   			
 								   		</div>
 								   	</div>
 								   	</a>

@@ -34,9 +34,23 @@ public class AdminServiceImpl implements AdminService{
 		return adminDao.getAdmin(admin);
 	}
 
+	//5/27分页
 	@Override
-	public ArrayList<Brand> getAllBrand(int offset, int pagesize) {
-		return adminDao.getAllBrand(offset, pagesize);
+	public PageBean getAllBrand(int currentPage, int pageSize) {
+		//list集合
+		List<Brand> brandList = adminDao.getAllBrand(currentPage, pageSize);
+		//所有品牌的总数
+		int recordCount = adminDao.getAllBrandCount();
+		//pageCount判断页数有没有超出总页数
+		int pageCount = recordCount % pageSize == 0 ? recordCount / pageSize : recordCount / pageSize +1;
+		if(currentPage > pageCount ){
+			currentPage = pageCount;
+		}
+		if(currentPage < 1){
+			currentPage = 1;
+		}
+		//返回个PageBean
+		return new PageBean(currentPage, pageSize, recordCount, brandList);
 	}
 
 	@Override

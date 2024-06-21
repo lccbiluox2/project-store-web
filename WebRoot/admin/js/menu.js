@@ -2,7 +2,9 @@ var flag1 = 0;
 var flag2 = 0;
 var flag3 = 0;
 var flag4 = 0;
-
+var flag5 = 0;
+var flag6 = 0;
+var flag7 = 0;
 
 function showBrand(){
 	if(flag1 == 0){
@@ -36,6 +38,7 @@ function showProduct(){
 };
 
 function showUser(){
+	
 	if(flag4 == 0){
 		flag4 = 1;
 		$("#show4").css("display","block");
@@ -45,9 +48,39 @@ function showUser(){
 	}
 };
 
+function showpic(){
+
+	if(flag5 == 0){
+		flag5 = 1;
+		$("#show5").css("display","block");
+	}else{
+		flag5 = 0;
+		$("#show5").css("display","none");
+	}
+};
 		
-		
-		
+function showPrint(){
+
+	if(flag6 == 0){
+		flag6 = 1;
+		$("#show6").css("display","block");
+	}else{
+		flag6 = 0;
+		$("#show6").css("display","none");
+	}
+};
+				
+function showOrder(){
+
+	if(flag7 == 0){
+		flag7 = 1;
+		$("#show7").css("display","block");
+	}else{
+		flag7 = 0;
+		$("#show7").css("display","none");
+	}
+};
+			
 	
 	
 	

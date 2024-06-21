@@ -1,6 +1,7 @@
 package com.biluo.control;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -73,16 +74,15 @@ public class AdminControl implements Controller {
 	// 修改用户
 	@RequestMapping("/updateUserById")
 	public String updateUserById(User user, RedirectAttributes attr) {
-		System.out.println("------");
+		System.out.println("----修改用户--");
 		boolean flag = adminService.updateUserById(user);
 		if (flag) {
 			attr.addAttribute("offset", 1);
 			attr.addAttribute("orientation", 1);
-			return "redirect:/userManage";// 这里有些不同，这里是跳转到这个control的另外一个方法
+			return "redirect:/userManage?currentPage=1";// 这里有些不同，这里是跳转到这个control的另外一个方法
 		} else {
-			attr.addAttribute("offset", 1);
-			attr.addAttribute("orientation", 1);
-			return "redirect:/userManage";// 这里有些不同，这里是跳转到这个control的另外一个方法
+			//5/27改变参数
+			return "redirect:/userManage?currentPage=1";// 这里有些不同，这里是跳转到这个control的另外一个方法
 		}
 	}
 
@@ -110,11 +110,11 @@ public class AdminControl implements Controller {
 		if (flag) {
 			attr.addAttribute("offset", 1);
 			attr.addAttribute("orientation", 1);
-			return "redirect:/userManage";// 这里有些不同，这里是跳转到这个control的另外一个方法
+			return "redirect:/userManage?currentPage=1";// 这里有些不同，这里是跳转到这个control的另外一个方法
 		} else {
 			attr.addAttribute("offset", 1);
 			attr.addAttribute("orientation", 1);
-			return "redirect:/userManage";// 这里有些不同，这里是跳转到这个control的另外一个方法
+			return "redirect:/userManage?currentPage=1";// 这里有些不同，这里是跳转到这个control的另外一个方法
 		}
 
 	}
@@ -132,31 +132,14 @@ public class AdminControl implements Controller {
 		return "user_login";
 	}
 
-	/****************** 用户处理 ************************************************/
+	
 
 	// 用户管理主页面
 	// offset 是默认显示第几页 toPage是跳转到哪一页
 	@RequestMapping("userManage")
 	public String getAllUser(HttpServletRequest request, int currentPage) {
-
-		int brandCount = adminService.getAllUserCount();
-
-		/*
-		 * int pageTo =
-		 * brandCount%mypagesize==0?brandCount/mypagesize:brandCount
-		 * /mypagesize+1; //orientation 1代表下一页 2，代表上一页 3 首页 4尾页 if(orientation
-		 * == 1 ){ if(currentPage + offset <= pageTo) currentPage=
-		 * currentPage+offset; else{ currentPage = pageTo; } }else
-		 * if(orientation == 2){ if(currentPage - offset >= 0) currentPage=
-		 * currentPage-offset; else{ currentPage = 1; } }else if(orientation ==
-		 * 3){ currentPage= 1; }else if(orientation == 4){
-		 * 
-		 * currentPage= pageTo; }
-		 */
-
 		PageBean pageBean = adminService.getAllUser(currentPage, mypagesize);
 		request.setAttribute("pageBean", pageBean);
-
 		// 第一个转向的页面不用添加 attr.addAttrbute 其他的谁转向这个页面就写属性
 		return "admin/user/userManagePage";
 	}
@@ -258,13 +241,9 @@ public class AdminControl implements Controller {
 	public ModelAndView productList(int currentPage) {
 		ModelAndView mav = new ModelAndView();
 
-	
 		//分页准备数据2016/5/25
 		PageBean pageBean = adminService.finaProductList(currentPage,
 					mypagesize);
-	
-	
-		
 		//查询所有品牌，前台显示 比较商品中c_id 和 品牌ID
 		List<Brand> brangList  = adminService.getAllBrand();
 		List<Category> categoryList  = adminService.finaCategoryAll();
@@ -355,9 +334,8 @@ public class AdminControl implements Controller {
 		product.setP_number(p_number);
 		adminService.productAdd(product);
 
-		attr.addAttribute("offset", 1);
-		attr.addAttribute("orientation", 1);
-		return "redirect:productList";
+		//5/27改变参数
+		return "redirect:productList?currentPage=1";
 	}
 
 	@RequestMapping("/productUpdateUI")
@@ -424,7 +402,10 @@ public class AdminControl implements Controller {
 				.getParameter("p_goods_surplus")));
 		product.setC_id(Integer.parseInt(request.getParameter("c_id")));
 		product.setP_name(request.getParameter("p_name"));
+		product.setP_number((request.getParameter("p_number")));
 
+		System.out.println("request.getParameter=="+request.getParameter("c_id"));
+		
 		// 图片
 
 		String uploadfileDir = "upload/product";
@@ -444,9 +425,8 @@ public class AdminControl implements Controller {
 		product.setP_number(request.getParameter("p_number"));
 
 		adminService.productUpdate(product);
-		attr.addAttribute("offset", 1);
-		attr.addAttribute("orientation", 1);
-		return "redirect:productList";
+		//5/27改变参数
+		return "redirect:productList?currentPage=1";
 	}
 
 	@RequestMapping("/productDelete")
@@ -464,37 +444,43 @@ public class AdminControl implements Controller {
 	// 类别列表
 	@RequestMapping("/categoryList")
 	public ModelAndView categoryList(Long id) {
+		System.out.println("类别列表");
 		ModelAndView mav = new ModelAndView();
 		List<Category> categoryList = null;
 		categoryList = adminService.finaCategoryTop();
 		List<TreeShow> treeShowList = adminService.finaCategoryTreeShow(
 				categoryList, new TreeShow());
 
+		System.out.println(treeShowList.size());
 		mav.addObject("treeShowList", treeShowList);
 
 		mav.setViewName("admin/category/list");
 		return mav;
 	}
 
-	// 类别添加准备
+	/*// 类别添加准备  该方法作废   
 	@RequestMapping("/categoryAddUI")
 	public ModelAndView categoryAddUI(Long id) {
+		System.out.println("aas");
 		ModelAndView mav = new ModelAndView();
-		List<Category> categoryList = adminService.finaCategoryAll();
-		mav.addObject("categoryList", categoryList);
-		mav.addObject("id", id);
+		//List<Category> categoryList = adminService.finaCategoryAll();
+		//mav.addObject("categoryList", categoryList);
+		//mav.addObject("id", id);
 		mav.setViewName("admin/category/add");
 		return mav;
-	}
+	}*/
 
 	// 类别添加
 	@RequestMapping("/categoryAdd")
 	public String categoryAdd(Category category)
 			throws UnsupportedEncodingException {
-
-		String name = new String(category.getC_name().getBytes("ISO-8859-1"),
+		System.out.println("类别列表1"+category.getC_name());
+		
+		//这里不能转码  否者中文添加不进去
+		/*String name = new String(category.getC_name().getBytes("ISO-8859-1"),
 				"utf-8");
 		category.setC_name(name);
+		System.out.println("类别列表1"+category.getC_name());*/
 		adminService.categoryAdd(category);
 		if (category.getC_pid() != null)
 			return "redirect:categoryList.do?id=" + category.getC_pid();
@@ -566,9 +552,10 @@ public class AdminControl implements Controller {
 	//注意这里没写
 	// 商标管理主页面
 	// offset 是默认显示第几页 toPage是跳转到哪一页
+	
+	//5/27分页
 	@RequestMapping("brandManage")
-	public String getAllBrand(HttpServletRequest request, int offset,
-			int orientation, RedirectAttributes attr) {
+	public String getAllBrand(HttpServletRequest request, int currentPage) {
 /*
 		int brandCount = adminService.getAllBrandCount();
 		int pageTo = brandCount % mypagesize == 0 ? brandCount / mypagesize
@@ -598,6 +585,11 @@ public class AdminControl implements Controller {
 		request.setAttribute("brandList", brandList);*/
 
 		// 第一个转向的页面不用添加 attr.addAttrbute 其他的谁转向这个页面就写属性
+		//根据分页查询返回一个PageBean
+		
+		//mypagesize可以修改大一些5/27
+		PageBean pageBean = adminService.getAllBrand(currentPage, mypagesize);
+		request.setAttribute("pageBean", pageBean);
 		return "admin/brand/brandManagePage";
 	}
 
@@ -615,7 +607,8 @@ public class AdminControl implements Controller {
 			HttpServletRequest request) {
 		boolean flag = adminService.updateBrandById(brand);
 		if (flag) {
-			return "redirect:/brandManage?offset=1&pagesize=3&orientation=1";// 这里有些不同，这里是跳转到这个control的另外一个方法
+			//5/27修改下参数
+			return "redirect:/brandManage?currentPage=1";// 这里有些不同，这里是跳转到这个control的另外一个方法
 		} else {
 			request.setAttribute("brand_detail", brand);
 			request.setAttribute("message", "修改失败");
@@ -642,9 +635,8 @@ public class AdminControl implements Controller {
 		// falg1是文件上传成功，falg2是数据库文件名修改成功，两个都成功 才叫成功
 		if (fileName != "" && falg2) {
 			// control之间重定向数据传递
-			attr.addAttribute("offset", 1);
-			attr.addAttribute("orientation", 1);
-			return "redirect:/brandManage";// 这里有些不同，这里是跳转到这个control的另外一个方法
+			//5/27改变参数
+			return "redirect:/brandManage?currentPage=1";// 这里有些不同，这里是跳转到这个control的另外一个方法
 		}
 		return "/admin/error";
 	}
@@ -659,7 +651,8 @@ public class AdminControl implements Controller {
 		} else {
 			request.setAttribute("message", "删除失败");
 		}
-		return "redirect:/brandManage";// 这里有些不同，这里是跳转到这个control的另外一个方法
+		//5/27改变参数
+		return "redirect:/brandManage?currentPage=1";// 这里有些不同，这里是跳转到这个control的另外一个方法
 
 	}
 
@@ -677,7 +670,8 @@ public class AdminControl implements Controller {
 		// control之间重定向数据传递
 		attr.addAttribute("offset", 1);
 		attr.addAttribute("orientation", 1);
-		return "redirect:/brandManage";// 这里有些不同，这里是跳转到这个control的另外一个方法
+		//5/27修改参数
+		return "redirect:/brandManage?currentPage=1";// 这里有些不同，这里是跳转到这个control的另外一个方法
 
 	}
 

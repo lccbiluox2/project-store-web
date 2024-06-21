@@ -23,6 +23,55 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 public class UploadImgToPointDir {
 	
 	
+	//得到图片上传时间名称
+		public static String getDateNow(){
+			
+			        Calendar now = Calendar.getInstance();  
+			        
+			        System.out.println("now="+now);
+			        
+			        int year = now.get(Calendar.YEAR);
+			        int  month = (now.get(Calendar.MONTH) + 1);
+			        int  day = now.get(Calendar.DAY_OF_MONTH);
+			        int  shi = now.get(Calendar.HOUR_OF_DAY);
+			        int  fen = now.get(Calendar.MINUTE);
+			       
+			        String myMonth = "";
+			        String  myday = "";
+			        String  myshi = "";
+			        String  myfen = "";
+			        if( month < 9){
+			        	myMonth = "0"+month;
+			        }else{
+			        	myMonth = ""+month;
+			        }
+			        
+			        if( day < 9){
+			        	myday = "0"+day;
+			        }else{
+			        	myday = ""+day;
+			        }
+			        
+			        if( shi < 9){
+			        	myshi = "0"+shi;
+			        }else{
+			        	myshi = ""+shi;
+			        }
+			        if( fen < 9){
+			        	myfen = "0"+fen;
+			        }else{
+			        	myfen = ""+fen;
+			        }
+			        
+			        System.out.println(year+myMonth+myday+myshi+myfen);
+			        
+			        return year+"/"+myMonth+"/"+myday+"/"+myshi+"/"+myfen;
+
+			    }  
+		
+	
+	
+	
 	
 	//得到图片上传时间名称
 	public static String getDate(){

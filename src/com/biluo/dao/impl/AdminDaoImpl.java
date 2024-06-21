@@ -71,6 +71,10 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public boolean updateBrandById(Brand brand) {
 		// TODO Auto-generated method stub
+		if(brand.getB_img_path() == "" || brand.getB_img_path() == null){
+			brand.setB_img_path((getBrandById(brand.getB_id()+"").getB_img_path()));
+		}
+		
 		//注意set之间是有逗号分割的
 		String hql = "update Brand b set b.b_name=? , b.b_img_path=? where b.b_id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -218,7 +222,7 @@ public class AdminDaoImpl implements AdminDao {
 	
 	@Override
 	public List<Product> finaProductList(int offset , int pagesize) {
-		String sql = "from Product";
+		String sql = "from Product order by p_id desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(sql);
 		query.setFirstResult((offset - 1) * pagesize);
 		query.setMaxResults(pagesize);

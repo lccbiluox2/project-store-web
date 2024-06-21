@@ -37,6 +37,24 @@ public class User {
 	
 	
 
+	@Override
+	public String toString() {
+		return "User [用户ID:" + u_id + "\t用户姓名:" + u_name +  "\t用户电话:" + u_phone + "\t用户邮箱:" + u_email
+				+ "\t用户地址" + u_address + "]";
+	}
+
+	public User() {
+		super();
+	}
+
+	public User(String u_name, String u_phone, String u_email, String u_address) {
+		super();
+		this.u_name = u_name;
+		this.u_phone = u_phone;
+		this.u_email = u_email;
+		this.u_address = u_address;
+	}
+
 	public Integer getU_id() {
 		return u_id;
 	}

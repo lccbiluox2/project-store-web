@@ -21,16 +21,7 @@ $(document).ready(function() {
 	}); 
 	
 	
-	
-
-	
 		
-	
-	
-	
-	
-	
-	
 });
 
 
@@ -67,11 +58,15 @@ function addCategory(){
 			if(myname == "" || myname == null ){
 				alert("类别名称不能为空");
 			}else{
+				alert("添加二级页面");
 				//添加二级页面
 				var t = $("#select_category_1").val();
 	
+				alert("添加二级页面t="+t);
 				$("#myc_pid").val(t);
-
+				
+				alert($("#myc_pid").val());
+				
 				form.action="/mystory/categoryAdd.do";
 				form.method="post";
 				form.submit();
@@ -80,8 +75,10 @@ function addCategory(){
 			/**/
 		}else if((seleoneFalg == true) &&  (seletwoFlag == true)){
 			//添加3级页面
+			alert("添加3级页面");
 			var t = $("#select_category_2").val();
 			$("#myc_pid").val(t);
+			alert($("#myc_pid").val());
 			form.action="/mystory/categoryAdd.do";
 			form.method="post";
 			form.submit();

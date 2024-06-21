@@ -193,9 +193,20 @@ public class IndexServiceImpl implements IndexService {
 		}
 
 		@Override
-		public List<Product> getProductByBrandId(int id) {
+		public PageBean getProductByBrandId(int id,int currentPage, int pageSize) {
 			// TODO Auto-generated method stub
-			return indexDao.getProductByBrandId(id);
+			List<Product> list = indexDao.getProductByBrandIdCount(id);
+			int recordCount = list.size();
+			int pageCount = recordCount % pageSize == 0 ? recordCount / pageSize : recordCount / pageSize +1;
+			if(currentPage > pageCount ){
+				currentPage = pageCount;
+			}
+			if(currentPage < 1){
+				currentPage = 1;
+			}
+			return new PageBean(currentPage, pageSize, recordCount, indexDao.getProductByBrandId(id,  currentPage,  pageSize));
+			
+			
 		}
 		
 		
@@ -422,6 +433,24 @@ public class IndexServiceImpl implements IndexService {
 			
 		
 		}
+
+		@Override
+		public PageBean getProductByCategoryId(int currentPage, int pageSize, Integer id) {
+			// TODO Auto-generated method stub
+			List<Product> productList = indexDao.getProductByCategoryId(currentPage, pageSize,id);
+			int recordCount = productList.size();
+			int pageCount = recordCount % currentPage == 0 ? recordCount / currentPage : recordCount / pageSize +1;
+			if(currentPage > pageCount ){
+				currentPage = pageCount;
+			}
+			if(currentPage < 1){
+				currentPage = 1;
+			}
+			return new PageBean(currentPage, pageSize, recordCount, productList);
+			
+		
+		}
+
 		
 
 }

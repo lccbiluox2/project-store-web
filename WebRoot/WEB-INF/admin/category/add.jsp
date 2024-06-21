@@ -62,7 +62,7 @@ window.onload=function(){
   		</div>
   		<div id="content">
   		<table width="90%" class="altrowstable" id="alternatecolor">
-		  <form action="">
+		  <form action="" method="post">
 		    	<tr>
 		    		<td>名字</td>
 		    		<td><input type="text" id="myname" name="c_name"/></td>

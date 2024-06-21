@@ -44,11 +44,6 @@ $(document).ready(function() {
 		}); 
 	
 	
-		$("#select_category_3").change(function(){
-			var txt=$("#select_category_3").val();
-			$("#myc_id").val(txt);
-		}); 
-	
 	
 	
 	
@@ -61,6 +56,29 @@ $(document).ready(function() {
 
 function addProduct(){
 	var form = document.forms[0];
+	//得到一级菜单
+	var seleone = $("#select_category_1").val();
+	//得到2级菜单
+	var seletwo = $("#select_category_2").val();
+	//得到2级菜单
+	var selet3 = $("#select_category_3").val();
+	
+
+	if(seleone == 0){
+		alert("请选择一级类别");
+
+	}else if(seletwo == 0){
+		alert("请选择二级级类别");
+	}else if(selet3 == 0){
+		//添加二级类别
+		$("#myc_id").val(seletwo);
+	}else{
+		//添加3级类别
+		
+		$("#myc_id").val(selet3);
+	}
+	
+
 	form.action="/mystory/productAdd";
 	form.method="post";
 	form.submit();

@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<script type="text/javascript" src="index/js/top/jquerysession.js" ></script>
+<script type="text/javascript" src="index/js/top/top.js" ></script>
 <div id="topPage">
 	<div id="topPage-top">
 		<div id="topPage-top-left">
@@ -11,7 +13,9 @@
 		<div id="topPage-top-right">
 			<div class="topPage-top-right-name">帮助中心</div>
 			<div class="topPage-top-right-name">会员中心</div>
-			<div class="topPage-top-right-name">购物车</div>
+			<div class="topPage-top-right-name" >
+			<a href="javascript:void(0);" onclick="gotoCart();">购物车</a>
+			</div>
 		</div>
 	</div>
 	<div id="topPage-center">
@@ -48,14 +52,14 @@
 	<div id="topPage-buttom">
 		<div class="topPage-buttom-menu1">全部商品分类</div>
 		<div class="topPage-buttom-name">
-			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/index" >首页</a>
+			<a href="${pageContext.request.contextPath }/indexList" >首页</a>
 		</div>
 		<div class="topPage-buttom-name">
 			<a href="/mystory/getAllBrand" >全部品牌</a>
 		</div>
 		<div class="topPage-buttom-name">
 
-		<a href="">全部商品</a>
+		<a href="/mystory/finaProductList">全部商品</a>
 		</div>
 		<div class="topPage-buttom-name">
 			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/content_us" >联系我们</a>

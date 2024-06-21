@@ -16,28 +16,14 @@ public class OtherControl {
 		
 	
 	
-	//图片显示列表
-	@RequestMapping("/ImgUploadList")
-	public String ImgUploadList(){
-		
-		return "admin/other/ImgList";
-	}
-	
-	//图片上传准备
-	@RequestMapping("/ImgUploadUI")
-	public ModelAndView ImgUploadUI(Long img_id){
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("img_id", img_id);
-		mav.setViewName("admin/other/Img_add");
-		return mav;
-	}
+
 	
 	//图片上传
 	@RequestMapping("/ImgUpload")
-	public String ImgUpload(HttpServletRequest request){
-		
+	public String ImgUpload(String id,HttpServletRequest request){
+		System.out.println("id"+id);
 		String uploadfileDir = "index/plungs/mylinght/images";
-		String newFileName = "img" + request.getParameter("img_id");
+		String newFileName = "img" + id;
 		String fileNameString = UploadImgToPointDir.uploadImgToPointDir2(
 				request, uploadfileDir, newFileName);
 		if (!fileNameString.equals(newFileName)) {
@@ -48,7 +34,7 @@ public class OtherControl {
 			System.out.println(filePath);
 		}
 		
-		return "redirect:ImgUploadList";
+		return "admin/update_index_pic";
 		
 	}
 	

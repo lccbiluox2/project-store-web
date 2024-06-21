@@ -28,7 +28,7 @@ public interface IndexService {
 
 	List<Brand> getRandomBrandList(int randomCount);
 
-	List<Product> getProductByBrandId(int id);
+	PageBean getProductByBrandId(int id,int currentPage, int mypagesize);
 
 	Product getProductById(Integer integer);
 
@@ -41,5 +41,9 @@ public interface IndexService {
 	int getProductCount();
 
 	PageBean finaProductList(int intValue, int i);
+
+	PageBean getProductByCategoryId(int i, int j, Integer id);
+
+	
 
 }

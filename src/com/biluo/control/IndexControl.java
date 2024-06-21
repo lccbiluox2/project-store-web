@@ -19,6 +19,7 @@ import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
 import com.biluo.domain.PageBean;
 import com.biluo.domain.Product;
+import com.biluo.domain.User;
 import com.biluo.service.IndexService;
 
 @Controller
@@ -134,9 +135,9 @@ public class IndexControl {
 		ModelAndView mav = new ModelAndView();
 		List<Product> productList = new ArrayList<Product>();
 		
-		productList = indexService.getProductByBrandId(id);
-	
-		mav.addObject("productList", productList);
+		PageBean pageBean = indexService.getProductByBrandId(id,  currentPage,  mypagesize);
+		
+		mav.addObject("pageBean", pageBean);
 		mav.setViewName("index/search_product_list");
 
 		return mav;
@@ -146,11 +147,34 @@ public class IndexControl {
 	
 	// 点击类别查询
 	@RequestMapping("/clickCategorySelect")
-	public ModelAndView clickCategorySelect(Long layerNum, Integer id, Long currentPage) {
+	public ModelAndView clickCategorySelect(Integer id, Long currentPage) {
 		ModelAndView mav = new ModelAndView();
 		if(currentPage == null){
 			currentPage = 1l;
 		}
+		
+		System.out.println("进入点击类别查寻");
+		
+		int recordCount = indexService.getProductCount();
+		PageBean pageBean = indexService.getProductByCategoryId(currentPage.intValue(),36,id);
+
+		mav.addObject("pageBean", pageBean);
+	
+		mav.setViewName("index/search_product_list");//这个没写
+		return mav;
+	}
+	
+	
+	
+/*	@RequestMapping("/clickCategorySelect")
+	public ModelAndView clickCategorySelect(Integer id, Long currentPage) {
+		ModelAndView mav = new ModelAndView();
+		if(currentPage == null){
+			currentPage = 1l;
+		}
+		
+		System.out.println("进入点击类别查寻");
+		
 		ProductAndCategory pac = indexService.finaCategoryByClick(layerNum,
 				id, currentPage.intValue(), 36);
 		int recordCount = indexService.getProductCount();
@@ -159,17 +183,20 @@ public class IndexControl {
 		mav.addObject("pageBean", pageBean);
 		mav.addObject("layerNum", layerNum);
 		mav.addObject("id", id);
-		mav.setViewName("index/product_select");//这个没写
+		mav.setViewName("index/search_product_list");//这个没写
 		return mav;
 	}
-	
+	*/
 	
 	@RequestMapping("/getProductById")
 	public ModelAndView getProductById(int id){
 
 		ModelAndView mav = new ModelAndView();
 		Product product = indexService.getProductById(new Integer(id));
-		Brand brand = indexService.getBrandById(product.getC_id());
+		Brand brand = indexService.getBrandById(product.getP_b_id());
+		
+		System.out.println(brand.toString());
+		
 		mav.addObject("product", product);
 		mav.addObject("brand", brand);
 		mav.setViewName("index/product_detail");
@@ -191,9 +218,11 @@ public class IndexControl {
 		ModelAndView mav = new ModelAndView();
 		PageBean pageBean = indexService.finaProductList(currentPage.intValue(), 36);
 		mav.addObject("pageBean", pageBean);
+		mav.setViewName("index/search_product_list");
 		
 		return mav;
 	}
+	
 	
 	
 	

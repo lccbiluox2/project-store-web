@@ -21,7 +21,7 @@ public interface AdminService {
 	
 	
 
-	public ArrayList<Brand> getAllBrand(int offset, int pagesize);
+	public PageBean getAllBrand(int currentPage, int pageSize);
 
 	public Brand getBrandById(String id);
 

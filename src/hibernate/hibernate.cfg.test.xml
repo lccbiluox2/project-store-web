@@ -8,8 +8,8 @@
         <mapping class="com.biluo.domain.Category"/>
         <mapping class="com.biluo.domain.Brand"/>
         <mapping class="com.biluo.domain.Evaluate"/>
-        <mapping class="com.biluo.domain.GoodsCart"/>
-        <mapping class="com.biluo.domain.Order"/>
+        <mapping class="com.biluo.domain.CartBean"/>
+        <mapping class="com.biluo.domain.MyOrder"/>
         <mapping class="com.biluo.domain.Product"/>
         <mapping class="com.biluo.domain.User"/>
     

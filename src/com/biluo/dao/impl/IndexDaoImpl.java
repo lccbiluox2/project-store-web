@@ -90,11 +90,20 @@ public class IndexDaoImpl implements IndexDao{
 
 
 	@Override
-	public List<Product> getProductByBrandId(int id) {
+	public List<Product> getProductByBrandIdCount(int id) {
+		// TODO Auto-generated method stub
+		String sql = "from Product p where p.p_b_id=?";
+		return getSession().createQuery(sql).setInteger(0, id).list();
+	}
+	
+	@Override
+	public List<Product> getProductByBrandId(int id, int currentPage, int pageSize) {
 		// TODO Auto-generated method stub
 		String sql = "from Product p where p.p_b_id=?";
 		return getSession().createQuery(sql).setInteger(0, id)
-				.list();
+				.setFirstResult((currentPage - 1) * pageSize)
+				.setMaxResults(pageSize).list();
+				
 	}
 
 	@Override
@@ -128,6 +137,19 @@ public class IndexDaoImpl implements IndexDao{
 				.setMaxResults(pageSize).list();
 		
 	}
+
+	@Override
+	public List<Product> getProductByCategoryId(int currentPage, int pageSize,
+			Integer id) {
+		return getSession().createQuery("from Product where c_id=?")
+				.setInteger(0, id)
+				.setFirstResult((currentPage - 1) * pageSize)
+				.setMaxResults(pageSize).list();
+	}
+
+	
+
+	
 
 	
 	

@@ -74,7 +74,7 @@ window.onload=function(){
   			<form action="" method="post"  enctype="multipart/form-data">
     		<table width="90%" class="altrowstable" id="alternatecolor">
     			<tr>
-	    			<td>p_number
+	    			<td>
 	    				商品名称:
 	    			</td>
 	    			<td colspan="3">

@@ -77,6 +77,8 @@ window.onload=function(){
   		<div id="content">
   			<table width="90%" class="altrowstable" id="alternatecolor">
 				<tr>
+					<th>商品ID</th>
+					<th>商品编号</th>
 			  		<th>商品名称</th>
 			  		<th>商品属性</th>
 			  		<th>状态</th>
@@ -88,6 +90,8 @@ window.onload=function(){
 			  	</tr>
 			  	<c:forEach items="${pageBean.recordList }" var="product">
 			  		<tr>
+			  			<td>${product.p_id }</td>
+			  			<td>${product.p_number }</td>
 			  			<td>${product.p_name }</td><td>${product.p_attr }</td>
 			  			<td>${product.p_state }</td><td>${product.p_goods_surplus }</td>
 			  			<td><img src="${product.p_img_path }" width="100px" height="100px"/></td>

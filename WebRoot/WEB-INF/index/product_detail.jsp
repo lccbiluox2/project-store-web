@@ -25,17 +25,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	 <!-- 放大图 -->
 	<link href="index/css/fangda.css" rel="stylesheet" type="text/css" />
-	<!-- 缩略图end -->
+	<!-- 缩略图end 
 	<script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
 	<script type="text/javascript" src="index/js/product_detail/fangda.js" ></script>
 	<script type="text/javascript" src="index/js/product_detail/jquery.jqzoom.js" ></script>
+	-->
+	
+	<script type="text/javascript" src="index/js/product_detail/jquerysession.js" ></script>
 		
 	
 	 <!-- jQuery的js  想要放大图 必须使用上面的jquery 也可以单独写到一个文件中 但是考虑到显示后台
-	 数据所以用他们自带的 jquery.min.js 两个都有会产生冲突
+	 数据所以用他们自带的 jquery.min.js 两个都有会产生冲突-->
 	 <script type="text/javascript" src="index/js/jquery-2.1.1/jquery.js" ></script>
 	 <script type="text/javascript" src="index/js/jquery-2.1.1/jquery.min.js" ></script>
-	 -->
+	 
 	 
 	 <script type="text/javascript" src="index/js/product_detail/product_detail.js" ></script>
 
@@ -68,30 +71,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 		<div id="content_show-left-tab"></div>
 							<div id="content_show-left-realshow">
 			
-									<div class="lanrenzhijia">
-										<!-- 大图begin -->
-										<div id="preview" class="spec-preview">
-											<span class="jqzoom"><img id="showBigImg"
-												jqimg="${product.p_img_path }"
-												src="${product.p_img_path }" />
-											</span>
-										</div>
-										<!-- 大图end -->
-										<!-- 缩略图begin -->
-										<div class="spec-scroll">
-											<a class="prev">&lt;</a> <a class="next">&gt;</a>
-											<div class="items">
-												<ul>
-			
-													<li><img bimg="${product.p_img_path }"
-														src="${product.p_img_path }" onmousemove="preview(this);">
-													</li>
-			
-												</ul>
-											</div>
-										</div>
-									</div>
-
+											<img id="showBigImg"
+												
+												src="${product.p_img_path }"  width="300px" height="400px"/>
 
 							</div>
 					 </div>
@@ -104,10 +86,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 		${product.p_attr } 
 					 	</div>
 						 <div id="product_p_vip_price">
-					 		会员价:￥:${product.p_vip_price } 
+					 		会员价:￥:${product.p_vip_price/10 } 
 					 	</div>
 					 	 <div id="product_p_shop_price">
-					 		市场价:￥:${product.p_shop_price } 
+					 		市场价:￥:${product.p_shop_price/10 } 
 					 	</div>
 					 	<div id="product_brand">
 					 		<img src="${brand.b_img_path} " width="100px" height="100px" />
@@ -117,14 +99,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 	
 					 	
 					 	<div id="product_count">
-					 		数量:<input type="button" id="sub_bt" value="&nbsp;—&nbsp; " onclick="sub_count();" />
-					 		<form action="" method="post">
-					 			<input type="text" name="p_img_path" value="${product.p_img_path }" />
-						 		<input type="text" name="p_id" value="${product.p_id }" />
-						 		<input type="text" name="p_count" id="mycount" value="1" />
-						 		<input type="text" name="b_img_path" id="mycount" value="${brand.b_img_path}" />
-						 		<input type="text" name="u_id" value="<jsp:getProperty name="mycookie" property="u_id" />" />
-						 		<input type="text" name="u_name" value="<jsp:getProperty name="mycookie" property="userName" />" />
+					 		<input type="button" id="sub_bt" value="&nbsp;—&nbsp; " onclick="sub_count();" />
+					 		<form action="/mystory/addProductToMyCart" method="post">
+					 			<input type="hidden" name="p_number" 		id="myp_number" 				value="${product.p_number }" />
+					 			<input type="hidden" name="p_vip_price"    id="myproduct_p_vip_price"    value="${product.p_vip_price }" />
+					 			<input type="hidden" name="p_img_path"    id="myp_img_path"    value="${product.p_img_path }" />
+						 		<input type="hidden" name="p_id" 			id="myp_id" 				value="${product.p_id }" />
+						 		<input type="text" name="p_count" 		id="mycount" 		value="1" />
+						 		<input type="hidden" name="b_img_path" 	id="myb_img_path" 			 	value="${brand.b_img_path}" />
+						 		<input type="hidden" name="u_id" 			id="myu_id"				value="<jsp:getProperty name="mycookie" property="u_id" />" />
+						 		<input type="hidden" name="u_name" 		id="myu_name"				value="<jsp:getProperty name="mycookie" property="userName" />" />
+						 		
 					 		</form>
 					 		<input type="button" id="add_bt" value="&nbsp;+&nbsp; " onclick="add_count();"/>
 					 	</div>
@@ -142,6 +127,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 	<div id="moveDivToCart">
 					 		<img id="moveDivToCartImg" width="100px" height="100px" alt="" src="${brand.b_img_path}">
 					 	</div>
+					 	
+					 	
+					 	<div id="user_loginForm">
+					 		<form action="getUserIndex" method="post">
+								<table align="center">
+									<tr>
+										<td align="left"><h2>会员登陆</h2>
+										</td>
+										<td align="right">
+											<a href="${pageContext.request.contextPath }/toJspPage?whatPage=/index/user_register" style="color:#666;">
+												还没账号吗?&nbsp;
+												<span  style="color:#F93">立即注册</span>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2"><br />
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2"><input type="text" class="username" name="u_name" id="txtName"
+											placeholder="输入用户名/手机号码" autofocus required /><br />
+										<br />
+										<br />
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2"><input type="password" name="u_passwd" class="username" id="txtPass"
+											placeholder="输入登录密码" required /><br />
+										<br />
+										<br />
+										</td>
+									</tr>
+									<tr>
+										<td align="left"><input type="checkbox"><label>记住用户名</label>
+										</td>
+										<td align="right"><a href=""><span style="color:#00F">忘记密码？</span>
+										</a>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2"><br />
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center"><input type="button"  onclick="userLogin();"
+											class="button" value="立即登陆">
+										</td>
+									</tr>
+									</table>
+							</form>
+					 	</div>
+					 	
 					 </div>
 					 
 					 
@@ -152,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 						<div id="showDetail-content">
-					 		
+					 		${product.p_description }
 						</div>
 					</div>
 					 

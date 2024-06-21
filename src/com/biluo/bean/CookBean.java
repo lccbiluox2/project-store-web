@@ -3,6 +3,13 @@ package com.biluo.bean;
 public class CookBean {
 	private String userName = "none";
     private String u_id = "none";
+    
+    
+ 
+    
+    
+    
+    
 	public String getUserName() {
 		return userName;
 	}

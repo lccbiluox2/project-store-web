@@ -29,7 +29,7 @@
  	<script type="text/javascript" src="index/js/jquery-2.1.1/jquery.js" ></script>
 	 <script type="text/javascript" src="index/js/jquery-2.1.1/jquery.min.js" ></script>
 	
-	<script type="text/javascript" src="admin/product/js/product_add.js" ></script>
+	<script type="text/javascript" src="admin/product/js/product_update.js" ></script>
 
 
 <script type="text/javascript">
@@ -63,7 +63,7 @@
 		<div id="content">
 			<table width="90%" class="altrowstable" id="alternatecolor">
 
-				<form action="productUpdate" method="post"
+				<form action="" method="post"
 					enctype="multipart/form-data">
 					<tr>
 						<td></td>
@@ -81,7 +81,7 @@
 		    				商品编号:
 		    			</td>
 		    			<td>
-		    				<input class="myinput" type="text" name="p_number"/>
+		    				<input class="myinput" type="text" name="p_number" value="${product.p_number }"/>
 		    			</td>
     				</tr>
 					<tr>
@@ -123,7 +123,7 @@
 							</select>
 		    				<select class="myselect" id='select_category_2'></select>
 		    				<select class="myselect"  id='select_category_3'></select>
-		    				<input type="hidden" name="c_id" id="myc_id" value=""/>
+		    				<input type="hidden" name="c_id" id="myc_id" value="${product.c_id }"/>
 	    				</td>
 					</tr>
 					<tr>
@@ -155,7 +155,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="修改" />
+						<td><input type="button" value="修改" onclick="updateProduct()" />
 						</td>
 					</tr>
 
