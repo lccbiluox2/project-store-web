@@ -3,6 +3,7 @@ package com.biluo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.biluo.common.TreeShow;
 import com.biluo.domain.Admin;
 import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
@@ -30,8 +31,8 @@ public interface AdminService {
 
 	
 	List<Category> finaCategoryTop();
-
-	List<Category> finaCategoryById(Long id);
+	
+	public List<TreeShow> finaCategoryTreeShow(List<Category> categoryList,TreeShow treeShow);
 
 	Category getCategoryById(Long id);
 
@@ -75,6 +76,8 @@ public interface AdminService {
 	public void productAdd(Product product);
 
 	public Product getProductById(Long id);
+
+	
 	
 	/*
 	public ArrayList<Category> getCategory();

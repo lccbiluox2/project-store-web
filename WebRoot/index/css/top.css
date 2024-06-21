@@ -1,0 +1,85 @@
+#topPage{
+	width:1200px;
+	height:100%;
+
+	background-color:#bcfffc;
+}
+#topPage-top{
+	width:100%;
+	height:20%;
+	background-color:#EEEEEE;
+}
+#topPage-center{
+	width:100%;
+	height:60%;
+	background-color:#123bfc;
+}
+#topPage-buttom{
+	width:100%;
+	height:20%;
+	background-color:#b45123;
+}
+
+#topPage-top-left{
+	width:50%;
+	height:100%;
+	float:left;
+	background-color:#EEEEEE;
+	
+}
+#topPage-top-right{
+	width:50%;
+	height:100%;
+	float:left;
+	background-color:#EEEEEE;
+	
+}
+.topPage-top-left-name{
+	display:block;
+	height:100%;
+	width:20%;
+	float:left;
+	background-color:#EEEEEE;
+	
+}
+.topPage-top-right-name{
+	display:block;
+	height:100%;
+	width:20%;
+	float:right;
+	background-color:#EEEEEE;
+}
+.topPage-center-name{
+	display:block;
+	height:100%;
+	width:25%;
+	float:left;
+	text-align:left;
+	background-color:#ffabf3;
+}
+.topPage-center-right{
+	display:block;
+	height:100%;
+	width:25%;
+	float:right;
+	text-align:right;
+	background-color:#ffabf3;
+}
+.topPage-buttom-name1{
+	display:block;
+	height:100%;
+	width:25%;
+	float:left;
+	text-align:center;
+	background-color:#f45bf3;
+	
+}
+.topPage-buttom-name{
+	display:block;
+	height:100%;
+	width:10%;
+	float:left;
+	text-align:center;
+	background-color:#ffabf3;
+	
+}

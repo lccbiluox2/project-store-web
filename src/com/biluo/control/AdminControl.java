@@ -20,6 +20,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.biluo.common.TreeShow;
 import com.biluo.common.UploadImgToPointDir;
 import com.biluo.domain.Admin;
 import com.biluo.domain.Brand;
@@ -385,22 +386,17 @@ public class AdminControl {
 	
 	//类别列表
 	@RequestMapping("/categoryList")
-	public ModelAndView categoryList(Long id){
+	public ModelAndView categoryList(Long id) {
 		ModelAndView mav = new ModelAndView();
 		List<Category> categoryList = null;
-		if(id == null || id == 0){
-			categoryList = adminService.finaCategoryTop();
-		}else{
-			categoryList = adminService.finaCategoryById(id);
-			Category category = adminService.getCategoryById(id);
-			mav.addObject("category1", category);
-		}	
+		categoryList = adminService.finaCategoryTop();
+		List<TreeShow> treeShowList = adminService.finaCategoryTreeShow(categoryList , new TreeShow());
 		
-		mav.addObject("categoryList", categoryList);
+		mav.addObject("treeShowList", treeShowList);
 
 		mav.setViewName("admin/category/list");
 		return mav;
-		}
+	}
 	
 	
 	//类别添加准备

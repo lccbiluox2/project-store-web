@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.biluo.common.TreeShow;
 import com.biluo.dao.AdminDao;
 import com.biluo.domain.Admin;
 import com.biluo.domain.Brand;
@@ -74,9 +75,20 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<Category> finaCategoryById(Long id) {
-		// TODO Auto-generated method stub
-		return adminDao.finaCategoryById(id);
+	public List<TreeShow> finaCategoryTreeShow(List<Category> top , TreeShow tree ) {
+		List<TreeShow> treeList = new ArrayList<TreeShow>();
+		for(Category category : top){
+			TreeShow treeShow = new TreeShow();
+			treeShow.setParent(tree);
+			treeShow.setCategory(category);
+			List<Category> categoryChild = adminDao.finaCategoryById(new Long(category.getC_id()));
+			List<TreeShow> categoryList2 = finaCategoryTreeShow(categoryChild , treeShow);
+			treeShow.setChildrens(categoryList2);
+			treeList.add(treeShow);
+		}
+		
+		
+		return treeList;
 	}
 
 	@Override
@@ -102,7 +114,7 @@ public class AdminServiceImpl implements AdminService{
 		Long id = category.getC_id().longValue();
 		adminDao.categoryDelete(category);
 	
-			List<Category> categories = finaCategoryById(id);
+			List<Category> categories = adminDao.finaCategoryById(id);
 			for(Category category1 : categories){
 				
 				categoryDelete(category1);

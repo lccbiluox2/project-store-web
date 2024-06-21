@@ -24,19 +24,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <table>
    <tr> <th>名字</th><th>上级类别</th><th>操作</th></tr>
-   <c:forEach items="${categoryList }" var="category">
+   <c:forEach items="${treeShowList }" var="treeShow">
    	<tr>
-   		<td><a href="categoryList.do?id=${category.c_id }">${category.c_name }</a></td>
-   		<td>${category1.c_name }</td>
-   		<td><a href="categoryUpdateUI.do?id=${category.c_id }">修改</a></td>
-   		<td><a href="categoryDelete.do?id=${category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a></td>
-   		
+   		<td>${treeShow.category.c_name }</td>
+   		<td>${treeShow.parent.category.c_name }</td>
+   		<td><a href="categoryUpdateUI?id=${treeShow.category.c_id }">修改</a></td>
+   		<td><a href="categoryDelete?id=${treeShow.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a></td>
    	</tr>
+   	<tr>
+   		 <c:forEach items="${treeShow.childrens }" var="children">
+  		 	<tr>
+   				<td>${children.category.c_name }</td>
+   				<td>${children.parent.category.c_name }</td>
+   				<td><a href="categoryUpdateUI?id=${children.category.c_id }">修改</a></td>
+   				<td><a href="categoryDelete?id=${children.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a></td>
+   			</tr>
+   				<c:forEach items="${children.childrens }" var="children1">
+  		 			<tr>
+   						<td>${children1.category.c_name }</td>
+   						<td>${children1.parent.category.c_name }</td>
+   						<td><a href="categoryUpdateUI?id=${children1.category.c_id }">修改</a></td>
+   						<td><a href="categoryDelete?id=${children1.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a></td>
+   					</tr>
+   			
+   				</c:forEach>
+   			</c:forEach>
+   	</tr>
+   	
    </c:forEach>
   
   </table>
-  <a href="categoryAddUI.do?id=${category1.c_id }">添加</a>
-  <a href="categoryList.do?id=${category1.c_pid }">上一级</a>
+  <a href="categoryAddUI">添加</a>
    
   </body>
 </html>
