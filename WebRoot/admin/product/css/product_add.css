@@ -1,0 +1,70 @@
+body{
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+	background-size:100% 100%;
+	background-color:#D1DEF1;
+
+}
+#body{
+	width:1000px;
+	height:100%;
+	margin:0 auto;
+	text-align:center;
+	background-color:#BFD4F1;
+}
+
+#top{
+	width:90%;
+	float:left;
+	margin:0 auto;
+	text-align:center;
+	background-color:#7199BD;
+}
+#content{
+	width:100%;
+	float:left;
+	margin:0 auto;
+	text-align:left;
+	font-size:large;
+	font-weight:bold;
+	background-color:#BFD4F1;
+}
+
+
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+}
+table.altrowstable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.altrowstable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+.oddrowcolor{
+	background-color:#d4e3e5;
+}
+.evenrowcolor{
+	background-color:#c3dde0;
+}
+
+.myinput{
+	
+	width:460px;
+	
+}
+
+.myselect{
+	width:150px;
+}

@@ -77,6 +77,12 @@ public interface AdminService {
 
 	public Product getProductById(Long id);
 
+	public List<Category> getChildCategoryByFatherId(int integer);
+
+	
+
+	
+
 	
 	
 	/*

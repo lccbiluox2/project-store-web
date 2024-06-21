@@ -54,9 +54,7 @@ window.onload=function(){
   	<div id="body">
   		<div id="top">
   			<div id="top-menu1">
-  				<a href="${pageContext.request.contextPath }/toJspPage?whatPage=/admin/brand/brand_add">
-					<img alt="" src="admin/brand/img/add.png" width="100%" height="100%">
-				</a>
+  				
   			</div>
   		</div>
   		<div id="content">

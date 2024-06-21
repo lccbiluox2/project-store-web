@@ -235,6 +235,14 @@ public class AdminServiceImpl implements AdminService{
 		// TODO Auto-generated method stub
 		return adminDao.getAllBrand();
 	}
+
+	@Override
+	public List<Category> getChildCategoryByFatherId(int integer) {
+		// TODO Auto-generated method stub
+		return adminDao.getChildCategoryByFatherId(integer);
+	}
+
+	
 	
 	
 }

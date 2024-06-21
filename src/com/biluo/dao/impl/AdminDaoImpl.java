@@ -290,6 +290,21 @@ public class AdminDaoImpl implements AdminDao {
 				.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Category> getChildCategoryByFatherId(int integer) {
+		System.out.println("integer"+integer);
+		// TODO Auto-generated method stub
+		String hql = "from  Category g where g.c_pid=?";
+		Query query= sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, integer);
+		
+		return  (ArrayList<Category>) query.list();
+	}
+
+	
+	
+
 	
 	
 }

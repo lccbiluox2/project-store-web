@@ -9,7 +9,7 @@
 <table>
 	<tr width="100%">
 		<td width="15%">
-			<iframe width="100%" height="450" src="${pageContext.request.contextPath }/toJspPage?whatPage=/admin/menu" border="1" frameborder="1" scrolling="auto" > 
+			<iframe width="100%" height="100%" src="${pageContext.request.contextPath }/toJspPage?whatPage=/admin/menu" border="1" frameborder="1" scrolling="auto" > 
 			
 			</iframe>
 		</td>

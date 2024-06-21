@@ -23,42 +23,98 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
+	<link rel="stylesheet" type="text/css" href="admin/user/css/usermanage.css">
+	
+	<script type="text/javascript">
+	
+	
+	function altRows(id){
+	if(document.getElementsByTagName){  
+		
+		var table = document.getElementById(id);  
+		var rows = table.getElementsByTagName("tr"); 
+		 
+		for(i = 0; i < rows.length; i++){          
+			if(i % 2 == 0){
+				rows[i].className = "evenrowcolor";
+			}else{
+				rows[i].className = "oddrowcolor";
+			}      
+		}
+	}
+}
+
+window.onload=function(){
+	altRows('alternatecolor');
+}
+	
+  </script>
+	
   </head>
   
-  <body>
-   	
   
-   <table width="90%" border="2">
-	 	<tr>
-	 		<td>ID</td>
-	 	
-	 		<td>名称</td>
-	 	
-	 		<td>删除</td>
-	 	</tr>
-	 	<c:forEach items="${userList}" var="userList" >  
-	        <tr>    
-	             <td align = "center">${userList.u_id}</td>  
-	             
-	             <td align = "center">${userList.u_name}</td>  
-	            
-	           
-	           
-	           	<td><a href="/mystory/delUserById?id=${userList.u_id}">删除</a></td>
-	         </tr>  
-		 </c:forEach>  
-	
-   </table>
+
+
+
+
+
+<body>
+  	<div id="body">
+  		<div id="top">
+  			<div id="top-menu1">
+  				
+  			</div>
+  		</div>
+  		<div id="content">
+  			<table width="90%" class="altrowstable" id="alternatecolor">
+					<tr>
+				 		<td>ID</td>
+				 	
+				 		<td>名称</td>
+				 	
+				 		<td>删除</td>
+				 	</tr>
+				 	<c:forEach items="${userList}" var="userList" >  
+				        <tr>    
+				             <td align = "center">${userList.u_id}</td>  
+				             
+				             <td align = "center">${userList.u_name}</td>  
+				            
+				           
+				           
+				           	<td><a href="/mystory/delUserById?id=${userList.u_id}">删除</a></td>
+				         </tr>  
+					 </c:forEach>  
+				
+			   </table>
   
-  <a href="userManage?offset=1&pagesize=4&orientation=3">首页</a>
-  <a href="userManage?offset=5&pagesize=4&orientation=2">向上跳转5页</a>
-  <a href="userManage?offset=10&pagesize=4&orientation=2">向上跳转10页</a>
-  <a href="userManage?offset=1&pagesize=4&orientation=1">下一页</a>
-  <a href="userManage?offset=1&pagesize=4&orientation=2">上一页</a>
-  <a href="userManage?offset=5&pagesize=4&orientation=1">向下跳转5页</a>
-  <a href="userManage?offset=10&pagesize=4&orientation=1">向下跳转10页</a>
-  <a href="userManage?offset=1&pagesize=4&orientation=4">尾页</a>
+  		</div>
+  		<div id="footer">
+  			 <a href="userManage?offset=1&pagesize=4&orientation=3">首页</a>
+			  <a href="userManage?offset=5&pagesize=4&orientation=2">向上跳转5页</a>
+			  <a href="userManage?offset=10&pagesize=4&orientation=2">向上跳转10页</a>
+			  <a href="userManage?offset=1&pagesize=4&orientation=1">下一页</a>
+			  <a href="userManage?offset=1&pagesize=4&orientation=2">上一页</a>
+			  <a href="userManage?offset=5&pagesize=4&orientation=1">向下跳转5页</a>
+			  <a href="userManage?offset=10&pagesize=4&orientation=1">向下跳转10页</a>
+			  <a href="userManage?offset=1&pagesize=4&orientation=4">尾页</a>
   
+  		</div>
+  	</div>
+  	
+  
+  
+
+
+
+
+
+
+
+
+
+
+
   
   </body>
 </html>

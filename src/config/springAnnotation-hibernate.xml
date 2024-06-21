@@ -47,6 +47,7 @@
 				<prop key="modify*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="del*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="get*">PROPAGATION_NEVER</prop>
+				<prop key="fina*">PROPAGATION_NEVER</prop>
 			</props>
 		</property>
 	</bean>

@@ -2,18 +2,26 @@ package com.biluo.control;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -30,7 +38,7 @@ import com.biluo.domain.User;
 import com.biluo.service.AdminService;
 
 @Controller
-public class AdminControl {
+public class AdminControl implements Controller {
 	
 
 	
@@ -142,6 +150,45 @@ public class AdminControl {
 	
 	/******************商品处理************************************************/
 	
+	private String ajaxCateId;
+	
+	public String getAjaxCateId() {
+		return ajaxCateId;
+	}
+
+
+	public void setAjaxCateId(String ajaxCateId) {
+		this.ajaxCateId = ajaxCateId;
+	}
+
+
+	//类别添加实现省市联动效果 获得类别
+	@ResponseBody  
+	@RequestMapping("/getAjaxCategory")
+	public ModelAndView handleRequest(HttpServletRequest request,ServletResponse response){
+		
+		int ajax_cid = Integer.parseInt(request.getParameter("ajaxCateId"));
+		System.out.println("ajaxCateId="+ajax_cid);
+		if(ajax_cid != 0){
+			List<Category>  cate = adminService.getChildCategoryByFatherId(ajax_cid);
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  
+			
+	        String s = JSONArray.fromObject(cate).toString();  
+	        out.print(s);  
+	        out.close();  
+		}
+		
+		 return null;  
+	}
+	
+	
+	
 	@RequestMapping("/productList")
 	public ModelAndView productList(int offset, int orientation, Long kuCunNum, Long stateNum,String name,
 			RedirectAttributes attr) {
@@ -191,17 +238,20 @@ public class AdminControl {
 		return mav;
 	}
 
+	//添加商品准备类别
 	@RequestMapping("/productAddUI")
 	public ModelAndView productAddUI() {
 		ModelAndView mav = new ModelAndView();
-		List<Category> categoryList = adminService.finaCategoryAll();
+		//List<Category> categoryList = adminService.finaCategoryAll();
 		List<Brand> brandList = adminService.getAllBrand();
-		mav.addObject("categoryList", categoryList);
+		//mav.addObject("categoryList", categoryList);
 		mav.addObject("brandList", brandList);
 		mav.setViewName("admin/product/product_add");
+
 		return mav;
 	}
 
+	//真正添加商品的页面
 	@RequestMapping("/productAdd")
 	public String productAdd(HttpServletRequest request, RedirectAttributes attr) {
 		Product product = new Product();
@@ -613,6 +663,20 @@ public class AdminControl {
 			request.setAttribute("parameter", parameter);
 			return whatPage;
 				
+	}
+
+
+	@Override
+	public Class<? extends Annotation> annotationType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String value() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 		
 		

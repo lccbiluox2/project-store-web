@@ -40,12 +40,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <form action="" method="post">
 	<table width="90%" border="2">
 	 	<tr>
-	 		<td>品牌图片</td>
-	 		<td align = "center">
-	 			<input type="text" name="b_img_path" value="${brand.b_img_path }"/>
-	 		</td>  
-	 	</tr>
-	 	<tr>
 	 		<td>品牌名称</td>
 	 		<td align = "center">
 	 			<input type="text" name="b_name" value="${brand.b_name }"/>

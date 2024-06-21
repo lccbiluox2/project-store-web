@@ -20,8 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	
-	<link rel="stylesheet" type="text/css" href="admin/brand/css/brandmanage.css">
+
+	<link rel="stylesheet" type="text/css" href="admin/product/css/product_list.css">
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath }/admin/js/jquery.js"></script>
 	<script type="text/javascript">
@@ -66,9 +66,7 @@ window.onload=function(){
   	<div id="body">
   		<div id="top">
   			<div id="top-menu1">
-  				<a href="productAddUI">
-					<img alt="" src="admin/brand/img/add.png" width="100%" height="100%">
-				</a>
+  				
 				
   			</div>
   		</div>
@@ -88,7 +86,7 @@ window.onload=function(){
 			  		<tr>
 			  			<td>${product.p_name }</td><td>${product.p_attr }</td>
 			  			<td>${product.p_state }</td><td>${product.p_goods_surplus }</td>
-			  			<td><img src="${product.p_img_path }" width="100px" height="200px"/></td>
+			  			<td><img src="${product.p_img_path }" width="100px" height="100px"/></td>
 			  			<td>
 			  			<c:forEach items="${brangList }" var="brang">
 			  				<c:if test="${brang.b_id == product.p_b_id}">${brang.b_name }</c:if>

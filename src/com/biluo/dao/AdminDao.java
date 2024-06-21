@@ -70,6 +70,10 @@ public interface AdminDao {
 
 	public List<Brand> getAllBrand();
 
+	public List<Category> getChildCategoryByFatherId(int integer);
+
+	
+
 	
 
 }

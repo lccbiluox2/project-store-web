@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </c:forEach>
   
   </table>
-  <a href="categoryAddUI">添加</a>
+
    
   </body>
 </html>
