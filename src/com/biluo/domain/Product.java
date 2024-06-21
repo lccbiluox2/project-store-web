@@ -16,68 +16,68 @@ import javax.persistence.Table;
 @Table(name="product")
 public class Product {
 	
-	//ÉÌÆ·ID
+	//å•†å“ID
 	@Id
 	@GeneratedValue
 	private Integer p_id;
 	
 	
-	//Àà±ğID  ÕâÀï²»Ó¦¸ÃĞ´id Ó¦¸ÃĞ´Àà±ğÕâ¸öÀà£¬²¢ÇÒ²»Ê¹ÓÃÊ¹ÓÃÑÓ³Ù¼ÓÔØ
-	//ÊÇ¶à¶ÔÒ»µÄ¹ØÏµ£¬Ò»¸öÉÌÆ·Ö»ÄÜ¶ÔÓ¦Ò»ÖÖÀà±ğ
+	//ç±»åˆ«ID  è¿™é‡Œä¸åº”è¯¥å†™id åº”è¯¥å†™ç±»åˆ«è¿™ä¸ªç±»ï¼Œå¹¶ä¸”ä¸ä½¿ç”¨ä½¿ç”¨å»¶è¿ŸåŠ è½½
+	//æ˜¯å¤šå¯¹ä¸€çš„å…³ç³»ï¼Œä¸€ä¸ªå•†å“åªèƒ½å¯¹åº”ä¸€ç§ç±»åˆ«
 	@Column
 	private Integer c_id;
 	
-	//ÉÌÆ·Ãû³Æ
+	//å•†å“åç§°
 	@Column
 	private String p_name;
 	
-	//ÊôĞÔ
+	//å±æ€§
 	@Column
 	private String p_attr;
 	
-	//»áÔ±¼Û
+	//ä¼šå‘˜ä»·
 	@Column
 	private Integer p_vip_price;
 	
-	//ÊĞ³¡¼Û
+	//å¸‚åœºä»·
 	@Column
 	private Integer p_shop_price;
 	
-	// ×´Ì¬   1£¬ĞÂÆ· ,2 ÈÈÂô 3ÌØ¼ÛÉÌÆ· 4¾«Æ·
+	// çŠ¶æ€   1ï¼Œæ–°å“ ,2 çƒ­å– 3ç‰¹ä»·å•†å“ 4ç²¾å“
 	@Column
 	private Integer p_state;
 	
-	//µã»÷Á¿
+	//ç‚¹å‡»é‡
 	@Column
 	private Integer p_click_count;
 	
-	//Æ·ÅÆID  ÕâÀï²»Ó¦¸ÃĞ´id Ó¦¸ÃĞ´Æ·ÅÆÕâ¸öÀà£¬²¢ÇÒÊ¹ÓÃÑÓ³Ù¼ÓÔØ
-	//ÊÇ¶à¶ÔÒ»µÄ¹ØÏµ£¬Ò»¸öÉÌÆ·Ö»ÄÜ¶ÔÓ¦Ò»ÖÖÆ·ÅÆ
+	//å“ç‰ŒID  è¿™é‡Œä¸åº”è¯¥å†™id åº”è¯¥å†™å“ç‰Œè¿™ä¸ªç±»ï¼Œå¹¶ä¸”ä½¿ç”¨å»¶è¿ŸåŠ è½½
+	//æ˜¯å¤šå¯¹ä¸€çš„å…³ç³»ï¼Œä¸€ä¸ªå•†å“åªèƒ½å¯¹åº”ä¸€ç§å“ç‰Œ
 	@Column
 	private Integer p_b_id;
 	
-	//Í¼Æ¬Â·¾¶
+	//å›¾ç‰‡è·¯å¾„
 	@Column
 	private String p_img_path;
 	
-	//ÉÌÆ·ÏêÇé
+	//å•†å“è¯¦æƒ…
 	@Column
-	private String p_description; //ÕâÀï²éÑ¯µÄÊÇĞèÒªstring µÄ²»ÊÇText
+	private String p_description; //è¿™é‡ŒæŸ¥è¯¢çš„æ˜¯éœ€è¦string çš„ä¸æ˜¯Text
 	
 
 	
 	
-	//¿â´æÁ¿
+	//åº“å­˜é‡
 	@Column
 	private Integer p_goods_surplus;
 	
 	
-	//¿â´æ×ÜÁ¿ÀÛ¼Ó(ÔÂÇå¿Õ)ËÑË÷¹Ø¼ü×Ö
+	//åº“å­˜æ€»é‡ç´¯åŠ (æœˆæ¸…ç©º)æœç´¢å…³é”®å­—
 	@Column
 	private Integer p_month_count;
 	
 	
-	//ËÑË÷¹Ø¼ü×Ö
+	//æœç´¢å…³é”®å­—
 	@Column
 	private String p_search_key;
 
@@ -219,6 +219,12 @@ public class Product {
 
 	public void setP_search_key(String p_search_key) {
 		this.p_search_key = p_search_key;
+	}
+
+
+	public void setP_c_id(int parseInt) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

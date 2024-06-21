@@ -9,20 +9,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>创业</title>
-    <meta http-equiv="refresh" content="0;url=${pageContext.request.contextPath }/toJspPage?whatPage=/index/index">
+    <title>My JSP 'user_register.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
-	
-	<link rel="stylesheet" type="text/css" href="index/css/index.css">
-	
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
   </head>
   
- 
-<body class="body">
-	
+  <body>
+  
+  <form action="/mystory/addUserRegister">
+  	用户名:<input type="text" name="u_name" /><br>
+   	密码:<input type="text" name="u_passwd" /><br>
+   	确认密码:<input type="text" name="confirm" /><br>
+   	手机号:<input type="text" name="u_phone" /><br>
+   	邮箱:<input type="text" name="u_email" /><br>
+   	<input type="submit" value="提交"> 
+  </form>
+   
+   	
+  </body>
 </html>

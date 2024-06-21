@@ -10,34 +10,32 @@ import javax.persistence.Table;
 @Table(name="user")
 public class User {
 	
-	//ÓÃ»§ID	
+	//ç”¨æˆ·ID	
 	@Id
 	@GeneratedValue
 	private Integer u_id;				
 
-	//ÓÃ»§name	 ÓÃ»§ÃûÒªÎ¨Ò»Âğ¡¢£¿
+	//ç”¨æˆ·name	 ç”¨æˆ·åè¦å”¯ä¸€å—ã€ï¼Ÿ
 	@Column
 	private String u_name;
 	
-	//ÓÃ»§ÃÜÂë
+	//ç”¨æˆ·å¯†ç 
 	@Column
 	private String u_passwd;
 	
-	//ÊÖ»úºÅ	
+	//æ‰‹æœºå·	
 	@Column
 	private String u_phone;
 	
-	//ÓÊÏä	
+	//é‚®ç®±	
 	@Column
 	private String u_email;
 	
-	//ËÍ»õµØÖ·
+	//é€è´§åœ°å€
 	@Column
 	private String u_address;
 	
-	//¶©µ¥id
-	@Column
-	private Integer o_id;
+	
 
 	public Integer getU_id() {
 		return u_id;
@@ -87,12 +85,6 @@ public class User {
 		this.u_address = u_address;
 	}
 
-	public Integer getO_id() {
-		return o_id;
-	}
 
-	public void setO_id(Integer o_id) {
-		this.o_id = o_id;
-	}
 	
 }

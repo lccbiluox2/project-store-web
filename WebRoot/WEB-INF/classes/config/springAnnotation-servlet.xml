@@ -22,6 +22,7 @@
 	 <mvc:resources location="/css/" mapping="/css/**"/>
 	 <mvc:resources location="/admin/" mapping="/admin/**"/>
 	 <mvc:resources location="/upload/" mapping="/upload/**"/>
+	 <mvc:resources location="/index/" mapping="/index/**"/>
 	  
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

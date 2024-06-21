@@ -13,8 +13,10 @@ import com.biluo.dao.AdminDao;
 import com.biluo.domain.Admin;
 import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
+import com.biluo.domain.Product;
+import com.biluo.domain.User;
 
-//Repository∞—’‚∏ˆ◊¢≤·  AdminDaoImpl
+//RepositoryÊääËøô‰∏™Ê≥®ÂÜå  AdminDaoImpl
 @Repository
 public class AdminDaoImpl implements AdminDao {
 
@@ -37,13 +39,27 @@ public class AdminDaoImpl implements AdminDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public ArrayList<Brand> getAllBrand() {
+	public ArrayList<Brand> getAllBrand(int offset, int pagesize) {
 		// TODO Auto-generated method stub
-		String hql = "from Brand";
+		String hql = "from Brand order by b_id desc";
+		Query query= sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult((offset - 1)*pagesize);
+		query.setMaxResults(pagesize);
+		
+		return  (ArrayList<Brand>) query.list();
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Brand> getAllBrand() {
+		String hql = "from Brand ";
 		Query query= sessionFactory.getCurrentSession().createQuery(hql);
 		return  (ArrayList<Brand>) query.list();
 	}
 
+	
+	
 	@Override
 	public Brand getBrandById(String id) {
 		String hql = "from Brand b where b.b_id=?";
@@ -55,7 +71,7 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public boolean updateBrandById(Brand brand) {
 		// TODO Auto-generated method stub
-		//◊¢“‚set÷Æº‰ «”–∂∫∫≈∑÷∏Óµƒ
+		//Ê≥®ÊÑèset‰πãÈó¥ÊòØÊúâÈÄóÂè∑ÂàÜÂâ≤ÁöÑ
 		String hql = "update Brand b set b.b_name=? , b.b_img_path=? where b.b_id=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, brand.getB_name());
@@ -150,111 +166,130 @@ public class AdminDaoImpl implements AdminDao {
 		return sessionFactory.getCurrentSession().createQuery("from Category").list();
 	}
 
-	
-	
-	/*
 	@Override
-	public ArrayList<Category> getCategory() {
+	public int getAllBrandCount() {
 		// TODO Auto-generated method stub
-		String hql = "from Category";
+		String hql = "from Brand";
 		Query query= sessionFactory.getCurrentSession().createQuery(hql);
-		return  (ArrayList<Category>) query.list();
+		return   query.list().size();
 	}
 
 	@Override
-	public boolean addCategory(Category category) {
+	public boolean addUserRegister(User user) {
 		// TODO Auto-generated method stub
-		int flag = (Integer) sessionFactory.getCurrentSession().save(category) ;
-		return (flag>0?true:false);
-	}
-	
-	@Override
-	public boolean delCategory(Integer id){
-		String hql = "delete Category c where c.id=?";
-		Query query= sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger(0, id);
-		return (query.executeUpdate() > 0);
-	}
-
-	@Override
-	public boolean addStory(Story story) {
-		// TODO Auto-generated method stub
-		int flag = (Integer) sessionFactory.getCurrentSession().save(story);
+		int flag = (Integer) sessionFactory.getCurrentSession().save(user) ;
 		return (flag>0?true:false);
 	}
 
 	@Override
-	public Category getCategoryById(Integer id) {
-		String hql = "from Category c where c.id=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger(0, id);
-		
-		return (Category) query.uniqueResult();
-	}
-
-	@Override
-	public boolean modifyCategoryByIdReal(Category category) {
-		String hql = "update Category c set c.name=? where c.id=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, category.getName());
-		query.setInteger(1, category.getId());
-		return (query.executeUpdate() > 0);
-	}
-
-	@Override
-	public List<Story> getStoryByCategoryReal(Integer id) {
+	public int getAllUserCount() {
 		// TODO Auto-generated method stub
-		String hql = "from Category c where c.id=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger(0, id);
-		
-		Category cate = (Category) query.uniqueResult();
-		List<Story> list = cate.getStory();
-		return list;
+		return sessionFactory.getCurrentSession().createQuery("from User").list().size();
 	}
 
 	@Override
-	public boolean updateStoryPhoto(Integer integer, String fileName) {
-		String hql = "update Story s set s.photo=? where s.id=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, fileName);
-		query.setInteger(1, integer);
-		return (query.executeUpdate() > 0);
-	}
-
-	@Override
-	public boolean delStoryById(Integer id) {
+	public ArrayList<User> getAllUser(int offset, int pagesize) {
 		// TODO Auto-generated method stub
-		String hql = "delete Story s where s.id=?";
+		String hql = "from User order by u_id desc";
 		Query query= sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger(0, id);
+		query.setFirstResult((offset - 1)*pagesize);
+		query.setMaxResults(pagesize);
+		
+		return  (ArrayList<User>) query.list();
+	}
+
+	@Override
+	public User getUser(User user) {
+		String hql = "from User u where u.u_name=? and u.u_passwd=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, user.getU_name());
+		query.setString(1, user.getU_passwd());
+		return (User) query.uniqueResult();
+	}
+
+	@Override
+	public boolean delUserById(Integer integer) {
+		String hql = "delete User u where u.id=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, integer);
 		return (query.executeUpdate() > 0);
 	}
 
+	
 	@Override
-	public List<Story> getStoryByClick() {
-		// TODO Auto-generated method stub
-		String hql = "from Story c where c.click=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger(0, 0);
+	public List<Product> finaProductList(int offset , int pagesize) {
+		String sql = "from Product";
+		Query query = sessionFactory.getCurrentSession().createQuery(sql);
+		query.setFirstResult((offset - 1) * pagesize);
+		query.setMaxResults(pagesize);
 		return query.list();
 	}
 
 	@Override
-	public List<Story> getStoryBySerialize() {
-		// TODO Auto-generated method stub
-		String hql = "from Story c where c.serialize=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger(0, 2);
-		return query.list();
+	public void productAdd(Product product) {
+		
+		if(product.getP_img_path() == "" || product.getP_img_path() == null){
+			product.setP_img_path("/mystory/admin/brand/img/mydefault.jpg");
+		}
+		sessionFactory.getCurrentSession().save(product);
+		
 	}
 
 	@Override
-	public List<Story> getStoryByMounthVote() {
-		String hql = "from Story c where c.mounthVote=?";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger(0, 0);
-		return query.list();
+	public Product getProductById(Long id) {
+		// TODO Auto-generated method stub
+		return (Product) sessionFactory.getCurrentSession().get(Product.class, id.intValue());
 	}
-*/
+
+	@Override
+	public void productUpdate(Product product) {
+		if(product.getP_img_path() == "" || product.getP_img_path() == null){
+			product.setP_img_path(getProductById(new Long(product.getP_id())).getP_img_path());
+		}
+		
+		String sql = "update Product p set p.p_vip_price=?,p.p_shop_price=?,p.p_attr=?,p.p_b_id=?,p.p_description=?" +
+				",p.p_goods_surplus=?,p.c_id=?,p.p_name=?,p.p_img_path=? where p.p_id=?";
+		sessionFactory.getCurrentSession().createQuery(sql)//
+		.setInteger(0, product.getP_vip_price())//
+		.setInteger(1, product.getP_shop_price())//
+		.setString(2, product.getP_attr())//
+		.setInteger(3, product.getP_b_id())//
+		.setString(4, product.getP_description())//
+		.setInteger(5, product.getP_goods_surplus())//
+		.setInteger(6, product.getC_id())//
+		.setString(7, product.getP_name())//
+		.setString(8, product.getP_img_path())
+		.setInteger(9, product.getP_id())//
+		.executeUpdate();
+		
+	}
+
+	@Override
+	public void productDelete(Long id) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().createQuery(//
+				"delete Product p where p.p_id=?")//
+				.setInteger(0, id.intValue())//
+				.executeUpdate();
+	}
+
+	@Override
+	public int getAllProductCount() {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().createQuery("from Product").list().size();
+	}
+
+	@Override
+	public List<Product> finaProductKCList(int myoffset, int mypagesize,
+			String string) {
+		String sql = "from Product p " + string;
+		System.out.println(sql);
+		return sessionFactory.getCurrentSession().createQuery(sql)//
+				.setFirstResult((myoffset - 1) * mypagesize)
+				.setMaxResults(mypagesize)
+				.list();
+	}
+
+	
+	
 }

@@ -10,21 +10,21 @@ import javax.persistence.Table;
 @Table(name="admin")
 public class Admin {
 	
-	//¹ÜÀíÔ±iD
+	//ç®¡ç†å‘˜iD
 	@Id
 	@GeneratedValue
 	private Integer a_id;
 	
-	//¹ÜÀíÔ±ĞÕÃû
+	//ç®¡ç†å‘˜å§“å
 	@Column(length=32)
 	private String a_name;
 	
-	//ÃÜÂë
+	//å¯†ç 
 	@Column(length=32)
 	private String a_passwd;
 	
 	
-	//È¨ÏŞ  ±£ÁôÖµ
+	//æƒé™  ä¿ç•™å€¼
 	@Column(length=32)
 	private Integer a_permissions;
 

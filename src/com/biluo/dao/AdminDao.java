@@ -7,12 +7,13 @@ import com.biluo.domain.Admin;
 import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
 import com.biluo.domain.Product;
+import com.biluo.domain.User;
 
 public interface AdminDao {
 
 	public Admin getAdmin(Admin admin);
 
-	public ArrayList<Brand> getAllBrand();
+	public ArrayList<Brand> getAllBrand(int offset, int pagesize);
 
 	public Brand getBrandById(String id);
 
@@ -39,5 +40,36 @@ public interface AdminDao {
 	List<Category> getCategoryByNames(String name);
 
 	List<Category> finaCategoryAll();
+
+	public int getAllBrandCount();
+
+	public boolean addUserRegister(User user);
+
+	public int getAllUserCount();
+
+	public ArrayList<User> getAllUser(int myoffset, int mypagesize);
+
+	public User getUser(User user);
+
+	public boolean delUserById(Integer integer);
+
+	public List<Product> finaProductKCList(int myoffset, int mypagesize,
+			String string);
+
+	public List<Product> finaProductList(int offset, int pagesize);
+
+	public void productAdd(Product product);
+
+	public Product getProductById(Long id);
+
+	public void productUpdate(Product product);
+
+	public void productDelete(Long id);
+
+	public int getAllProductCount();
+
+	public List<Brand> getAllBrand();
+
+	
 
 }

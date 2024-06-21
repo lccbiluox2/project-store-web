@@ -1,0 +1,28 @@
+.body{
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+	background-size:100% 100%;
+	background-color:#4eb8d2;
+
+}
+#body2{
+	width:1200px;
+	height:auto;
+	margin:0 auto;
+	text-align:center;
+	background-color:#bcf8bc;
+}
+
+.top-left ul{
+	list-style:none;
+	margin:0px;
+	}
+.top-left ul li{
+	float:left;
+	}
+.top-left ul li line{
+	height:10px;
+	width:1px;
+	background:#000;
+	}

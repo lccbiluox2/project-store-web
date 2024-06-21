@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	             <td align = "center">${brandList.b_id}</td>  
 	             <td align = "center">
 	             	<a href="/mystory/toJspPage?whatPage=/admin/brand/brand_img&parameter=${brandList.b_id}  ">
-	             		<img src="${brandList.b_img_path}  " width="100px" height="200px"/>
+	             		<img src="${brandList.b_img_path}" width="100px" height="200px"/>
 	             	</a>
 	             </td>  
 	             <td align = "center">${brandList.b_name}</td>  
@@ -56,6 +56,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 </c:forEach>  
 	
    </table>
+  
+  <a href="brandManage?offset=1&pagesize=4&orientation=3">首页</a>
+  <a href="brandManage?offset=5&pagesize=4&orientation=2">向上跳转5页</a>
+  <a href="brandManage?offset=10&pagesize=4&orientation=2">向上跳转10页</a>
+  <a href="brandManage?offset=1&pagesize=4&orientation=1">下一页</a>
+  <a href="brandManage?offset=1&pagesize=4&orientation=2">上一页</a>
+  <a href="brandManage?offset=5&pagesize=4&orientation=1">向下跳转5页</a>
+  <a href="brandManage?offset=10&pagesize=4&orientation=1">向下跳转10页</a>
+  <a href="brandManage?offset=1&pagesize=4&orientation=4">尾页</a>
+  
+ 
+  
+  
   
   </body>
 </html>

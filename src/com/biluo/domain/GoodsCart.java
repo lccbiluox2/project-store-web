@@ -10,20 +10,20 @@ import javax.persistence.Table;
 @Table(name="goodscart")
 public class GoodsCart {
 	
-	//¹ºÎï³µID
+	//è´­ç‰©è½¦ID
 	@Id
 	@GeneratedValue
 	private Integer g_id;
 
-	//ÉÌÆ·ID
+	//å•†å“ID
 	@Column
 	private Integer p_id;
 	
-	//ÓÃ»§ID(¹ºÂòÕß)
+	//ç”¨æˆ·ID(è´­ä¹°è€…)
 	@Column
 	private Integer u_id;
 
-	//²úÆ·ÊıÁ¿
+	//äº§å“æ•°é‡
 	@Column
 	private Integer g_count;
 

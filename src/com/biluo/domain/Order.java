@@ -12,41 +12,41 @@ import javax.persistence.Table;
 @Table(name="order")
 public class Order {
 	
-	//¶©µ¥ID
+	//è®¢å•ID
 	@Id
 	@GeneratedValue
 	private Integer o_id;
 
 	
-	//¶©µ¥ºÅ
+	//è®¢å•å·
 	@Column
 	private String o_number;
 	
 
-	//ÉÌÆ·ID
+	//å•†å“ID
 	@Column
 	private Integer p_id;
 
-	//ÉÌÆ·ÊıÁ¿
+	//å•†å“æ•°é‡
 	@Column
 	private Integer o_count;
 	
-	//×Ü·ÑÓÃ
+	//æ€»è´¹ç”¨
 	@Column
 	private Integer o_all_money;
 	
-	//Ö§¸¶·½Ê½
+	//æ”¯ä»˜æ–¹å¼
 	@Column
 	private Integer o_method;
 	
-	//ÔË·Ñ
+	//è¿è´¹
 	@Column
 	private Integer o_path_money;
 	
-	//×´Ì¬£¨ÒÑ½áËã£¬Î´½áËã£©
+	//çŠ¶æ€ï¼ˆå·²ç»“ç®—ï¼Œæœªç»“ç®—ï¼‰
 	private Integer o_state;
 
-	//ÏÂµ¥Ê±¼ä
+	//ä¸‹å•æ—¶é—´
 	@Column
 	private Date o_time;
 

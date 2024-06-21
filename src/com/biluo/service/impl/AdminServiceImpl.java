@@ -13,6 +13,7 @@ import com.biluo.domain.Admin;
 import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
 import com.biluo.domain.Product;
+import com.biluo.domain.User;
 import com.biluo.service.AdminService;
 
 @Service
@@ -32,8 +33,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public ArrayList<Brand> getAllBrand() {
-		return adminDao.getAllBrand();
+	public ArrayList<Brand> getAllBrand(int offset, int pagesize) {
+		return adminDao.getAllBrand(offset, pagesize);
 	}
 
 	@Override
@@ -121,7 +122,107 @@ public class AdminServiceImpl implements AdminService{
 		// TODO Auto-generated method stub
 		return adminDao.finaCategoryAll();
 	}
+
+	@Override
+	public int getAllBrandCount() {
+		// TODO Auto-generated method stub
+		return adminDao.getAllBrandCount();
+	}
+
+	@Override
+	public boolean addUserRegister(User user) {
+		// TODO Auto-generated method stub
+		return adminDao.addUserRegister(user);
+	}
+
+	@Override
+	public int getAllUserCount() {
+		// TODO Auto-generated method stub
+		return adminDao.getAllUserCount();
+	}
+
+	@Override
+	public ArrayList<User> getAllUser(int myoffset, int mypagesize) {
+		// TODO Auto-generated method stub
+		return adminDao.getAllUser( myoffset,  mypagesize);
+	}
+
+	@Override
+	public boolean getUser(User user) {
+		User myUser = adminDao.getUser(user);
+		if(myUser == null)
+			return false;
+		return true;
+	}
+
+	@Override
+	public boolean delUserById(String id) {
+		// TODO Auto-generated method stub
+		return adminDao.delUserById(new Integer(id));
+	}
 	
+	@Override
+	public List<Product> finaProductList(int offset , int pagesize) {
+		// TODO Auto-generated method stub
+		return adminDao.finaProductList(offset , pagesize);
+	}
+
+	@Override
+	public void productAdd(Product product) {
+		adminDao.productAdd(product);
+		
+	}
+
+	@Override
+	public Product getProductById(Long id) {
+		// TODO Auto-generated method stub
+		return adminDao.getProductById(id);
+	}
+
+	@Override
+	public void productUpdate(Product product) {
+		adminDao.productUpdate(product);
+		
+	}
+
+	@Override
+	public void productDelete(Long id) {
+		// TODO Auto-generated method stub
+		adminDao.productDelete(id);
+	}
+
+	@Override
+	public int getAllProductCount() {
+		// TODO Auto-generated method stub
+		return adminDao.getAllProductCount();
+	}
+
+	@Override
+	public List<Product> finaProductKCList(int myoffset, int mypagesize,
+			Long kuCunNum, Long stateNum, String name) {
+		// TODO Auto-generated method stub
+		
+		String string = "";
+		if(name != ""){
+			string = "where p.p_name like '%" + name + "%' ";
+		}
+		
+		
+			//0是升序,1是降序
+		if(kuCunNum == 0){
+			string += "order by p.p_goods_surplus asc";
+		}else{
+			string += "order by p.p_goods_surplus desc";
+		}
+		System.out.println("--------------------dd" + string);
+		return adminDao.finaProductKCList(myoffset , mypagesize, string);
+	}
+
+	@Override
+	public List<Brand> getAllBrand() {
+		// TODO Auto-generated method stub
+		return adminDao.getAllBrand();
+	}
 	
 	
 }

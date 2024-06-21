@@ -10,25 +10,25 @@ import javax.persistence.Table;
 @Table(name="evaluate")
 public class Evaluate {
 	
-	//评价ID 
+	//璇勪环ID 
 	@Id
 	@GeneratedValue
 	private Integer e_id;
 	
 	
-	//商品ID
+	//鍟嗗搧ID
 	@Column
 	private Integer p_id;
 	
-	//评价内容
+	//璇勪环鍐呭
 	@Column
 	private String e_content;
 	
-	//用户ID
+	//鐢ㄦ埛ID
 	@Column
 	private Integer u_id;
 	
-	//好评 true 好评  false 差评
+	//濂借瘎 true 濂借瘎  false 宸瘎
 	@Column
 	private boolean e_is_good;
 

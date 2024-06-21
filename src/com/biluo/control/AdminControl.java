@@ -18,10 +18,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.biluo.common.UploadImgToPointDir;
 import com.biluo.domain.Admin;
 import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
+import com.biluo.domain.Product;
+import com.biluo.domain.User;
 import com.biluo.service.AdminService;
 
 @Controller
@@ -32,9 +36,9 @@ public class AdminControl {
 	
 	@Resource
 	private AdminService adminService;
-	
-	
-	//¹ÜÀíÔ±µÇÂ¼
+	int myoffset = 0;//é¡µé¢é»˜è®¤æ˜¯ç¬¬ä¸€é¡µ
+	int mypagesize = 3;//é»˜è®¤é¡µé¢æ˜¾ç¤ºå‡ æ¡æ•°æ®
+	//ç®¡ç†å‘˜ç™»å½•
 	@RequestMapping("/getAdmin")
 	public String getAdmin(Admin admin){
 		Admin adm = adminService.getAdmin(admin);
@@ -42,10 +46,344 @@ public class AdminControl {
 	}
 	
 	
+	/******************ç”¨æˆ·å¤„ç†************************************************/
 	
-	/******************Àà±ğ´¦Àí************************************************/
+	//ç”¨æˆ·ç™»å½•
+	@RequestMapping("/getUser")
+	public String getUser(User user) {
+		System.out.println(user.getU_name() + user.getU_passwd());
+		boolean flag = adminService.getUser(user);
+
+		if (!flag) {
+			return "index/user_login";	
+		} else {
+			return "index/index";	
+		}
+			
+	}
 	
-	//Àà±ğÁĞ±í
+	//åˆ é™¤ç”¨æˆ· ,æ ¹æ®ç”¨æˆ·idåˆ é™¤ç”¨æˆ·
+	@RequestMapping("/delUserById")
+	public String delUserById(String id,RedirectAttributes attr){
+		System.out.println("-------------id------"+id);
+		boolean flag = adminService.delUserById(id);
+		if(flag){
+			attr.addAttribute("offset", 1);
+			attr.addAttribute("orientation", 1);
+			return "redirect:/userManage";//è¿™é‡Œæœ‰äº›ä¸åŒï¼Œè¿™é‡Œæ˜¯è·³è½¬åˆ°è¿™ä¸ªcontrolçš„å¦å¤–ä¸€ä¸ªæ–¹æ³•
+		}else{
+			attr.addAttribute("offset", 1);
+			attr.addAttribute("orientation", 1);
+			return "redirect:/userManage";//è¿™é‡Œæœ‰äº›ä¸åŒï¼Œè¿™é‡Œæ˜¯è·³è½¬åˆ°è¿™ä¸ªcontrolçš„å¦å¤–ä¸€ä¸ªæ–¹æ³•
+		}
+		
+	}
+	
+	//ç”¨æˆ·æ³¨å†Œ
+	@RequestMapping("/addUserRegister")
+	public String addUserRegister(User user){
+		if(user.getU_name() != null && user.getU_passwd() != null){
+			boolean  flag = adminService.addUserRegister(user);
+			if(flag){
+				return "index/index";	
+			}
+		}
+		return "user_login";	
+	}
+	
+	
+	//å•†æ ‡ç®¡ç†ä¸»é¡µé¢
+	//offset æ˜¯é»˜è®¤æ˜¾ç¤ºç¬¬å‡ é¡µ   toPageæ˜¯è·³è½¬åˆ°å“ªä¸€é¡µ
+	@RequestMapping("userManage")
+	public String getAllUser(HttpServletRequest request,int offset,int orientation,RedirectAttributes attr){
+			
+		int brandCount = adminService.getAllUserCount();
+		int pageTo = brandCount%mypagesize==0?brandCount/mypagesize:brandCount/mypagesize+1;
+		//orientation  1ä»£è¡¨ä¸‹ä¸€é¡µ   2ï¼Œä»£è¡¨ä¸Šä¸€é¡µ 3 é¦–é¡µ  4å°¾é¡µ
+		if(orientation == 1 ){
+			if(myoffset + offset <= pageTo)
+				myoffset= myoffset+offset;
+				else{
+					myoffset = pageTo;
+				}
+			}else if(orientation == 2){
+				if(myoffset - offset >= 0)
+				myoffset= myoffset-offset;
+				else{
+					myoffset = 1;
+				}
+			}else if(orientation == 3){
+				myoffset= 1;
+			}else if(orientation == 4){
+				
+				myoffset= pageTo;
+			}
+
+			ArrayList<User> userList= adminService.getAllUser(myoffset,mypagesize);
+			request.setAttribute("userList", userList);
+			
+			//ç¬¬ä¸€ä¸ªè½¬å‘çš„é¡µé¢ä¸ç”¨æ·»åŠ  attr.addAttrbute  å…¶ä»–çš„è°è½¬å‘è¿™ä¸ªé¡µé¢å°±å†™å±æ€§
+			return "admin/user/userManagePage";	
+		}
+	
+	/******************ç”¨æˆ·å¤„ç†************************************************/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/******************å•†å“å¤„ç†************************************************/
+	
+	@RequestMapping("/productList")
+	public ModelAndView productList(int offset, int orientation, Long kuCunNum, Long stateNum,String name,
+			RedirectAttributes attr) {
+		ModelAndView mav = new ModelAndView();
+
+		// orientation 1ä»£è¡¨ä¸‹ä¸€é¡µ 2ï¼Œä»£è¡¨ä¸Šä¸€é¡µ 3 é¦–é¡µ 4å°¾é¡µ
+		int brandCount = adminService.getAllProductCount();
+		int pageTo = brandCount % mypagesize == 0 ? brandCount / mypagesize
+				: brandCount / mypagesize + 1;
+		if (orientation == 1) {
+			if (myoffset + offset <= pageTo)
+				myoffset = myoffset + offset;
+			else {
+				myoffset = pageTo;
+			}
+		} else if (orientation == 2) {
+			if (myoffset - offset >= 0)
+				myoffset = myoffset - offset;
+			else {
+				myoffset = 1;
+			}
+		} else if (orientation == 3) {
+			myoffset = 1;
+		} else if (orientation == 4) {
+
+			myoffset = pageTo;
+		}
+		List<Product> productList = null;
+		if (kuCunNum == null) {
+			productList = adminService.finaProductList(myoffset,
+					mypagesize);
+		}else{
+			productList = adminService.finaProductKCList(myoffset , mypagesize , kuCunNum, stateNum , name);
+		}
+		mav.addObject("stateNum", stateNum);
+		mav.addObject("kuCunNum", kuCunNum);
+		mav.addObject("name", name);
+		
+		//æŸ¥è¯¢æ‰€æœ‰å“ç‰Œï¼Œå‰å°æ˜¾ç¤º æ¯”è¾ƒå•†å“ä¸­c_id å’Œ å“ç‰ŒID
+		List<Brand> brangList  = adminService.getAllBrand();
+		List<Category> categoryList  = adminService.finaCategoryAll();
+		
+		mav.addObject("brangList", brangList);
+		mav.addObject("categoryList", categoryList);
+		mav.addObject("productList", productList);
+		mav.setViewName("admin/product/product_list");
+		return mav;
+	}
+
+	@RequestMapping("/productAddUI")
+	public ModelAndView productAddUI() {
+		ModelAndView mav = new ModelAndView();
+		List<Category> categoryList = adminService.finaCategoryAll();
+		List<Brand> brandList = adminService.getAllBrand();
+		mav.addObject("categoryList", categoryList);
+		mav.addObject("brandList", brandList);
+		mav.setViewName("admin/product/product_add");
+		return mav;
+	}
+
+	@RequestMapping("/productAdd")
+	public String productAdd(HttpServletRequest request, RedirectAttributes attr) {
+		Product product = new Product();
+		String p_vip_price = request.getParameter("p_vip_price");
+		String string;
+		int i = p_vip_price.indexOf(".");
+		if (i != -1) {
+			string = p_vip_price;
+			string = string.substring(i + 1, string.length());
+			if (string.length() <= 2) {
+				if (string.length() == 1) {
+					string = string + "0";
+				}
+			} else {
+				string = string.substring(0, 2);
+			}
+			p_vip_price = p_vip_price.substring(0, i) + string;
+		} else {
+			p_vip_price += "00";
+		}
+		String p_shop_price = request.getParameter("p_shop_price");
+		i = p_shop_price.indexOf(".");
+		if (i != -1) {
+			string = p_shop_price;
+			string = string.substring(i + 1, string.length());
+			if (string.length() <= 2) {
+				if (string.length() == 1) {
+					string = string + "0";
+				}
+			} else {
+				string = string.substring(0, 2);
+			}
+			p_shop_price = p_shop_price.substring(0, i) + string;
+		} else {
+			p_shop_price += "00";
+		}
+		product.setP_vip_price(Integer.parseInt(p_vip_price));
+		product.setP_shop_price(Integer.parseInt(p_shop_price));
+		product.setP_attr(request.getParameter("p_attr"));
+		product.setP_b_id(Integer.parseInt(request.getParameter("p_b_id")));
+		product.setP_description(request.getParameter("p_description"));
+		product.setP_goods_surplus(Integer.parseInt(request
+				.getParameter("p_goods_surplus")));
+		product.setC_id(Integer.parseInt(request.getParameter("c_id")));
+		product.setP_name(request.getParameter("p_name"));
+
+		// å›¾ç‰‡
+		String uploadfileDir = "upload/product";
+		String newFileName = UploadImgToPointDir.getDate();
+		String fileNameString = UploadImgToPointDir.uploadImgToPointDir2(
+				request, uploadfileDir, newFileName);
+		if (!fileNameString.equals(newFileName)) {
+			System.out.println("------1" + fileNameString);
+			System.out.println(newFileName);
+			String filePath = "/mystory/" + uploadfileDir + "/"
+					+ fileNameString.trim();
+			product.setP_img_path(filePath);
+		}
+		adminService.productAdd(product);
+
+		attr.addAttribute("offset", 1);
+		attr.addAttribute("orientation", 1);
+		return "redirect:productList";
+	}
+
+	@RequestMapping("/productUpdateUI")
+	public ModelAndView productUpdateUI(Long id, String p_vip_price,
+			String p_shop_price) {
+		ModelAndView mav = new ModelAndView();
+		Product product = new Product();
+		product = adminService.getProductById(id);
+
+		mav.addObject("product", product);
+		List<Category> categoryList = adminService.finaCategoryAll();
+		List<Brand> brandList = adminService.getAllBrand();
+		mav.addObject("categoryList", categoryList);
+		mav.addObject("brandList", brandList);
+		mav.setViewName("admin/product/product_update");
+		return mav;
+	}
+
+	@RequestMapping("/productUpdate")
+	public String productUpdate(HttpServletRequest request,
+			RedirectAttributes attr) {
+
+		Product product = new Product();
+		String p_vip_price = request.getParameter("p_vip_price");
+		String string;
+		int i = p_vip_price.indexOf(".");
+		if (i != -1) {
+			string = p_vip_price;
+			string = string.substring(i + 1, string.length());
+			if (string.length() <= 2) {
+				if (string.length() == 1) {
+					string = string + "0";
+				}
+			} else {
+				string = string.substring(0, 2);
+			}
+			p_vip_price = p_vip_price.substring(0, i) + string;
+		} else {
+			p_vip_price += "00";
+		}
+		String p_shop_price = request.getParameter("p_shop_price");
+		i = p_shop_price.indexOf(".");
+		if (i != -1) {
+			string = p_shop_price;
+			string = string.substring(i + 1, string.length());
+			if (string.length() <= 2) {
+				if (string.length() == 1) {
+					string = string + "0";
+				}
+			} else {
+				string = string.substring(0, 2);
+			}
+			p_shop_price = p_shop_price.substring(0, i) + string;
+		} else {
+			p_shop_price += "00";
+		}
+		product.setP_id(Integer.parseInt(request.getParameter("p_id")));
+		product.setP_vip_price(Integer.parseInt(p_vip_price));
+		product.setP_shop_price(Integer.parseInt(p_shop_price));
+		product.setP_attr(request.getParameter("p_attr"));
+		product.setP_b_id(Integer.parseInt(request.getParameter("p_b_id")));
+		product.setP_description(request.getParameter("p_description"));
+		product.setP_goods_surplus(Integer.parseInt(request
+				.getParameter("p_goods_surplus")));
+		product.setC_id(Integer.parseInt(request.getParameter("c_id")));
+		product.setP_name(request.getParameter("p_name"));
+
+		// å›¾ç‰‡
+
+		String uploadfileDir = "upload/product";
+		String newFileName = UploadImgToPointDir.getDate();
+		String fileNameString = UploadImgToPointDir.uploadImgToPointDir2(
+				request, uploadfileDir, newFileName);
+		if (!fileNameString.equals(newFileName)) {
+			System.out.println("------1" + fileNameString);
+			System.out.println(newFileName);
+			String filePath = "/mystory/" + uploadfileDir + "/"
+					+ fileNameString.trim();
+			System.out.println(filePath);
+			product.setP_img_path(filePath);
+		}
+
+		adminService.productUpdate(product);
+		attr.addAttribute("offset", 1);
+		attr.addAttribute("orientation", 1);
+		return "redirect:productList";
+	}
+
+	@RequestMapping("/productDelete")
+	public String productDelete(Long id, RedirectAttributes attr) {
+		adminService.productDelete(id);
+		attr.addAttribute("offset", 1);
+		attr.addAttribute("orientation", 1);
+		return "redirect:productList";
+	}
+
+
+	
+	/******************å•†å“å¤„ç†************************************************/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/******************ç±»åˆ«å¤„ç†************************************************/
+	
+	//ç±»åˆ«åˆ—è¡¨
 	@RequestMapping("/categoryList")
 	public ModelAndView categoryList(Long id){
 		ModelAndView mav = new ModelAndView();
@@ -65,7 +403,7 @@ public class AdminControl {
 		}
 	
 	
-	//Àà±ğÌí¼Ó×¼±¸
+	//ç±»åˆ«æ·»åŠ å‡†å¤‡
 	@RequestMapping("/categoryAddUI")
 	public ModelAndView categoryAddUI(Long id){
 		ModelAndView mav = new ModelAndView();
@@ -76,7 +414,7 @@ public class AdminControl {
 		return mav;
 	}
 		
-		//Àà±ğÌí¼Ó
+		//ç±»åˆ«æ·»åŠ 
 		@RequestMapping("/categoryAdd")
 		public String categoryAdd(Category category) throws UnsupportedEncodingException{
 			
@@ -89,7 +427,7 @@ public class AdminControl {
 				return "redirect:categoryList.do";
 			}
 		}
-		//Àà±ğĞŞ¸Ä×¼±¸
+		//ç±»åˆ«ä¿®æ”¹å‡†å¤‡
 		@RequestMapping("/categoryUpdateUI")
 		public ModelAndView categoryUpdateUI(Long id){
 			ModelAndView mav = new ModelAndView();
@@ -101,7 +439,7 @@ public class AdminControl {
 			mav.setViewName("admin/category/update");
 			return mav;
 		}
-		//Àà±ğĞŞ¸Ä
+		//ç±»åˆ«ä¿®æ”¹
 		@RequestMapping("/categoryUpdate")
 		public String update(Long c_id , String c_name , Long c_pid) throws UnsupportedEncodingException{
 
@@ -119,7 +457,7 @@ public class AdminControl {
 				return "redirect:categoryList.do";
 			}
 		}
-		//Àà±ğÉ¾³ı
+		//ç±»åˆ«åˆ é™¤
 		@RequestMapping("/categoryDelete")
 		public String categoryDelete(Long id){
 			Category category = adminService.getCategoryById(id);
@@ -131,7 +469,7 @@ public class AdminControl {
 				return "redirect:categoryList.do";
 			}
 		}
-		//Àà±ğ°´ÕÕnameÄ£ºı²éÑ¯
+		//ç±»åˆ«æŒ‰ç…§nameæ¨¡ç³ŠæŸ¥è¯¢
 		@RequestMapping("/categorySelect")
 		public ModelAndView categorySelect(String name){
 			ModelAndView mav = new ModelAndView();
@@ -142,18 +480,46 @@ public class AdminControl {
 		}
 		
 	
-	/******************Àà±ğ´¦Àí************************************************/
+	/******************ç±»åˆ«å¤„ç†************************************************/
 	
-	/******************Æ·ÅÆ´¦Àí************************************************/
-	//ÉÌ±ê¹ÜÀíÖ÷Ò³Ãæ
+	/******************å“ç‰Œå¤„ç†************************************************/
+	//å•†æ ‡ç®¡ç†ä¸»é¡µé¢
+	//offset æ˜¯é»˜è®¤æ˜¾ç¤ºç¬¬å‡ é¡µ   toPageæ˜¯è·³è½¬åˆ°å“ªä¸€é¡µ
 	@RequestMapping("brandManage")
-	public String getAllBrand(HttpServletRequest request){
-		ArrayList<Brand> brandList= adminService.getAllBrand();
+	public String getAllBrand(HttpServletRequest request,int offset,int orientation,RedirectAttributes attr){
+		
+		int brandCount = adminService.getAllBrandCount();
+		int pageTo = brandCount%mypagesize==0?brandCount/mypagesize:brandCount/mypagesize+1;
+		//orientation  1ä»£è¡¨ä¸‹ä¸€é¡µ   2ï¼Œä»£è¡¨ä¸Šä¸€é¡µ 3 é¦–é¡µ  4å°¾é¡µ
+		if(orientation == 1 ){
+			if(myoffset + offset <= pageTo)
+			myoffset= myoffset+offset;
+			else{
+				myoffset = pageTo;
+			}
+		}else if(orientation == 2){
+			if(myoffset - offset >= 0)
+			myoffset= myoffset-offset;
+			else{
+				myoffset = 1;
+			}
+		}else if(orientation == 3){
+			myoffset= 1;
+		}else if(orientation == 4){
+			
+			myoffset= pageTo;
+		}
+
+		
+		
+		ArrayList<Brand> brandList= adminService.getAllBrand(myoffset,mypagesize);
 		request.setAttribute("brandList", brandList);
+		
+		//ç¬¬ä¸€ä¸ªè½¬å‘çš„é¡µé¢ä¸ç”¨æ·»åŠ  attr.addAttrbute  å…¶ä»–çš„è°è½¬å‘è¿™ä¸ªé¡µé¢å°±å†™å±æ€§
 		return "admin/brand/brandManagePage";	
 	}
 	
-	//¸ù¾İidĞŞ¸ÄÆ·ÅÆ£¬ÏÈÈ¥Êı¾İ¿â²éÑ¯ÓĞÆ·ÅÆÏêÏ¸ĞÅÏ¢
+	//æ ¹æ®idä¿®æ”¹å“ç‰Œï¼Œå…ˆå»æ•°æ®åº“æŸ¥è¯¢æœ‰å“ç‰Œè¯¦ç»†ä¿¡æ¯
 	@RequestMapping("modifyBrandById")
 	public String getBrandById(String id,HttpServletRequest request){
 		Brand brand= adminService.getBrandById(id);
@@ -161,77 +527,41 @@ public class AdminControl {
 		return "/admin/brand/brand_detail";	
 	}
 	
-	//¸ù¾İidĞŞ¸ÄÆ·ÅÆ
+	//æ ¹æ®idä¿®æ”¹å“ç‰Œ
 	@RequestMapping("updateBrandById")
 	public String updateBrandById(@ModelAttribute("form") Brand brand,HttpServletRequest request){
 			boolean flag= adminService.updateBrandById(brand);
 			if(flag){
-				return "redirect:/brandManage";//ÕâÀïÓĞĞ©²»Í¬£¬ÕâÀïÊÇÌø×ªµ½Õâ¸öcontrolµÄÁíÍâÒ»¸ö·½·¨
+				return "redirect:/brandManage?offset=1&pagesize=3&orientation=1";//è¿™é‡Œæœ‰äº›ä¸åŒï¼Œè¿™é‡Œæ˜¯è·³è½¬åˆ°è¿™ä¸ªcontrolçš„å¦å¤–ä¸€ä¸ªæ–¹æ³•
 			}else{
 				request.setAttribute("brand_detail", brand);
-				request.setAttribute("message", "ĞŞ¸ÄÊ§°Ü");
+				request.setAttribute("message", "ä¿®æ”¹å¤±è´¥");
 				return "/admin/brand/brand_detail";	
 			}
 			
 		}
 		
 	
-		//¸øĞ¡ËµÉÏ´«ÕÕÆ¬
+		//ç»™å“ç‰Œä¿®æ”¹ä¸Šä¼ ç…§ç‰‡
 		@RequestMapping("updateBrandImg")
-		public String updateBrandImg(HttpServletRequest request,HttpServletResponse response) {
-			
-			String fileName =null;//ÉÏ´«ºóµÄÎÄ¼şÃû
-			String id =  request.getParameter("id");//¸ÃÍ¼Æ¬Ëù¶ÔÓ¦µÄĞ¡Ëµid
-			boolean falg1 = false;
-			
-			/*µÃµ½ÉÏÏÂÎÄ  ½âÎöÆ÷*/
-			CommonsMultipartResolver multipartResolver  = new CommonsMultipartResolver(request.getSession().getServletContext());
-			/*ÒòÎªrequestÖĞ´«ÈëµÄÒ»´ó¶ÑÊı¾İ£¬ÓĞ×Ö·û´®£¬ÓĞÎÄ¼ş£¬ÕâÀïÒªÌôÑ¡³öÀ´£¬´¦ÀíÎÄ¼ş*/
-			if(multipartResolver.isMultipart(request)){
-				/*×ª»¯*/
-				MultipartHttpServletRequest  multiRequest = (MultipartHttpServletRequest)request;
-				//µÃµ½ÏîÄ¿µÄÄ¿Â¼
-				String path = request.getSession().getServletContext().getRealPath("upload/brand");
-				System.out.println("ÉÏ´«Â·¾¶"+path);
-				Iterator<String>  iter = multiRequest.getFileNames();//±éÀúÎÄ¼şÃû³Æ£¬¿ÉÒÔÖªµÀÓĞ¶àÉÙÎÄ¼ş
-				while(iter.hasNext()){
-						MultipartFile file = multiRequest.getFile((String)iter.next());//ÕâÀïµÃµ½µÄÎÄ¼şÊÇMultipartFileÀàĞÍ
-					if(file != null){
-						fileName = "demoUpload" + file.getOriginalFilename();
-						String path2 = path +"/"+ fileName;//Õâ¸öĞ±¸Ü²»¿ÉÉÙ
-						System.out.println("ÉÏ´«Â·¾¶"+path);
-						File localFile = new File(path2);
-						System.out.println("ÉÏ´«Â·¾¶2"+path2);
-						System.out.println("fileName"+fileName);
-						try {
-							file.transferTo(localFile);
-						} catch (IllegalStateException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-						
-						//Ã»±¨´í²ÅÊÇÉÏ´«³É¹¦
-						falg1 = true ;
-					}
-					
-				}
-			}
-			
-			//Æ´½Ó×Ö·û´® .mystory.upload.brand.demoUploadHydrangeas.jpg
-			String filePath = "/mystory/upload/brand/"+fileName;
-			
-			System.out.println(filePath);
-			//½«ÉÌ±êµÄÍ¼Æ¬ĞŞ¸Ä
+		public String updateBrandImg(HttpServletRequest request,HttpServletResponse response,RedirectAttributes attr) {
+			String uploadfileDir ="upload/brand";
+			String newFileName = UploadImgToPointDir.getDate();
+			//ä¸Šä¼ åçš„æ–‡ä»¶å
+			String fileName =  UploadImgToPointDir.uploadImgToPointDir2(request,uploadfileDir, newFileName);
+			String id =  request.getParameter("id");//è¯¥å›¾ç‰‡æ‰€å¯¹åº”çš„å°è¯´id
+			//æ‹¼æ¥å­—ç¬¦ä¸² /mystory/upload/brand/demoUploadHydrangeas.jpg
+			String filePath = "/mystory/"+uploadfileDir+"/"+fileName.trim();
+			//å°†å•†æ ‡çš„å›¾ç‰‡ä¿®æ”¹
 			boolean falg2 = adminService.updateBrandPhoto(new Integer(id),filePath);
-			if(falg1 && falg2){	//falg1ÊÇÎÄ¼şÉÏ´«³É¹¦£¬falg2ÊÇÊı¾İ¿âÎÄ¼şÃûĞŞ¸Ä³É¹¦£¬Á½¸ö¶¼³É¹¦ ²Å½Ğ³É¹¦  
-				return "redirect:/brandManage";//ÕâÀïÓĞĞ©²»Í¬£¬ÕâÀïÊÇÌø×ªµ½Õâ¸öcontrolµÄÁíÍâÒ»¸ö·½·¨
+			//falg1æ˜¯æ–‡ä»¶ä¸Šä¼ æˆåŠŸï¼Œfalg2æ˜¯æ•°æ®åº“æ–‡ä»¶åä¿®æ”¹æˆåŠŸï¼Œä¸¤ä¸ªéƒ½æˆåŠŸ æ‰å«æˆåŠŸ  
+			if(fileName!="" && falg2){	
+				//controlä¹‹é—´é‡å®šå‘æ•°æ®ä¼ é€’
+				attr.addAttribute("offset", 1);
+				attr.addAttribute("orientation", 1);
+				return "redirect:/brandManage";//è¿™é‡Œæœ‰äº›ä¸åŒï¼Œè¿™é‡Œæ˜¯è·³è½¬åˆ°è¿™ä¸ªcontrolçš„å¦å¤–ä¸€ä¸ªæ–¹æ³•
 			}
-			
 			return "/admin/error";
-			
-		
-			
 		}
 	
 	
@@ -240,57 +570,56 @@ public class AdminControl {
 	
 	
 	//@author lcc
-	//¸ù¾İidÉ¾³ıÆ·ÅÆ
+	//æ ¹æ®idåˆ é™¤å“ç‰Œ
 	@RequestMapping("delBrandById")
 	public String delBrandById(String id,HttpServletRequest request){
 		boolean flag= adminService.delBrandById(id);
 		if(flag){
-			request.setAttribute("message", "É¾³ı³É¹¦");
+			request.setAttribute("message", "åˆ é™¤æˆåŠŸ");
 		}else{
-			request.setAttribute("message", "É¾³ıÊ§°Ü");
+			request.setAttribute("message", "åˆ é™¤å¤±è´¥");
 		}
-		return "redirect:/brandManage";//ÕâÀïÓĞĞ©²»Í¬£¬ÕâÀïÊÇÌø×ªµ½Õâ¸öcontrolµÄÁíÍâÒ»¸ö·½·¨
+		return "redirect:/brandManage";//è¿™é‡Œæœ‰äº›ä¸åŒï¼Œè¿™é‡Œæ˜¯è·³è½¬åˆ°è¿™ä¸ªcontrolçš„å¦å¤–ä¸€ä¸ªæ–¹æ³•
 		
 	}
 	
 	
 	//@author lcc
-	//Ìí¼ÓÆ·ÅÆ
+	//æ·»åŠ å“ç‰Œ
 	@RequestMapping("/addBrand")
-	public String addBrand(@ModelAttribute Brand brand){
-		
-		System.out.println("-----Ìí¼ÓÆ·ÅÆ------"+brand.getB_img_path());
-		System.out.println("-----Ìí¼ÓÆ·ÅÆ------"+brand.getB_name());
-		
+	public String addBrand(@ModelAttribute Brand brand,RedirectAttributes attr){
 		boolean flag= adminService.addBrand(brand);
 		if(flag){
-			//request.setAttribute("message", "Ôö¼Ó³É¹¦");
+			//request.setAttribute("message", "å¢åŠ æˆåŠŸ");
 		}else{
-			//request.setAttribute("message", "Ôö¼ÓÊ§°Ü");
+			//request.setAttribute("message", "å¢åŠ å¤±è´¥");
 		}
-		return "redirect:/brandManage";//ÕâÀïÓĞĞ©²»Í¬£¬ÕâÀïÊÇÌø×ªµ½Õâ¸öcontrolµÄÁíÍâÒ»¸ö·½·¨
+		
+		//controlä¹‹é—´é‡å®šå‘æ•°æ®ä¼ é€’
+		attr.addAttribute("offset", 1);
+		attr.addAttribute("orientation", 1);
+		return "redirect:/brandManage";//è¿™é‡Œæœ‰äº›ä¸åŒï¼Œè¿™é‡Œæ˜¯è·³è½¬åˆ°è¿™ä¸ªcontrolçš„å¦å¤–ä¸€ä¸ªæ–¹æ³•
 			
 	}
 		
 	
 	
 	
-	/******************Æ·ÅÆ´¦Àí½áÊø************************************************/
+	/******************å“ç‰Œå¤„ç†ç»“æŸ************************************************/
 	
-	/******************¹«¹²·½·¨½áÊø************************************************/
-	//Ğ´Ò»¸ö×¨ÃÅÓÃÀ´jspÓëjspÌø×ªµÄÊ±ºò´«Öµ½â¾ö
-		@RequestMapping("toJspPage")
-		public String toJspPage(String whatPage,String parameter,HttpServletRequest request){
-				
-			System.out.println("ÒªÈ¥ÄÇ¸öÒ³Ãæ"+whatPage);
-			System.out.println("´«ÈëµÄ²ÎÊı"+parameter);
+	/******************å…¬å…±æ–¹æ³•ç»“æŸ************************************************/
+	//å†™ä¸€ä¸ªä¸“é—¨ç”¨æ¥jspä¸jspè·³è½¬çš„æ—¶å€™ä¼ å€¼è§£å†³
+	//whatPage è¦å»é‚£ä¸ªé¡µé¢
+	//parameter ä¼ å…¥çš„å‚æ•°
+	@RequestMapping("toJspPage")
+	public String toJspPage(String whatPage,String parameter,HttpServletRequest request){
 				
 			request.setAttribute("parameter", parameter);
 			return whatPage;
 				
-		}
+	}
 		
 		
-		/******************¹«¹²·½·¨½áÊø************************************************/
+		/******************å…¬å…±æ–¹æ³•ç»“æŸ************************************************/
 		
 }

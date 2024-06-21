@@ -23,7 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <a href="/mystory/brandManage" target="main">品牌管理</a>
+   <a href="/mystory/brandManage?offset=1&pagesize=3&orientation=1" target="main">品牌管理</a>
    <a href="/mystory/categoryList" target="main">类别管理</a>
+   <a href="/mystory/productList?offset=1&pagesize=3&orientation=1" target="main">商品管理</a>
+   <a href="/mystory/userManage?offset=1&pagesize=3&orientation=1" target="main">用户管理</a>
   </body>
 </html>

@@ -11,16 +11,16 @@ import javax.persistence.Table;
 @Table(name="brand")
 public class Brand {
 	
-	//品牌ID
+	//鍝佺墝ID
 	@Id
 	@GeneratedValue
 	private Integer b_id;
 	
-	//品牌名称
+	//鍝佺墝鍚嶇О
 	@Column
 	private String b_name;
 	
-	//品牌图片
+	//鍝佺墝鍥剧墖
 	@Column
 	private String b_img_path;
 
