@@ -19,13 +19,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<link rel="stylesheet" type="text/css" href="admin/css/menu.css">
   </head>
-  
+
   <body>
-   <a href="/mystory/brandManage?offset=1&pagesize=3&orientation=1" target="main">品牌管理</a>
-   <a href="/mystory/categoryList" target="main">类别管理</a>
-   <a href="/mystory/productList?offset=1&pagesize=3&orientation=1" target="main">商品管理</a>
-   <a href="/mystory/userManage?offset=1&pagesize=3&orientation=1" target="main">用户管理</a>
+  	<div id="body">
+  		<div id="top"></div>
+  		<div id="content">
+  			<div class="content-menuitems">
+  				<a href="/mystory/brandManage?offset=1&pagesize=3&orientation=1" target="main">品牌管理</a>
+  			</div>
+  			<div class="content-menuitems">
+  				<a href="/mystory/categoryList" target="main">类别管理</a>
+  			</div>
+  			<div class="content-menuitems">
+  				<a href="/mystory/productList?offset=1&pagesize=3&orientation=1" target="main">商品管理</a>
+  			</div>
+  			<div class="content-menuitems">
+  				<a href="/mystory/userManage?offset=1&pagesize=3&orientation=1" target="main">用户管理</a>
+  			</div>
+  		</div>
+  	</div>
+   
+   
+   
+   
   </body>
 </html>

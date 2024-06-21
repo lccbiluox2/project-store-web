@@ -19,10 +19,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" type="text/css" href="admin/css/one_top.css">
 
   </head>
   
   <body>
-    1--欢迎 《《  ${ADMIN.name} 》》登陆<br><br>
+    <div id="body">
+    	<div id="name"></div>
+    </div>
   </body>
 </html>

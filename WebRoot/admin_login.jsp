@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 	function addUser(){
 		var form = document.forms[0];
-		alert("aa"+form);
+		
 		form.action="/mystory/getAdmin";
 		form.method="post";
 		form.submit();

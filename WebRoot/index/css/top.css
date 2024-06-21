@@ -1,45 +1,48 @@
+
 #topPage{
 	width:1200px;
 	height:100%;
-
-	background-color:#bcfffc;
+	
+	background-color:#FFFFFF;
 }
 #topPage-top{
 	width:100%;
 	height:20%;
-	background-color:#b45bfc;
+	background-color:#EEEEEE;
 }
 #topPage-center{
 	width:100%;
-	height:60%;
-	background-color:#123bfc;
+	height:55%;
+	background-color:#FFFFFF;
 }
 #topPage-buttom{
 	width:100%;
-	height:20%;
-	background-color:#b45123;
+	height:25%;
+	background-color:#E4393C;
 }
 
 #topPage-top-left{
 	width:50%;
 	height:100%;
 	float:left;
-	background-color:#b34523;
+	background-color:#EEEEEE;
 	
 }
 #topPage-top-right{
 	width:50%;
 	height:100%;
 	float:left;
-	background-color:#234523;
+	background-color:#EEEEEE;
 	
 }
 .topPage-top-left-name{
 	display:block;
 	height:100%;
-	width:20%;
+	width:25%;
 	float:left;
-	background-color:#ffabf3;
+	text-align:left;
+	line-height:35px; 
+	background-color:#EEEEEE;
 	
 }
 .topPage-top-right-name{
@@ -47,7 +50,9 @@
 	height:100%;
 	width:20%;
 	float:right;
-	background-color:#ffabf3;
+	text-align:right;
+	line-height:35px; 
+	background-color:#EEEEEE;
 }
 .topPage-center-name{
 	display:block;
@@ -55,7 +60,62 @@
 	width:25%;
 	float:left;
 	text-align:left;
-	background-color:#ffabf3;
+	background-color:#FFFFFF;
+}
+.topPage-center-search{
+	height:100%;
+	width:45%;
+	float:left;
+	text-align:center;
+
+}
+.topPage-center-search-nothing{
+	height:23%;
+	width:100%;
+	float:left;
+	text-align:center;
+
+}
+.topPage-center-search-real{
+	height:43%;
+	width:100%;
+	float:left;
+	text-align:center;
+	background-image: url("../img/index/search.png");
+	background-size :100% 100%
+}
+.topPage-center-search-real-searchtext{
+	height:95%;
+	width:80%;
+	margin-left:5px;
+	float:left;
+	text-align:left;
+	
+}
+.topPage-center-search-real-searchbutton{
+	height:100%;
+	width:18%;
+	margin-left:4px;
+	float:left;
+	text-align:left;
+
+}
+#mysearchtext{
+	margin-top:3px;
+	height:85%;
+	width:100%;
+	float:left;
+	text-align:left;
+	border:none;
+}
+#mysearctbutton{
+	height:85%;
+	width:100%;
+	float:left;
+	text-align:left;
+	background-color:transparent;
+	border:none;
+	
 }
 .topPage-center-right{
 	display:block;
@@ -63,15 +123,66 @@
 	width:25%;
 	float:right;
 	text-align:right;
-	background-color:#ffabf3;
+	background-color:#FFFFFF;
 }
-.topPage-buttom-name1{
+.topPage-center-mycount{
+	display:block;
+	height:100%;
+	width:30%;
+	float:left;
+	text-align:right;
+	background-color:#FFFFFF;
+}
+.topPage-center-mycount-nothing{
+	height:23%;
+	width:100%;
+	float:left;
+	text-align:center;
+	background-color:#FFFFFF;
+}
+.topPage-center-mycount-real{
+	height:43%;
+	width:100%;
+	float:left;
+	text-align:center;
+	background-color:#FFFFFF;
+}
+.topPage-center-mycount-real-mycount{
+	height:100%;
+	width:30%;
+	float:right;
+	text-align:center;
+	background-color:#FFFFFF;
+}
+.topPage-center-mycount-real-mycart{
+	height:100%;
+	width:30%;
+	float:right;
+	text-align:center;
+	background-color:#FFFFFF;
+}
+.topPage-buttom-menu1{
 	display:block;
 	height:100%;
 	width:25%;
+	line-height:45px; 
 	float:left;
 	text-align:center;
-	background-color:#f45bf3;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#E4393C;
+	
+}
+.topPage-buttom-menu1:hover{
+	display:block;
+	height:100%;
+	width:25%;
+	line-height:45px; 
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#A40000;
 	
 }
 .topPage-buttom-name{
@@ -80,6 +191,21 @@
 	width:10%;
 	float:left;
 	text-align:center;
-	background-color:#ffabf3;
+	line-height:45px; 
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#E4393C;
+	
+}
+.topPage-buttom-name:hover{
+	display:block;
+	height:100%;
+	width:10%;
+	float:left;
+	text-align:center;
+	line-height:45px; 
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#A40000;
 	
 }

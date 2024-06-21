@@ -11,12 +11,12 @@
 	height:1000;
 	margin:0 auto;
 	text-align:center;
-	background-color:#bcf8bc;
+
 }
 #top{
 	width:1200px;
-	height:150;
-	background-color:pink;
+	height:160;
+	
 }
 #content-float1{
 	width:100%;
@@ -28,7 +28,7 @@
 
 .content-float1-all{
 	position:absolute;
-	top:150px;
+	top:160px;
 	left:0px;
 	width:100%;
 	height:400px;
@@ -47,24 +47,62 @@
 	width:25%;
 	height:100%;
 	float:left;
-	background-color:pink;
+	background-color:#FAFAFA;
 }
+
+.content-float1-all-content-left-top{
+	width:100%;
+	height:1%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-float1-all-content-left-left{
+	width:1%;
+	height:98%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-float1-all-content-left-content{
+	width:99%;
+	height:98%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-float1-all-content-left-buttom{
+	width:100%;
+	height:1%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+
+
+
+
+
 .content-float1-left-menu-item{
 	display:block;
 	width:100%;
-	height:10%;
+	height:8%;
+	line-height:35px; 
 	float:left;
-	background-color:yellow;
+	background-image: url("../img/index/itembg.png");
+	background-size :100% 100% ;
+	background-color:#FAFAFA;
 }
 .content-float1-left-menu-item:hover{
 	display:block;
 	width:100%;
 	height:10%;
 	float:left;
-	background-color:#234356;
+	line-height:35px; 
+	background-image: url("../img/index/itembg2.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
 }
 .content-float1-all-content-center{
-	width:50%;
+	width:58%;
 	height:100%;
 	float:left;
 	background-color:#478865;
@@ -73,98 +111,948 @@
 	display:none;
 	width:100%;
 	height:100%;
+	text-align:left;
 	float:left;
-	background-color:#546665;
+	background-color:#BFBFBF;
 }
 .content-float1-left-menu-item-second2{
 	display:none;
 	width:100%;
 	height:100%;
 	float:left;
-	background-color:#546665;
+	background-color:#BFBFBF;
 }
 .content-float1-left-menu-item-second3{
 	display:none;
 	width:100%;
 	height:100%;
 	float:left;
-	background-color:#546665;
+	background-color:#BFBFBF;
 }
 .content-float1-left-menu-item-second4{
 	display:none;
 	width:100%;
 	height:100%;
 	float:left;
-	background-color:#546665;
+	background-color:#BFBFBF;
 }
 .content-float1-left-menu-item-second5{
 	display:none;
 	width:100%;
 	height:100%;
 	float:left;
-	background-color:#546665;
+	background-color:#BFBFBF;
 }
 .content-float1-left-menu-item-second6{
 	display:none;
 	width:100%;
 	height:100%;
 	float:left;
-	
+	background-color:#BFBFBF;
 }
 .content-float1-left-menu-item-second7{
 	display:none;
 	width:100%;
 	height:100%;
 	float:left;
-	
+	background-color:#BFBFBF;
 }
 .content-float1-left-menu-item-second8{
 	display:none;
 	width:100%;
 	height:100%;
 	float:left;
-	
+	background-color:#BFBFBF;
+}
+.content-float1-left-menu-item-second9{
+	display:none;
+	width:100%;
+	height:100%;
+	float:left;
+	background-color:#BFBFBF;
+}
+.content-float1-left-menu-item-second10{
+	display:none;
+	width:100%;
+	height:100%;
+	float:left;
+	background-color:#BFBFBF;
+}
+.content-float1-left-menu-item-second11{
+	display:none;
+	width:100%;
+	height:100%;
+	float:left;
+	background-color:#BFBFBF;
+}
+.content-float1-left-menu-item-second12{
+	display:none;
+	width:100%;
+	height:100%;
+	float:left;
+	background-color:#BFBFBF;
 }
 .content-float1-left-menu-item-picture{
 	width:100%;
 	height:100%;
 	float:left;
+	background-color:#FFFFFF;
 }
 .content-float1-left-menu-item-right{
-	width:25%;
+	width:17%;
 	height:100%;
 	float:left;
-	
+	background-color:#FFFFFF;
 }
 
-#content-float2{
+
+.content-float1-left-menu-item-right-login{
 	width:100%;
-	height:400;
+	height:10%;
 	float:left;
-	background-color:pink;
-}
-#content-float3{
-	width:100%;
-	height:400;
-	float:left;
+	background-image: url("../img/index/loginandregister.png");
+	background-size :100% 100% ;
 	background-color:gray;
 }
-#content-float4{
+.loginAndRegister{
+	width:100%;
+	height:100%;
+
+}
+.loginAndRegister td {
+	text-align:center;
+	font-weight:bold;
+	color:#E4393C;
+}
+.loginAndRegister td a {
+	text-align:center;
+	font-weight:bold;
+	color:#E4393C;
+}
+.content-float1-left-menu-item-right-ad{
+	width:100%;
+	height:50%;
+	float:left;
+	border:2px solid red
+}
+.content-float1-left-menu-item-right-ad-top{
+	width:100%;
+	height:10%;
+	float:left;
+	border:2px solid red
+}
+.content-float1-left-menu-item-right-ad-content{
+	text-align:left;
+}
+.content-float1-left-menu-item-right-ad-buttom{
+	width:100%;
+	height:38%;
+	float:left;
+	background-image: url("../img/index/phone.png");
+	background-size :100% 100% ;
+	background-color:gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#fengexian{
+	width:100%;
+	height:80;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+
+#content-myfloat1{
+	width:100%;
+	float:left;
+	background-color:green;
+}
+
+.content-myfloat1-top{
+	width:100%;
+	height:30px;
+	float:left;
+	line-height:30px;
+	background-color:#FFFFFF;
+}
+.content-myfloat1-buttom{
+	width:100%;
+	float:left;
+	background-color:#FFFFFF
+}
+
+.content-myfloat1-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/myfloat1.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat1-top-text1{
+	width:100px;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext1.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat1-top-categoryname{
+	width:100px;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+#content-myfloat1-top-newProduct-button{
+	width:100px;
+	height:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	background-color:#FFFFFF;
+}
+#content-myfloat1-top-newProduct-button a:hover{
+	width:100px;
+	height:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	color:red;
+	background-color:#FFFFFF;
+}
+#content-myfloat1-top-hotProduct-button{
+	
+
+	width:100px;
+	height:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	background-color:#FFFFFF;
+}
+#content-myfloat1-top-hotProduct-button a:hover{
+	
+
+	width:100px;
+	height:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	color:red;
+	background-color:#FFFFFF;
+}
+
+#content-myfloat1-top-vipPrice-button{
+
+	width:100px;
+	height:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+
+	background-color:#FFFFFF;
+}
+
+#content-myfloat1-top-vipPrice-button a:hover{
+	
+
+	width:100px;
+	height:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	color:red;
+	background-color:#FFFFFF;
+}
+
+#content-myfloat1-top-random-button{
+	
+	width:100px;
+	height:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	background-color:#FFFFFF;
+}
+
+#content-myfloat1-top-random-button a:hover{
+	
+
+	width:100px;
+	height:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	color:red;
+	background-color:#FFFFFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat2{
 	width:100%;
 	height:400;
 	float:left;
-	background-color:gray;
+	background-color:blue;
 }
-#content-float5{
+
+.content-myfloat2-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat2-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat2-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext2.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat2-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat3{
 	width:100%;
 	height:400;
 	float:left;
-	background-color:gray;
+	background-color:blue;
 }
-#content-float6{
+
+.content-myfloat3-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat3-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat3-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext3.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat3-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat4{
 	width:100%;
 	height:400;
 	float:left;
-	background-color:gray;
+	background-color:blue;
 }
+
+.content-myfloat4-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat4-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat4-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext4.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat4-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat5{
+	width:100%;
+	height:400;
+	float:left;
+	background-color:blue;
+}
+
+.content-myfloat5-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat5-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat5-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext5.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat5-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat6{
+	width:100%;
+	height:400;
+	float:left;
+	background-color:blue;
+}
+
+.content-myfloat6-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat6-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat6-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext6.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat6-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat7{
+	width:100%;
+	height:400;
+	float:left;
+	background-color:blue;
+}
+
+.content-myfloat7-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat7-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat7-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext7.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat7-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat8{
+	width:100%;
+	height:400;
+	float:left;
+	background-color:blue;
+}
+
+.content-myfloat8-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat8-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat8-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext8.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat8-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat9{
+	width:100%;
+	height:400;
+	float:left;
+	background-color:blue;
+}
+
+.content-myfloat9-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat9-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat9-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext9.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat9-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat10{
+	width:100%;
+	height:400;
+	float:left;
+	background-color:blue;
+}
+
+.content-myfloat10-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat10-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat10-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext10.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat10-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat11{
+	width:100%;
+	height:400;
+	float:left;
+	background-color:blue;
+}
+
+.content-myfloat11-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat11-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat11-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext11.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat11-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat12{
+	width:100%;
+	height:400;
+	float:left;
+	background-color:blue;
+}
+
+.content-myfloat12-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat12-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat12-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext12.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat12-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#content-myfloat13{
+	width:100%;
+	height:400;
+	float:left;
+	background-color:blue;
+}
+
+.content-myfloat13-top{
+	width:100%;
+	height:12%;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+
+.content-myfloat13-top-picture{
+	width:4%;
+	height:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.content-myfloat13-top-text{
+	width:8%;
+	height:100%;
+	float:left;
+	background-image: url("../img/index/mytext13.png");
+	background-size :100% 100% ;
+	background-color:#FFFFFF;
+}
+.content-myfloat13-buttom{
+	width:100%;
+	height:88%;
+	float:left;
+	background-color:green;
+}
+
+
 

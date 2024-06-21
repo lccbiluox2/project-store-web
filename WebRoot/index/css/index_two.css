@@ -1,0 +1,57 @@
+.mynewProducts{
+	width:200px;
+	height:250px;
+	float:left;
+	border-style:groove;
+	border-width:1px; 
+	border-color:red; 
+	background-color:#FFFFFF;
+	
+}
+.mynewProducts-img{
+	width:100%;
+	height:190px;
+	float:left;
+	background-color:#FFFFFF;
+}
+.mynewProducts-name{
+	width:100%;
+	float:left;
+	background-color:#FFFFFF;
+}
+.mynewProducts-price{
+	width:100%;
+	float:left;
+	color:red;
+	background-color:#FFFFFF;
+}
+.myhotProducts{
+	display:none;
+	width:200px;
+	height:250px;
+	float:left;
+	border-style:groove;
+	border-width:1px; 
+	border-color:red; 
+	background-color:#FFFFFF;
+}
+.myspecialProducts{
+	display:none;
+	width:200px;
+	height:250px;
+	float:left;
+	border-style:groove;
+	border-width:1px; 
+	border-color:red; 
+	background-color:#FFFFFF;
+}
+.myrandomProducts{
+	display:none;
+	width:200px;
+	height:250px;
+	float:left;
+	border-style:groove;
+	border-width:1px; 
+	border-color:red; 
+	background-color:#FFFFFF;
+}

@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>创业</title>
-    <meta http-equiv="refresh" content="0;url=${pageContext.request.contextPath }/toJspPage?whatPage=/index/index">
+    <meta http-equiv="refresh" content="0;url=${pageContext.request.contextPath }/indexList">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
