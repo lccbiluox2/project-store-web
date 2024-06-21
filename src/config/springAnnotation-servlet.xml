@@ -12,7 +12,7 @@
       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
       
    <!-- 配置扫描包，这个包下面的control都会被扫描，相当于加上mapping -->
-	<context:component-scan base-package="com.biluo"></context:component-scan>
+	<context:component-scan base-package="com.biluo.control"></context:component-scan>
 	<!-- 开启注解 -->
 	<mvc:annotation-driven/>
 
