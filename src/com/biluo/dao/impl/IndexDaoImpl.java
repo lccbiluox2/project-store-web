@@ -97,6 +97,38 @@ public class IndexDaoImpl implements IndexDao{
 				.list();
 	}
 
+	@Override
+	public Category getCategoryById(Integer id) {
+		// TODO Auto-generated method stub
+		return (Category) getSession().get(Category.class, id);
+	}
+
+	@Override
+	public List<Product> finaProductByCategory(String sql, int currentPage, int pageSize) {
+		// TODO Auto-generated method stub
+		return getSession().createQuery(sql)
+				.setFirstResult((currentPage - 1) * pageSize)
+				.setMaxResults(pageSize).list();
+	}
+
+	@Override
+	public List<Product> finaProductList(int currentPage, int pageSize) {
+		// TODO Auto-generated method stub
+		return getSession().createQuery("from Product")
+				.setFirstResult((currentPage - 1) * pageSize)
+				.setMaxResults(pageSize).list();
+	}
+
+	//搜索栏查询商品
+	@Override
+	public List<Product> finaProductBySearch(String sql, int currentPage, int pageSize) {
+		
+		return getSession().createQuery(sql)
+				.setFirstResult((currentPage - 1) * pageSize)
+				.setMaxResults(pageSize).list();
+		
+	}
+
 	
 	
 	

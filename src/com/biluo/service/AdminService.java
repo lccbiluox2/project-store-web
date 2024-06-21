@@ -7,6 +7,7 @@ import com.biluo.common.TreeShow;
 import com.biluo.domain.Admin;
 import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
+import com.biluo.domain.PageBean;
 import com.biluo.domain.Product;
 import com.biluo.domain.User;
 
@@ -14,6 +15,11 @@ import com.biluo.domain.User;
 public interface AdminService {
 
 	public Admin getAdmin(Admin admin);
+	
+	
+	
+	
+	
 
 	public ArrayList<Brand> getAllBrand(int offset, int pagesize);
 
@@ -27,8 +33,11 @@ public interface AdminService {
 
 	public boolean updateBrandPhoto(Integer integer, String filePath);
 
+	public int getAllBrandCount();
 
-
+	public List<Brand> getAllBrand();
+	
+	
 	
 	List<Category> finaCategoryTop();
 	
@@ -42,24 +51,39 @@ public interface AdminService {
 
 	void categoryDelete(Category category);
 
-	
-
 	List<Category> finaCategoryAll();
 
 	List<Category> getCategoryByNames(String name);
+	
+	public List<Category> getChildCategoryByFatherId(int integer);
+	
+	
+	
+	
+	
+	
 
-	public int getAllBrandCount();
+	public User getUserById(int id);
 
 	public boolean addUserRegister(User user);
 
 	public int getAllUserCount();
 
-	public ArrayList<User> getAllUser(int myoffset, int mypagesize);
+	public PageBean getAllUser(int myoffset, int mypagesize);
 
 	public boolean getUser(User user);
 
 	public boolean delUserById(String id);
 
+	public boolean updateUserById(User user);
+	
+	
+	
+	
+	
+	
+	
+	
 	public void productDelete(Long id);
 
 	public void productUpdate(Product product);
@@ -69,19 +93,17 @@ public interface AdminService {
 	public List<Product> finaProductKCList(int myoffset, int mypagesize,
 			Long kuCunNum, Long stateNum, String name);
 
-	public List<Product> finaProductList(int myoffset, int mypagesize);
-
-	public List<Brand> getAllBrand();
+	public PageBean finaProductList(int myoffset, int mypagesize);
 
 	public void productAdd(Product product);
 
 	public Product getProductById(Long id);
 
-	public List<Category> getChildCategoryByFatherId(int integer);
+	
 
-	public User getUserById(int id);
+	
 
-	public boolean updateUserById(User user);
+	
 
 	
 

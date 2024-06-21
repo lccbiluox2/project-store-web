@@ -64,11 +64,11 @@ function verify(){
         		document.form1.mobile.focus(); 
         		return false; 
 		}
-		if(email=""||(email.indexOf('@'==-1))||(email.indexOf('.')==-1))
+		/* if(email=""||(email.indexOf('@'==-1))||(email.indexOf('.')==-1))
 		{ 		
 			alert("电子邮箱格式不正确!"); 
 			return false; 
-		} 
+		}  */
 		
 		
 		return true; 

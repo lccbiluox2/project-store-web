@@ -31,4 +31,13 @@ public interface IndexDao {
 
 	List<Product> getProductByBrandId(int id);
 
+	Category getCategoryById(Integer c_id);
+
+	List<Product> finaProductByCategory(String sql, int currentPage,
+			int pageSize);
+
+	List<Product> finaProductList(int currentPage, int pageSize);
+
+	List<Product> finaProductBySearch(String sql, int currentPage, int pageSize);
+
 }

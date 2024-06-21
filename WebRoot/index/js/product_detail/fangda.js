@@ -1,4 +1,10 @@
-﻿//鼠标经过预览图片函数
+﻿$(document).ready(function() { 
+	$("#preview .jqzoom img").attr("width","400px");
+	$("#preview .jqzoom img").attr("height","350px");
+});
+
+
+//鼠标经过预览图片函数
 function preview(img){
 	
 	//$(img).attr("bimg") 得到小列表中鼠标放到的是哪一张图片上  是这个图片的路径

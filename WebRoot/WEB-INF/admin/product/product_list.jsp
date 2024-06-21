@@ -25,11 +25,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath }/admin/js/jquery.js"></script>
 	<script type="text/javascript">
-		function gotoPageNum( offset , pagesize , orientation ){
-		$(document.forms[0]).append("<input type='hidden' name='offset' value='" + offset +"'>");
-		$(document.forms[0]).append("<input type='hidden' name='pagesize' value='" + pagesize +"'>");
-		$(document.forms[0]).append("<input type='hidden' name='orientation' value='" + orientation +"'>");
-		document.forms[0].submit();
+		//分页跳转函数2016/5/25
+		function gotoPageNum( offset ){
+		if(offset == "" || offset == null){
+			offset = $("#currentPage").val();
+			if(offset == ""){
+			return;
+			}
+		}
+		window.location.href = "productList?currentPage=" + offset;
 		}
 	
 	
@@ -82,7 +86,7 @@ window.onload=function(){
 			  		<th>类别</th>
 			  		<th>操作</th>
 			  	</tr>
-			  	<c:forEach items="${productList }" var="product">
+			  	<c:forEach items="${pageBean.recordList }" var="product">
 			  		<tr>
 			  			<td>${product.p_name }</td><td>${product.p_attr }</td>
 			  			<td>${product.p_state }</td><td>${product.p_goods_surplus }</td>
@@ -113,34 +117,51 @@ window.onload=function(){
 			  	
 			  </table>
   		</div>
+  		//分页显示
   		<div id="footer">
-  			 <a href="javascript:gotoPageNum( 1 , 4 , 5 )">首页</a>
-			  <a href="javascript:gotoPageNum( 5 , 4 , 2 )">向上跳转5页</a>
-			  <a href="javascript:gotoPageNum( 10 , 4 , 2 )">向上跳转10页</a>
-			  <a href="javascript:gotoPageNum( 1 , 4 , 1 )">下一页</a>
-			  <a href="javascript:gotoPageNum( 1 , 4 , 2 )">上一页</a>
-			  <a href="javascript:gotoPageNum( 5 , 4 , 1 )">向下跳转5页</a>
-			  <a href="javascript:gotoPageNum( 10 , 4 , 1 )">向下跳转10页</a>
-			  <a href="javascript:gotoPageNum( 1 , 4 , 4 )">尾页</a>
+  			<a href="javascript:gotoPageNum(1)" title="首页"
+						style="cursor: hand;">首页</a>
+							<c:choose>
+							<c:when test="${pageBean.currentPage - 1 <= 0 }">
+								上一页
+							</c:when>
+							<c:otherwise>
+								<a href="javascript:gotoPageNum(${pageBean.currentPage - 1 })">上一页</a>
+							</c:otherwise>
+						</c:choose>
+					<c:if test="${(pageBean.currentPage - 3 > 0) && pageBean.pageCount > 5 }">...</c:if>
+					<c:forEach begin="${pageBean.beginPageIndex }"
+						end="${pageBean.endPageIndex }" var="num">
+						<c:choose>
+							<c:when test="${pageBean.currentPage == num }">
+								<span class="PageSelectorNum PageSelectorSelected">${num }</span>
+							</c:when>
+							<c:otherwise>
+								<span class="PageSelectorNum" style="cursor: hand;"
+									onClick="gotoPageNum(${num});">${num }</span>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${(pageBean.currentPage + 2 < pageBean.pageCount) && pageBean.pageCount > 5 }">...</c:if>
+						<c:choose>
+							<c:when test="${pageBean.currentPage + 1 > pageBean.pageCount }">
+								下一页
+							</c:when>
+							<c:otherwise>
+								<a href="javascript:gotoPageNum(${pageBean.currentPage + 1 })">下一页</a>
+							</c:otherwise>
+						</c:choose>
+				
+				
+					<a href="javascript:gotoPageNum(${pageBean.pageCount })"
+						title="尾页" style="cursor: hand;"> 尾页</a>
+					总共${pageBean.pageCount }页
+					<input type="number" name="currentPage" id="currentPage" min="1" max="${pageBean.pageCount }"/>
+					<a href="javascript:gotoPageNum();">go</a>
   		</div>
   	</div>
-  	
   
   
-  <form action="productList">
-			  		<input type="text" name="name" value="${name }"/>
-			  		<select name="stateNum">
-			  			<option value="2" <c:if test="${stateNum == 2 }">selected</c:if> >新品</option>
-			  			<option value="1" <c:if test="${stateNum == 1 }">selected</c:if>>热卖</option>
-			  			<option value="3" <c:if test="${stateNum == 3 }">selected</c:if>>特价</option>
-			  			<option value="4" <c:if test="${stateNum == 4 }">selected</c:if>>精品</option>
-			  		</select>
-			  		<select name="kuCunNum">
-			  			<option value="0" <c:if test="${kuCunNum == 0 }">selected</c:if>>库存量升序</option>
-			  			<option value="1" <c:if test="${kuCunNum == 1 }">selected</c:if>>库存量降序</option>
-			  		</select>
-			  		<input type="button" value="查询" onClick="gotoPageNum( 1 , 4 , 5 )"/>
-  				</form>
   
   
   

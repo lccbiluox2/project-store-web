@@ -13,6 +13,7 @@ import com.biluo.dao.AdminDao;
 import com.biluo.domain.Admin;
 import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
+import com.biluo.domain.PageBean;
 import com.biluo.domain.Product;
 import com.biluo.domain.User;
 import com.biluo.service.AdminService;
@@ -153,11 +154,7 @@ public class AdminServiceImpl implements AdminService{
 		return adminDao.getAllUserCount();
 	}
 
-	@Override
-	public ArrayList<User> getAllUser(int myoffset, int mypagesize) {
-		// TODO Auto-generated method stub
-		return adminDao.getAllUser( myoffset,  mypagesize);
-	}
+	
 
 	@Override
 	public boolean getUser(User user) {
@@ -173,11 +170,7 @@ public class AdminServiceImpl implements AdminService{
 		return adminDao.delUserById(new Integer(id));
 	}
 	
-	@Override
-	public List<Product> finaProductList(int offset , int pagesize) {
-		// TODO Auto-generated method stub
-		return adminDao.finaProductList(offset , pagesize);
-	}
+	
 
 	@Override
 	public void productAdd(Product product) {
@@ -252,6 +245,36 @@ public class AdminServiceImpl implements AdminService{
 	public boolean updateUserById(User user) {
 		// TODO Auto-generated method stub
 		return adminDao.getUserById(user);
+	}
+
+   //分页数据2016/5/25
+	@Override
+	public PageBean getAllUser(int myoffset, int mypagesize) {
+		int recordCount = adminDao.getAllUserCount();
+		int pageCount = recordCount % mypagesize == 0 ? recordCount / mypagesize : recordCount / mypagesize +1;
+		if(myoffset > pageCount ){
+			myoffset = pageCount;
+		}
+		if(myoffset < 1){
+			myoffset = 1;
+		}
+		return new PageBean(myoffset, mypagesize, recordCount, adminDao.getAllUser( myoffset,  mypagesize));
+	}
+		
+		
+	//分页数据2016/5/25
+	@Override
+	public PageBean finaProductList(int offset , int pagesize) {
+		// TODO Auto-generated method stub
+		int recordCount = adminDao.getAllProductCount();
+		int pageCount = recordCount % pagesize == 0 ? recordCount / pagesize : recordCount / pagesize +1;
+		if(offset > pageCount ){
+			offset = pageCount;
+		}
+		if(offset < 1){
+			offset = 1;
+		}
+		return new PageBean(offset, pagesize, recordCount, adminDao.finaProductList(offset , pagesize));
 	}
 
 	

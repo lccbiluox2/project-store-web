@@ -5,12 +5,14 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<jsp:useBean id="mycookie" scope="session" class="com.biluo.bean.CookBean" />
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'product_detail.jsp' starting page</title>
+    <title><jsp:getProperty name="mycookie" property="userName" /></title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -42,6 +44,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="index/css/product_detail.css">
 	<link rel="stylesheet" type="text/css" href="index/css/top.css">
 	
+	
+	
+	
+	
   </head>
   
 <body class="body">
@@ -65,9 +71,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="lanrenzhijia">
 										<!-- 大图begin -->
 										<div id="preview" class="spec-preview">
-											<span class="jqzoom"><img
-												jqimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b1.jpg"
-												src="http://demo.lanrenzhijia.com/2014/jd0912/images/s1.jpg" />
+											<span class="jqzoom"><img id="showBigImg"
+												jqimg="${product.p_img_path }"
+												src="${product.p_img_path }" />
 											</span>
 										</div>
 										<!-- 大图end -->
@@ -107,15 +113,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 		<img src="${brand.b_img_path} " width="100px" height="100px" />
 					 		品牌:${brand.b_name } 
 					 	</div>
+					 	
+					 	
+					 	
 					 	<div id="product_count">
 					 		数量:<input type="button" id="sub_bt" value="&nbsp;—&nbsp; " onclick="sub_count();" />
-					 		<input type="text" id="mycount" value="1" />
-					 		<input type="hidden" id="product_id" value="${product.p_id }" />
+					 		<form action="" method="post">
+					 			<input type="text" name="p_img_path" value="${product.p_img_path }" />
+						 		<input type="text" name="p_id" value="${product.p_id }" />
+						 		<input type="text" name="p_count" id="mycount" value="1" />
+						 		<input type="text" name="b_img_path" id="mycount" value="${brand.b_img_path}" />
+						 		<input type="text" name="u_id" value="<jsp:getProperty name="mycookie" property="u_id" />" />
+						 		<input type="text" name="u_name" value="<jsp:getProperty name="mycookie" property="userName" />" />
+					 		</form>
 					 		<input type="button" id="add_bt" value="&nbsp;+&nbsp; " onclick="add_count();"/>
 					 	</div>
+					 	<div id="product_button">
+					 		<a>
+					 			<img alt="" onclick="addProductToCart()" src="index/img/product_detail/addtocart.png">
+					 		</a>
+					 		<a>
+					 			<img alt="" src="index/img/product_detail/buy.png">
+					 		</a>
+					 	</div>
+					 	
+					 	
+					 	
+					 	<div id="moveDivToCart">
+					 		<img id="moveDivToCartImg" width="100px" height="100px" alt="" src="${brand.b_img_path}">
+					 	</div>
 					 </div>
+					 
+					 
+					 <div id="showDetailContent">
+					 	<div id="showDetail-menu">
+					 		<div id="showDetail-menu-detail">
+					 			<a href="">宝贝详情</a>
+							</div>
+						</div>
+						<div id="showDetail-content">
+					 		
+						</div>
+					</div>
+					 
 				</div>
    
+   				
      
 			</div>
 	</div>

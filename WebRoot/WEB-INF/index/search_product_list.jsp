@@ -37,6 +37,27 @@
 
 <!-- 外来插件的js -->
 
+
+
+
+
+
+<script type="text/javascript">
+	function gotoPageNum( offset,str ){
+		if(offset == "" || offset == null){
+			offset = $("#currentPage").val();
+			if(offset == ""){
+			return;
+			}
+		}
+		window.location.href = "ssSelectProduct?currentPage=" + offset + "&str=" + str;
+		}
+	
+</script>
+
+
+
+
 </head>
 
 
@@ -47,11 +68,11 @@
 		</div>
 		<div id="content">
 			<c:choose>
-				<c:when test="${productList == null }">
+				<c:when test="${pageBean.recordList == null }">
 				             未搜索到您搜索的商品，请换个关键字重新搜索！
 				 </c:when>
 				<c:otherwise>
-						<c:forEach items="${productList }" var="product">
+						<c:forEach items="${pageBean.recordList }" var="product">
 							<a href="/mystory/getProductById?id=${product.p_id }">
 								<div class="mynewProducts">
 									<div class="mynewProducts-img">
@@ -70,7 +91,48 @@
 
 		</div>
 
-		<div id="foot"></div>
+		<div id="footer">
+  			<a href="javascript:gotoPageNum(1,${str })" title="首页"
+						style="cursor: hand;">首页</a>
+							<c:choose>
+							<c:when test="${pageBean.currentPage - 1 <= 0 }">
+								上一页
+							</c:when>
+							<c:otherwise>
+								<a href="javascript:gotoPageNum(${pageBean.currentPage - 1 },${str })">上一页</a>
+							</c:otherwise>
+						</c:choose>
+					<c:if test="${(pageBean.currentPage - 3 > 0) && pageBean.pageCount > 5 }">...</c:if>
+					<c:forEach begin="${pageBean.beginPageIndex }"
+						end="${pageBean.endPageIndex }" var="num">
+						<c:choose>
+							<c:when test="${pageBean.currentPage == num }">
+								<span class="PageSelectorNum PageSelectorSelected">${num }</span>
+							</c:when>
+							<c:otherwise>
+								<span class="PageSelectorNum" style="cursor: hand;"
+									onClick="gotoPageNum(${num},${str });">${num }</span>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${(pageBean.currentPage + 2 < pageBean.pageCount) && pageBean.pageCount > 5 }">...</c:if>
+						<c:choose>
+							<c:when test="${pageBean.currentPage + 1 > pageBean.pageCount }">
+								下一页
+							</c:when>
+							<c:otherwise>
+								<a href="javascript:gotoPageNum(${pageBean.currentPage + 1 },${str })">下一页</a>
+							</c:otherwise>
+						</c:choose>
+				
+				
+					<a href="javascript:gotoPageNum(${pageBean.pageCount },${str })"
+						title="尾页" style="cursor: hand;"> 尾页</a>
+					总共${pageBean.pageCount }页
+					<input type="number" name="currentPage" id="currentPage" min="1" max="${pageBean.pageCount }"/>
+					<a href="javascript:gotoPageNum("",${str });">go</a>
+  		</div>
+   
 	</div>
 </body>
 <html>

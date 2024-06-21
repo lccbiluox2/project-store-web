@@ -1,6 +1,7 @@
 package com.biluo.control;
 
 import java.io.UnsupportedEncodingException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,9 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biluo.common.ProductAndCategory;
 import com.biluo.common.TreeShow;
 import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
+import com.biluo.domain.PageBean;
 import com.biluo.domain.Product;
 import com.biluo.service.IndexService;
 
@@ -23,6 +26,9 @@ public class IndexControl {
 	@Resource
 	private IndexService indexService;
 
+	int currentPage = 1;//页面默认是第一页2016/5/25
+	int mypagesize = 5;//默认页面显示几条数据
+	
 	// 主页面初始化数据
 	@RequestMapping("/indexList")
 	public ModelAndView indexList() {
@@ -71,26 +77,31 @@ public class IndexControl {
 	}
 
 	// 搜索栏查询
-	@RequestMapping("/ssSelectProduct")
-	public ModelAndView ssSelectProduct(String searchText)
-			throws UnsupportedEncodingException {
+		@RequestMapping("/ssSelectProduct")
+		public ModelAndView ssSelectProduct(String searchText, Long currentPage)
+				throws UnsupportedEncodingException {
+			if(currentPage == null){
+				currentPage = 1l;
+			}
 
-		System.out.println("str="+searchText);
-		
-		ModelAndView mav = new ModelAndView();
-		List<Product> productList = new ArrayList<Product>();
-		if (searchText == null || searchText == "") {
-			productList = indexService.finaProductBySearch(searchText);
-		} else {
-			searchText = new String(searchText.getBytes("ISO-8859-1"), "UTF-8");
+			ModelAndView mav = new ModelAndView();
+			PageBean pageBean;
+			if (searchText == null || searchText == "") {
+				pageBean = indexService.finaProductBySearch(searchText, currentPage.intValue(), 36);
+			} else {
+				searchText = new String(searchText.getBytes("ISO-8859-1"), "UTF-8");
 
-			productList = indexService.finaProductBySearch(searchText);
+				pageBean = indexService.finaProductBySearch(searchText, currentPage.intValue(), 36);
+			}
+			
+			System.out.println(searchText+"xxxxxxxxxxxx");
+			
+			mav.addObject("pageBean", pageBean);
+			mav.addObject("str", searchText);
+			mav.setViewName("index/search_product_list");
+
+			return mav;
 		}
-		mav.addObject("productList", productList);
-		mav.setViewName("index/search_product_list");
-
-		return mav;
-	}
 	
 	
 	
@@ -116,7 +127,7 @@ public class IndexControl {
 	}
 	
 	
-	//根据类别得到所有商品
+	//根据品牌得到所有商品  
 	@RequestMapping("/getProductByBrandId")
 	public ModelAndView getProductByBrandId(int id){
 
@@ -128,6 +139,27 @@ public class IndexControl {
 		mav.addObject("productList", productList);
 		mav.setViewName("index/search_product_list");
 
+		return mav;
+	}
+	
+	
+	
+	// 点击类别查询
+	@RequestMapping("/clickCategorySelect")
+	public ModelAndView clickCategorySelect(Long layerNum, Integer id, Long currentPage) {
+		ModelAndView mav = new ModelAndView();
+		if(currentPage == null){
+			currentPage = 1l;
+		}
+		ProductAndCategory pac = indexService.finaCategoryByClick(layerNum,
+				id, currentPage.intValue(), 36);
+		int recordCount = indexService.getProductCount();
+		PageBean pageBean = new PageBean(currentPage.intValue(), 36, recordCount, new ArrayList());
+		mav.addObject("pac", pac);
+		mav.addObject("pageBean", pageBean);
+		mav.addObject("layerNum", layerNum);
+		mav.addObject("id", id);
+		mav.setViewName("index/product_select");//这个没写
 		return mav;
 	}
 	
@@ -144,6 +176,26 @@ public class IndexControl {
 	
 		return mav;
 	}
+	
+	
+	
+	
+	
+	
+	//查看全部商品
+	@RequestMapping("/finaProductList")
+	public ModelAndView finaProductList(Long currentPage){
+		if(currentPage == null){
+			currentPage = 1l;
+		}
+		ModelAndView mav = new ModelAndView();
+		PageBean pageBean = indexService.finaProductList(currentPage.intValue(), 36);
+		mav.addObject("pageBean", pageBean);
+		
+		return mav;
+	}
+	
+	
 	
 	
 	

@@ -27,6 +27,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript">
 	
+		//分页跳转函数2016/5/25
+		function gotoPageNum( offset ){
+		if(offset == "" || offset == null){
+			offset = $("#currentPage").val();
+			if(offset == ""){
+			return;
+			}
+		}
+		window.location.href = "userManage?currentPage=" + offset;
+		}
+	
+	
 	
 	function altRows(id){
 	if(document.getElementsByTagName){  
@@ -74,7 +86,7 @@ window.onload=function(){
 				 		<td>删除</td>
 				 		<td>删除</td>
 				 	</tr>
-				 	<c:forEach items="${userList}" var="userList" >  
+				 	<c:forEach items="${pageBean.recordList}" var="userList" >  
 				        <tr>    
 				             <td align = "center">${userList.u_id}</td>  
 				             
@@ -89,16 +101,47 @@ window.onload=function(){
 			   </table>
   
   		</div>
+  		//分页显示
   		<div id="footer">
-  			 <a href="userManage?offset=1&pagesize=4&orientation=3">首页</a>
-			  <a href="userManage?offset=5&pagesize=4&orientation=2">向上跳转5页</a>
-			  <a href="userManage?offset=10&pagesize=4&orientation=2">向上跳转10页</a>
-			  <a href="userManage?offset=1&pagesize=4&orientation=1">下一页</a>
-			  <a href="userManage?offset=1&pagesize=4&orientation=2">上一页</a>
-			  <a href="userManage?offset=5&pagesize=4&orientation=1">向下跳转5页</a>
-			  <a href="userManage?offset=10&pagesize=4&orientation=1">向下跳转10页</a>
-			  <a href="userManage?offset=1&pagesize=4&orientation=4">尾页</a>
-  
+  			<a href="javascript:gotoPageNum(1)" title="首页"
+						style="cursor: hand;">首页</a>
+							<c:choose>
+							<c:when test="${pageBean.currentPage - 1 <= 0 }">
+								上一页
+							</c:when>
+							<c:otherwise>
+								<a href="javascript:gotoPageNum(${pageBean.currentPage - 1 })">上一页</a>
+							</c:otherwise>
+						</c:choose>
+					<c:if test="${(pageBean.currentPage - 3 > 0) && pageBean.pageCount > 5 }">...</c:if>
+					<c:forEach begin="${pageBean.beginPageIndex }"
+						end="${pageBean.endPageIndex }" var="num">
+						<c:choose>
+							<c:when test="${pageBean.currentPage == num }">
+								<span class="PageSelectorNum PageSelectorSelected">${num }</span>
+							</c:when>
+							<c:otherwise>
+								<span class="PageSelectorNum" style="cursor: hand;"
+									onClick="gotoPageNum(${num});">${num }</span>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${(pageBean.currentPage + 2 < pageBean.pageCount) && pageBean.pageCount > 5 }">...</c:if>
+						<c:choose>
+							<c:when test="${pageBean.currentPage + 1 > pageBean.pageCount }">
+								下一页
+							</c:when>
+							<c:otherwise>
+								<a href="javascript:gotoPageNum(${pageBean.currentPage + 1 })">下一页</a>
+							</c:otherwise>
+						</c:choose>
+				
+				
+					<a href="javascript:gotoPageNum(${pageBean.pageCount })"
+						title="尾页" style="cursor: hand;"> 尾页</a>
+					总共${pageBean.pageCount }页
+					<input type="number" name="currentPage" id="currentPage" min="1" max="${pageBean.pageCount }"/>
+					<a href="javascript:gotoPageNum();">go</a>
   		</div>
   	</div>
   	

@@ -5,12 +5,16 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<jsp:useBean id="mycookie"  scope="session" class="com.biluo.bean.CookBean" />
+<jsp:setProperty name="mycookie" property="userName" value="${user.u_name }"  />
+<jsp:setProperty name="mycookie" property="u_id" value="${user.u_id }"  />
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>创业</title>
+    <title></title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -275,7 +279,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="content-myfloat1-buttom">
 													
 						   <c:forEach items="${map['xpProductList'] }" var="product">
-						   <a href="www.baidu.com">
+						   <a href="/mystory/getProductById?id=${product.p_id }">
 						   		<div class="mynewProducts">
 						   		<div class="mynewProducts-img">
 						   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -295,6 +299,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   </c:forEach>
 						   
 						   <c:forEach items="${map['rmProductList'] }" var="product">
+						    <a href="/mystory/getProductById?id=${product.p_id }">
 						  		 <div class="myhotProducts">
 						   		<div class="mynewProducts-img">
 						   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -309,9 +314,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   			￥:${product.p_shop_price }
 						   		</div>
 						   		</div>
+						   		</a>
 						   </c:forEach>
 						  
 						     <c:forEach items="${map['tjProductList'] }" var="product">
+						      <a href="/mystory/getProductById?id=${product.p_id }">
 						     <div class="myspecialProducts">
 						   		<div class="mynewProducts-img">
 						   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -326,10 +333,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   			￥:${product.p_shop_price }
 						   		</div>
 						   		</div>
+						   		</a>
 						   </c:forEach>
 						   
 						   
 						   <c:forEach items="${map['likeProductList'] }" var="product">
+						    <a href="/mystory/getProductById?id=${product.p_id }">
 						   <div class="myrandomProducts">
 						   		<div class="mynewProducts-img">
 						   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -344,6 +353,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   			￥:${product.p_shop_price }
 						   		</div>
 						   		</div>
+						   		</a>
 						   </c:forEach>
 						 
 					</div>
@@ -373,7 +383,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 					<div class="content-myfloat2-buttom">
 						
-							<c:forEach items="${map['treeShow1'].children.children.childProducts }" var="product">	
+							<c:forEach items="${map['treeShow1'].children.children.childProducts }" var="product">
+							 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -388,6 +399,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 						  
 					</div>
@@ -414,7 +426,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat3-buttom">
-						<c:forEach items="${map['treeShow2'].children.children.childProducts }" var="product">	
+						<c:forEach items="${map['treeShow2'].children.children.childProducts }" var="product">
+						 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -429,6 +442,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -450,7 +464,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat4-buttom">
-							<c:forEach items="${map['treeShow3'].children.children.childProducts }" var="product">	
+							<c:forEach items="${map['treeShow3'].children.children.childProducts }" var="product">
+							 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -465,6 +480,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -486,7 +502,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat5-buttom">
-							<c:forEach items="${map['treeShow4'].children.children.childProducts }" var="product">	
+							<c:forEach items="${map['treeShow4'].children.children.childProducts }" var="product">
+							 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -501,6 +518,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -523,7 +541,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat6-buttom">
-							<c:forEach items="${map['treeShow5'].children.children.childProducts }" var="product">	
+							<c:forEach items="${map['treeShow5'].children.children.childProducts }" var="product">
+							 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -538,6 +557,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -560,7 +580,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat7-buttom">
-							<c:forEach items="${map['treeShow6'].children.children.childProducts }" var="product">	
+							<c:forEach items="${map['treeShow6'].children.children.childProducts }" var="product">
+							 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -575,6 +596,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -597,7 +619,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat8-buttom">
-							<c:forEach items="${map['treeShow7'].children.children.childProducts }" var="product">	
+							<c:forEach items="${map['treeShow7'].children.children.childProducts }" var="product">
+							 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -612,6 +635,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -636,7 +660,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat9-buttom">
-							<c:forEach items="${map['treeShow8'].children.children.childProducts }" var="product">	
+							<c:forEach items="${map['treeShow8'].children.children.childProducts }" var="product">
+							 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -651,6 +676,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -675,7 +701,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat10-buttom">
-						<c:forEach items="${map['treeShow9'].children.children.childProducts }" var="product">	
+						<c:forEach items="${map['treeShow9'].children.children.childProducts }" var="product">
+						 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -690,6 +717,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -715,7 +743,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat11-buttom">
-						<c:forEach items="${map['treeShow10'].children.children.childProducts }" var="product">	
+						<c:forEach items="${map['treeShow10'].children.children.childProducts }" var="product">
+						 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -730,6 +759,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -758,7 +788,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat12-buttom">
-							<c:forEach items="${map['treeShow11'].children.children.childProducts }" var="product">	
+							<c:forEach items="${map['treeShow11'].children.children.childProducts }" var="product">
+							 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -773,6 +804,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
@@ -802,7 +834,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					<div class="content-myfloat13-buttom">
-						<c:forEach items="${map['treeShow12'].children.children.childProducts }" var="product">	
+						<c:forEach items="${map['treeShow12'].children.children.childProducts }" var="product">
+						 <a href="/mystory/getProductById?id=${product.p_id }">	
 								 <div class="myrandomProductsFloat2">
 								   		<div class="mynewProducts-img">
 								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -817,6 +850,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   			￥:${product.p_shop_price }
 								   		</div>
 								   	</div>
+								   	</a>
 						  		</c:forEach>
 					</div>
 				
