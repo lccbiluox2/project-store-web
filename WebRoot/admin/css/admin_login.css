@@ -1,0 +1,15 @@
+.body{
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+	background-image:url("../img/admin_login.jpg");
+	background-size:100% 100%;
+
+}
+.loginForm{
+	width:350px;
+	height:200;
+	margin:250 auto;
+	text-align:center;
+	background-color:#bcf8bc;
+}
