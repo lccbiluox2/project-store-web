@@ -248,7 +248,7 @@ public class AdminDaoImpl implements AdminDao {
 		}
 		
 		String sql = "update Product p set p.p_vip_price=?,p.p_shop_price=?,p.p_attr=?,p.p_b_id=?,p.p_description=?" +
-				",p.p_goods_surplus=?,p.c_id=?,p.p_name=?,p.p_img_path=? where p.p_id=?";
+				",p.p_goods_surplus=?,p.c_id=?,p.p_name=?,p.p_img_path=?,p.p_number=? where p.p_id=?";
 		sessionFactory.getCurrentSession().createQuery(sql)//
 		.setInteger(0, product.getP_vip_price())//
 		.setInteger(1, product.getP_shop_price())//
@@ -259,7 +259,8 @@ public class AdminDaoImpl implements AdminDao {
 		.setInteger(6, product.getC_id())//
 		.setString(7, product.getP_name())//
 		.setString(8, product.getP_img_path())
-		.setInteger(9, product.getP_id())//
+		.setString(9, product.getP_number())//
+		.setInteger(10, product.getP_id())//
 		.executeUpdate();
 		
 	}

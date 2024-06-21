@@ -1,0 +1,29 @@
+body{
+	width:100%;
+	margin:0 auto;
+	background-size:100% 100%;
+
+}
+#body{
+	width:100%;
+	margin:0 auto;
+}
+.one{
+	background-color:red;
+	
+}
+.one-top{
+	background-color:green;
+}
+.one-top-tab1{
+	width:60px;
+	height:30px;
+	float:left;
+	background-color:pink;
+}
+.one-top-grandfather{
+	width:80px;
+	height:30px;
+	float:left;
+	background-color:gray;
+}

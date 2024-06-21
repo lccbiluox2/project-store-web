@@ -64,7 +64,7 @@ public class Product {
 	@Column
 	private String p_description; //这里查询的是需要string 的不是Text
 	
-
+	
 	
 	
 	//库存量
@@ -80,6 +80,20 @@ public class Product {
 	//搜索关键字
 	@Column
 	private String p_search_key;
+
+	
+	//商品编号
+	private String p_number;
+	
+
+	public String getP_number() {
+		return p_number;
+	}
+
+
+	public void setP_number(String p_number) {
+		this.p_number = p_number;
+	}
 
 
 	public Integer getP_id() {

@@ -18,42 +18,73 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
+	<link rel="stylesheet" type="text/css" href="admin/category/css/category_list.css">
+	
 
   </head>
   
   <body>
-  <table>
-   <tr> <th>名字</th><th>上级类别</th><th>操作</th></tr>
+ 	<div id="body">
+ 		
+ 	
+   
    <c:forEach items="${treeShowList }" var="treeShow">
-   	<tr>
-   		<td>${treeShow.category.c_name }</td>
-   		<td>${treeShow.parent.category.c_name }</td>
-   		<td><a href="categoryUpdateUI?id=${treeShow.category.c_id }">修改</a></td>
-   		<td><a href="categoryDelete?id=${treeShow.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a></td>
-   	</tr>
-   	<tr>
+   	<div class="one">
+   		<div class="one-top">
+   			<div class="one-top-tab1" ></div>
+   			<div class="one-top-grandfather" >
+   			
+   			</div>
+   			${treeShow.category.c_name }
+   					<a href="categoryUpdateUI?id=${treeShow.category.c_id }">修改</a>
+   					<a href="categoryDelete?id=${treeShow.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a>
+   			
+   		</div>
+   		
+   		
    		 <c:forEach items="${treeShow.childrens }" var="children">
-  		 	<tr>
-   				<td>${children.category.c_name }</td>
-   				<td>${children.parent.category.c_name }</td>
-   				<td><a href="categoryUpdateUI?id=${children.category.c_id }">修改</a></td>
-   				<td><a href="categoryDelete?id=${children.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a></td>
-   			</tr>
+   		 
+   		 
+   		 
+		   		 <div class="one-center">
+		   			<table>
+		   				<tr>
+		   					
+		   					<td>
+		   					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		   					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		   					${children.category.c_name }
+		   					</td>
+		   					<td><a href="categoryUpdateUI?id=${children.category.c_id }">修改</a></td>
+		   					<td><a href="categoryDelete?id=${children.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a></td>
+		   				</tr>
+		   			</table>
+		   		</div>
+   		 
+  		 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   				
+   				
+   				
+   				
+   				
+   				
    				<c:forEach items="${children.childrens }" var="children1">
-  		 			<tr>
-   						<td>${children1.category.c_name }</td>
-   						<td>${children1.parent.category.c_name }</td>
-   						<td><a href="categoryUpdateUI?id=${children1.category.c_id }">修改</a></td>
-   						<td><a href="categoryDelete?id=${children1.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a></td>
-   					</tr>
+  		 			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   						${children1.category.c_name }
+   						
+   						<a href="categoryUpdateUI?id=${children1.category.c_id }">修改</a>
+   						<a href="categoryDelete?id=${children1.category.c_id }" onclick="return confirm('你确定要删除此类和它的子类别吗？');">删除</a>
+   					
    			
    				</c:forEach>
    			</c:forEach>
-   	</tr>
    	
+
+   	</div>
    </c:forEach>
   
-  </table>
+ </div>
 
    
   </body>

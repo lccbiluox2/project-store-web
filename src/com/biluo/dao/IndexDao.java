@@ -22,4 +22,6 @@ public interface IndexDao {
 
 	List<Product> finaProductById(Integer c_id);
 
+	List<Product> finaProductBySearch(String sql);
+
 }

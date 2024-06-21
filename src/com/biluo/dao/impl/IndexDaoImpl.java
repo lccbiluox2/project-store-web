@@ -60,6 +60,17 @@ public class IndexDaoImpl implements IndexDao{
 				.setMaxResults(10).list();
 	}
 
+
+
+
+	//搜索栏查询商品
+	@Override
+	public List<Product> finaProductBySearch(String sql) {
+		
+		return getSession().createQuery(sql).list();
+		
+	}
+
 	
 	
 	

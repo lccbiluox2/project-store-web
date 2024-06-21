@@ -18,4 +18,6 @@ public interface IndexService {
 
 	List<TreeShow> finaProductByFL(List<Category> top , TreeShow tree , int i);
 
+	List<Product> finaProductBySearch(String str);
+
 }

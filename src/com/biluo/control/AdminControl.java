@@ -310,6 +310,10 @@ public class AdminControl implements Controller {
 					+ fileNameString.trim();
 			product.setP_img_path(filePath);
 		}
+		
+		//2016/05/24修改两行
+		String p_number = request.getParameter("p_number");
+		product.setP_number(p_number);
 		adminService.productAdd(product);
 
 		attr.addAttribute("offset", 1);
@@ -396,7 +400,10 @@ public class AdminControl implements Controller {
 			System.out.println(filePath);
 			product.setP_img_path(filePath);
 		}
-
+		
+		//2016/05/24修改1行
+		product.setP_number(request.getParameter("p_number"));
+		
 		adminService.productUpdate(product);
 		attr.addAttribute("offset", 1);
 		attr.addAttribute("orientation", 1);

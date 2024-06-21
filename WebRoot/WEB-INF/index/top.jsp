@@ -47,8 +47,12 @@
 	</div>
 	<div id="topPage-buttom">
 		<div class="topPage-buttom-menu1">全部商品分类</div>
-		<div class="topPage-buttom-name">首页</div>
-		<div class="topPage-buttom-name">全部品牌</div>
+		<div class="topPage-buttom-name">
+			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/index" >首页</a>
+		</div>
+		<div class="topPage-buttom-name">
+			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/show_all_brand" >全部品牌</a>
+		</div>
 		<div class="topPage-buttom-name">全部商品</div>
 		<div class="topPage-buttom-name">
 			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/content_us" >联系我们</a>

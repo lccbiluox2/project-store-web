@@ -20,9 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
-<link rel="stylesheet" type="text/css" href="admin/category/css/category_add.css">
 	
+	<script type="text/javascript" src="index/js/jquery-2.1.1/jquery.js" ></script>
+	<script type="text/javascript" src="index/js/jquery-2.1.1/jquery.min.js" ></script>
+
+	<link rel="stylesheet" type="text/css" href="admin/category/css/category_add.css">
+	<script type="text/javascript" src="admin/category/js/category_add.js" ></script>
 	
 	<script type="text/javascript">
 function altRows(id){
@@ -59,25 +62,38 @@ window.onload=function(){
   		</div>
   		<div id="content">
   		<table width="90%" class="altrowstable" id="alternatecolor">
-		  <form action="/mystory/categoryAdd.do">
+		  <form action="">
 		    	<tr>
 		    		<td>名字</td>
-		    		<td><input type="text" name="c_name"/></td>
+		    		<td><input type="text" id="myname" name="c_name"/></td>
 		    	</tr>
 		    	<tr>
 		    		<td>上级类别</td>
 		    		<td>
-		    		<select name="c_pid">
-		    			<option value="0">请选择上级类别</option>
-		    			<c:forEach items="${categoryList }" var="category">
-		    				<option value="${category.c_id }" <c:if test="${category.c_id == id }">selected</c:if>>${category.c_name }</option>
-		    			</c:forEach>
 		    		
-		    		</select>
+		    		<select class="myselect" id="select_category_1">
+							<option value="0" >请选择第一级菜单</option>
+							<option value="1" >办公用品</option>
+							<option value="2" > 办公家具</option>
+							<option value="3" >办公设备</option>
+							<option value="4" >教学器材</option>
+							<option value="5" >文体用品</option>
+							<option value="6" >商务礼品</option>
+							<option value="7" >五金电料</option>
+							<option value="8" >日用百货</option>
+							<option value="9" >洗化用品</option>
+							<option value="10" >商务礼品</option>
+							<option value="11" >电脑耗材</option>
+							<option value="12" >其他杂货</option>
+						</select>
+	    				<select class="myselect" id='select_category_2'></select>
+	    				
+	    				<input type="hidden" name="c_pid" id="myc_pid" value=""/>
+		    		
 		    		</td>
 		    	</tr>
 		    	<tr>
-		    		<td colspan="2"><input type="submit" value="添加"/></td>
+		    		<td colspan="2"><input type="button" onclick="addCategory()" value="添加"/></td>
 		    	</tr>
 		    	  
 		    </form>

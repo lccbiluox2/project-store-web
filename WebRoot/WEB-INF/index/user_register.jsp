@@ -6,7 +6,7 @@
 			+ path + "/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 <base href="<%=basePath%>">
@@ -21,7 +21,8 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" type="text/css" href="index/css/user_register/user_register.css">
+<link rel="stylesheet" type="text/css" href="index/css/user_register/user_register.css">
+
 <script type="text/javascript">
 function verify1(){
 		pwd1=document.form1.pwd1.value;
@@ -63,11 +64,11 @@ function verify(){
         		document.form1.mobile.focus(); 
         		return false; 
 		}
-		/* if(email=""||(email.indexOf('@'==-1))||(email.indexOf('.')==-1))
+		if(email=""||(email.indexOf('@'==-1))||(email.indexOf('.')==-1))
 		{ 		
 			alert("电子邮箱格式不正确!"); 
 			return false; 
-		}  */
+		} 
 		
 		
 		return true; 
@@ -75,7 +76,7 @@ function verify(){
 	</script>
 </head>
 
-<body class="body">
+<body class="body1">
 	<div class="body2">
 		<div class="logo">
 			<a href=""><img src="index/img/user_register/logo.png">
@@ -132,13 +133,7 @@ function verify(){
 											placeholder="请输入正确的邮箱地址" required /><br />
 									</p></td>
 							</tr>
-							<tr>
-								<th><span class="color-red">*</span>验&nbsp;证&nbsp;码</th>
-								<td colspan="2"><p>
-										<input type="text" class="username" placeholder="输入验证码"
-											required /><br />
-									</p></td>
-							</tr>
+							
 							<tr>
 								<td align="left"><input type="checkbox" checked><label>我已阅读并接受
 								</label>
