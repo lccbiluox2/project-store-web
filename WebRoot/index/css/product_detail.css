@@ -33,19 +33,26 @@
 	float: left;
 	background: pink;
 }
+
 #content_show-left{
 	float: left;
-	width:50%;
-	height: 100%;
-
-	background: yellow;
+}
+#content_show-left-tab{
+	float: left;
+	height:20px;
+	background:gray;
+}
+#content_show-left-realshow{
+	float: left;
+	margin-top:30px;
+	background:gray;
 }
 #content_show_right {
-	
+	margin-top:30px;
 	background:orange;
 	float: left;
 	width: 50%;
-	height: 100%;
+	margin-left:10px;
 	
 	filter:alpha(Opacity=80);
 	-moz-opacity:0.5;
@@ -53,7 +60,59 @@
 	z-index:100;
 }
 
-iframe {
-	float: left;
-}
 
+
+#product_name{
+	background:green;
+	float: left;
+	width: 100%;
+	font-size:20px;
+	text-align:left;
+}
+#product_attr{
+	background:gray;
+	float: left;
+	width: 100%;
+	font-size:20px;
+	text-align:left;
+}
+#product_p_vip_price{
+	background:#FFF2E8;
+	float: left;
+	width: 100%;
+	font-size:20px;
+	text-align:left;
+}
+#product_p_shop_price{
+	background:#FFF2E8;
+	float: left;
+	width: 100%;
+	font-size:20px;
+	text-align:left;
+}
+#product_brand{
+	background:#FFF2E8;
+	float: left;
+	width: 100%;
+	font-size:20px;
+	text-align:left;
+	
+}
+#product_count{
+	float: left;
+	width: 100%;
+	font-size:20px;
+	text-align:left;
+}
+#sub_bt{
+	height:35px;
+	width:40px;
+}
+#mycount{
+	height:35px;
+	width:60px;
+}
+#add_bt{
+	height:35px;
+	width:40px;
+}

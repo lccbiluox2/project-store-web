@@ -1,6 +1,13 @@
 ﻿//鼠标经过预览图片函数
 function preview(img){
+	
+	//$(img).attr("bimg") 得到小列表中鼠标放到的是哪一张图片上  是这个图片的路径
+	//这个是加载小列表中的图片 到大框框中
 	$("#preview .jqzoom img").attr("src",$(img).attr("src"));
+	//这里使用一个技巧 加载图片后，立即设置图片大小 这里是固定大小 可能会让图片变形
+	$("#preview .jqzoom img").attr("width","400px");
+	$("#preview .jqzoom img").attr("height","350px");
+	//这个是加载要放大的是哪一张图片
 	$("#preview .jqzoom img").attr("jqimg",$(img).attr("bimg"));
 }
 //图片放大镜效果
@@ -17,6 +24,7 @@ $(function(){
 
 //图片预览小图移动效果,页面加载时触发
 $(function(){
+	
 	var tempLength = 0; //临时变量,当前移动的长度
 	var viewNum = 5; //设置每次显示图片的个数量
 	var moveNum = 2; //每次移动的数量

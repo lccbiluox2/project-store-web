@@ -2,6 +2,7 @@ package com.biluo.dao;
 
 import java.util.List;
 
+import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
 import com.biluo.domain.Product;
 
@@ -23,5 +24,11 @@ public interface IndexDao {
 	List<Product> finaProductById(Integer c_id);
 
 	List<Product> finaProductBySearch(String sql);
+
+	List<Brand> getAllBrand();
+
+	Brand getBrandById(int brandId);
+
+	List<Product> getProductByBrandId(int id);
 
 }

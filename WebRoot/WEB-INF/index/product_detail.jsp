@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -39,12 +40,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 
 	 <link href="index/css/fangda.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="index/css/product_detail.css">
-
+	<link rel="stylesheet" type="text/css" href="index/css/top.css">
+	
   </head>
   
 <body class="body">
 	<div id="body2">
-			<div id="top"></div>
+			<div id="top">
+				<jsp:include page="/WEB-INF/index/top.jsp"/>
+			</div>
 			<div id="content_xiangxi">
 				<div id="content_xiangxi_left">
 					<div id="content_xiangxi_left-content">
@@ -55,39 +59,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<div id="content_show">
 					 <div id="content_show-left">
-					   		<div class="lanrenzhijia">
-								<!-- 大图begin -->
-								<div id="preview" class="spec-preview"> 
-									<span class="jqzoom"><img jqimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b1.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s1.jpg" /></span> 
-								</div>
-								<!-- 大图end -->
-								<!-- 缩略图begin -->
-								<div class="spec-scroll"> <a class="prev">&lt;</a> <a class="next">&gt;</a>
-								  <div class="items">
-								    <ul>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b1.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s1.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b2.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s2.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b3.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s3.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b1.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s1.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b3.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s3.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b1.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s1.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b2.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s2.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b1.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s1.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b2.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s2.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b2.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s2.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b1.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s1.jpg" onmousemove="preview(this);"></li>
-								      <li><img bimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b2.jpg" src="http://demo.lanrenzhijia.com/2014/jd0912/images/s2.jpg" onmousemove="preview(this);"></li>
-								    </ul>
-								  </div>
+					 		<div id="content_show-left-tab"></div>
+							<div id="content_show-left-realshow">
+			
+									<div class="lanrenzhijia">
+										<!-- 大图begin -->
+										<div id="preview" class="spec-preview">
+											<span class="jqzoom"><img
+												jqimg="http://demo.lanrenzhijia.com/2014/jd0912/images/b1.jpg"
+												src="http://demo.lanrenzhijia.com/2014/jd0912/images/s1.jpg" />
+											</span>
+										</div>
+										<!-- 大图end -->
+										<!-- 缩略图begin -->
+										<div class="spec-scroll">
+											<a class="prev">&lt;</a> <a class="next">&gt;</a>
+											<div class="items">
+												<ul>
+			
+													<li><img bimg="${product.p_img_path }"
+														src="${product.p_img_path }" onmousemove="preview(this);">
+													</li>
+			
+												</ul>
+											</div>
+										</div>
+									</div>
+
+
 							</div>
-						</div>
 					 </div>
 	
 					 <div id="content_show_right">
-						  南韩固体胶 南韩胶棒 MUNGYO韩国固体胶棒 35g固体胶
-						 会员价：5.50元
-						 商品货号：0320016
-						 
+					 	<div id="product_name">
+					 		${product.p_name } 
+					 	</div>
+					 	<div id="product_attr">
+					 		${product.p_attr } 
+					 	</div>
+						 <div id="product_p_vip_price">
+					 		会员价:￥:${product.p_vip_price } 
+					 	</div>
+					 	 <div id="product_p_shop_price">
+					 		市场价:￥:${product.p_shop_price } 
+					 	</div>
+					 	<div id="product_brand">
+					 		<img src="${brand.b_img_path} " width="100px" height="100px" />
+					 		品牌:${brand.b_name } 
+					 	</div>
+					 	<div id="product_count">
+					 		数量:<input type="button" id="sub_bt" value="&nbsp;—&nbsp; " onclick="sub_count();" />
+					 		<input type="text" id="mycount" value="1" />
+					 		<input type="hidden" id="product_id" value="${product.p_id }" />
+					 		<input type="button" id="add_bt" value="&nbsp;+&nbsp; " onclick="add_count();"/>
+					 	</div>
 					 </div>
 				</div>
    

@@ -52,7 +52,7 @@
 				 </c:when>
 				<c:otherwise>
 						<c:forEach items="${productList }" var="product">
-							<a href="www.baidu.com">
+							<a href="/mystory/getProductById?id=${product.p_id }">
 								<div class="mynewProducts">
 									<div class="mynewProducts-img">
 										<img src="${product.p_img_path }" width="100%" height="100%" />

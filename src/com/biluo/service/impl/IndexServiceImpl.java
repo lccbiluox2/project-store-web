@@ -2,6 +2,7 @@ package com.biluo.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -12,6 +13,7 @@ import sun.reflect.generics.tree.Tree;
 
 import com.biluo.common.TreeShow;
 import com.biluo.dao.IndexDao;
+import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
 import com.biluo.domain.Product;
 import com.biluo.service.IndexService;
@@ -215,5 +217,47 @@ public class IndexServiceImpl implements IndexService {
 
 			return productList;
 		}
+
+		@Override
+		public List<Brand> getAllBrand() {
+			// TODO Auto-generated method stub
+			return indexDao.getAllBrand();
+		}
+
+		@Override
+		public List<Brand> getRandomBrandList(int randomCount) {
+			// TODO Auto-generated method stub
+			List<Brand> randomBrandList = new ArrayList<Brand>();
+			int max = indexDao.getAllBrand().size();
+			Random ram = new Random();
+			int brandId = max;
+			for(int i=0;i< randomCount;i++){
+				brandId = ram.nextInt(max);
+				System.out.println(brandId+"-------");
+				randomBrandList.add(indexDao.getBrandById(brandId));
+			}
+			return randomBrandList;
+		}
+
+		@Override
+		public List<Product> getProductByBrandId(int id) {
+			// TODO Auto-generated method stub
+			return indexDao.getProductByBrandId(id);
+		}
+		
+		
+		@Override
+		public Product getProductById(Integer p_id) {
+			// TODO Auto-generated method stub
+			return indexDao.getProductById(p_id);
+		}
+
+		@Override
+		public Brand getBrandById(Integer c_id) {
+			// TODO Auto-generated method stub
+			return indexDao.getBrandById(c_id);
+		}
+		
+		
 
 }

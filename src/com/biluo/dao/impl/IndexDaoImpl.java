@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.biluo.dao.IndexDao;
+import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
 import com.biluo.domain.Product;
 
@@ -69,6 +70,31 @@ public class IndexDaoImpl implements IndexDao{
 		
 		return getSession().createQuery(sql).list();
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Brand> getAllBrand() {
+		// TODO Auto-generated method stub
+		 String sql = "from Brand ";
+		return getSession().createQuery(sql).list();
+	}
+
+	@Override
+	public Brand getBrandById(int brandId) {
+		// TODO Auto-generated method stub
+		String sql = "from Brand b where b.b_id=?";
+		return (Brand) getSession().createQuery(sql).setInteger(0, brandId)
+				.uniqueResult();
+	}
+
+
+	@Override
+	public List<Product> getProductByBrandId(int id) {
+		// TODO Auto-generated method stub
+		String sql = "from Product p where p.p_b_id=?";
+		return getSession().createQuery(sql).setInteger(0, id)
+				.list();
 	}
 
 	

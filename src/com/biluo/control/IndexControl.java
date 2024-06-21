@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biluo.common.TreeShow;
+import com.biluo.domain.Brand;
 import com.biluo.domain.Category;
 import com.biluo.domain.Product;
 import com.biluo.service.IndexService;
@@ -90,5 +91,61 @@ public class IndexControl {
 
 		return mav;
 	}
+	
+	
+	
+	
+	//得到所有品牌
+	@RequestMapping("/getAllBrand")
+	public ModelAndView getAllBrand(){
 
+		ModelAndView mav = new ModelAndView();
+		List<Brand> brandList = new ArrayList<Brand>();
+		//随机显示六个品牌
+		List<Brand> randomBrandList = new ArrayList<Brand>();
+		
+		brandList = indexService.getAllBrand();
+		int randomCount = 6;//随机数量
+		randomBrandList = indexService.getRandomBrandList(randomCount);
+		
+		mav.addObject("brandList", brandList);
+		mav.addObject("randomBrandList", randomBrandList);
+		mav.setViewName("index/show_all_brand");
+
+		return mav;
+	}
+	
+	
+	//根据类别得到所有商品
+	@RequestMapping("/getProductByBrandId")
+	public ModelAndView getProductByBrandId(int id){
+
+		ModelAndView mav = new ModelAndView();
+		List<Product> productList = new ArrayList<Product>();
+		
+		productList = indexService.getProductByBrandId(id);
+	
+		mav.addObject("productList", productList);
+		mav.setViewName("index/search_product_list");
+
+		return mav;
+	}
+	
+	
+	@RequestMapping("/getProductById")
+	public ModelAndView getProductById(int id){
+
+		ModelAndView mav = new ModelAndView();
+		Product product = indexService.getProductById(new Integer(id));
+		Brand brand = indexService.getBrandById(product.getC_id());
+		mav.addObject("product", product);
+		mav.addObject("brand", brand);
+		mav.setViewName("index/product_detail");
+	
+		return mav;
+	}
+	
+	
+	
+	
 }

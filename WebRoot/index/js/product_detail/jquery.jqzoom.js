@@ -2,29 +2,36 @@
 (function($){
 
 		$.fn.jqueryzoom = function(options){
+			
+		//设置图片放大后，默认显示的大小 
 		var settings = {
 				xzoom: 200,//zoomed width default width
 				yzoom: 200,//zoomed div default width
 				offset: 10,	//zoomed div default offset
 				position: "right",//zoomed div default position,offset position is to the right of the image
 				lens:1, //zooming lens over the image,by default is 1;
-				preload: 1
+				preload: 1  //preload预加载模块的配置
 			};
-
+		
+		
+		
+			//如果上面传入的有大小 ，那么就设置新的大小 设置图片放大后，默认显示的大小 
+		//alert(settings.xzoom);
 			if(options) {
 				$.extend(settings, options);
 			}
-
+			//alert(settings.xzoom);
 		    var noalt='';
+		    //鼠标放到图片的地方显示放大图片每次调用的函数
 		    $(this).hover(function(){
-
+		    
 		    var imageLeft = this.offsetLeft;//放大后的大图显示距离小图左边距离
 		    var imageRight = this.offsetRight;//放大后的大图显示距离小图右边距离
 		    var imageTop =  $(this).get(0).offsetTop;//放大后的大图显示距离顶部的距离
 		    var imageWidth = $(this).children('img').get(0).offsetWidth;//跟随鼠标框框的大小
 		    var imageHeight = $(this).children('img').get(0).offsetHeight;//跟随鼠标框框的大小
 
-
+		    
             noalt= $(this).children("img").attr("alt");
 
 		    var bigimage = $(this).children("img").attr("jqimg");
@@ -33,10 +40,10 @@
 
 		    if($("div.zoomdiv").get().length == 0){
 
-		    $(this).after("<div class='zoomdiv'><img class='bigimg' src='"+bigimage+"'/></div>");
+		    $(this).after("<div class='zoomdiv'  ><img class='bigimg'  src='"+bigimage+"'/></div>");
 
 
-		    $(this).append("<div class='jqZoomPup'>&nbsp;</div>");
+		    $(this).append("<div class='jqZoomPup'  >&nbsp;</div>");
 
 		    }
 
@@ -45,26 +52,30 @@
 
             if(imageLeft + imageWidth + settings.offset + settings.xzoom > screen.width){
 
-            leftpos = imageLeft  - settings.offset - settings.xzoom;
+            	leftpos = imageLeft  - settings.offset - settings.xzoom;
 
             }else{
 
-		    leftpos = imageLeft + imageWidth + settings.offset;
+            	leftpos = imageLeft + imageWidth + settings.offset;
             }
 		    }else{
-		    leftpos = imageLeft - settings.xzoom - settings.offset;
+		    	leftpos = imageLeft - settings.xzoom - settings.offset;
 		    if(leftpos < 0){
 
-            leftpos = imageLeft + imageWidth  + settings.offset;
+		    	leftpos = imageLeft + imageWidth  + settings.offset;
 
 		    }
 
 		    }
-
-		    $("div.zoomdiv").css({ top: imageTop,left: leftpos });
-
+		    
+		   // alert(leftpos);
+		    //imageTop 151 不改变  leftpos 843 一直变化
+		    //修改  原来的 $("div.zoomdiv").css({ top: imageTop,left: leftpos }); 
+		    //修改后图片放大位置会固定
+		    $("div.zoomdiv").css({ top: imageTop,left: 843 });
+		    
+		    //设置图片放大显示框框的大小
 		    $("div.zoomdiv").width(settings.xzoom);
-
 		    $("div.zoomdiv").height(settings.yzoom);
 
             $("div.zoomdiv").show();

@@ -51,11 +51,11 @@
 			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/index" >首页</a>
 		</div>
 		<div class="topPage-buttom-name">
-			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/show_all_brand" >全部品牌</a>
+			<a href="/mystory/getAllBrand" >全部品牌</a>
 		</div>
 		<div class="topPage-buttom-name">
 
-		<a href="${pageContext.request.contextPath }/toJspPage?whatPage=/index/product_detail">全部商品</a>
+		<a href="">全部商品</a>
 		</div>
 		<div class="topPage-buttom-name">
 			<a href="${pageContext.request.contextPath }/toJspPage?whatPage=index/content_us" >联系我们</a>

@@ -77,6 +77,14 @@
 						</td>
 					</tr>
 					<tr>
+		    			<td>
+		    				商品编号:
+		    			</td>
+		    			<td>
+		    				<input class="myinput" type="text" name="p_number"/>
+		    			</td>
+    				</tr>
+					<tr>
 						<td>属性：</td>
 						<td><input type="text" name="p_attr"
 							value="${product.p_attr }" />

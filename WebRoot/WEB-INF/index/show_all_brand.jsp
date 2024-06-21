@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -31,7 +32,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="main1">
 				<div class="main1_top">
 					    <div class="main1_top_top1"></div>
-						<div class="main1_top_top2"></div>
+						<div class="main1_top_top2">
+							<c:forEach items="${randomBrandList }" var="brand">
+								<div class="main2_top2_top1">
+									<a href="/mystory/getProductByBrandId?id=${brand.b_id }">
+										<img alt="" src="${brand.b_img_path }" width="100%" height="100%">
+									</a>
+								</div>
+							</c:forEach>
+						</div>
 				</div>
 			</div>
 			<div class="main2">
@@ -39,71 +48,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="main2_top1_top1"></div>
 				</div>		
 				<div class="main2_top2">
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top1"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top2"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top3"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						<div class="main2_top2_top4"></div>
-						
-						
+					<c:forEach items="${brandList }" var="brand">
+						<div class="main2_top2_top1">
+							<a href="/mystory/getProductByBrandId?id=${brand.b_id }">
+								<img alt="" src="${brand.b_img_path }" width="100%" height="100%">
+							</a>
+						</div>
+					</c:forEach>	
 			    </div>
 			</div>
 		</div>
