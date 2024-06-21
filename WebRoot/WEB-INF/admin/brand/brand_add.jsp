@@ -22,6 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
+	<link rel="stylesheet" type="text/css" href="admin/brand/css/brand_add.css">
+	
+	
 <script type="text/javascript">
 	function addBrand(){
 		var form = document.forms[0];
@@ -29,31 +32,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		form.method="post";
 		form.submit();
 	}
+	
+	
+	
+	function altRows(id){
+	if(document.getElementsByTagName){  
+		
+		var table = document.getElementById(id);  
+		var rows = table.getElementsByTagName("tr"); 
+		 
+		for(i = 0; i < rows.length; i++){          
+			if(i % 2 == 0){
+				rows[i].className = "evenrowcolor";
+			}else{
+				rows[i].className = "oddrowcolor";
+			}      
+		}
+	}
+}
+
+window.onload=function(){
+	altRows('alternatecolor');
+}
 </script>
 
   </head>
   
   <body>
   
-  
-  
-  <form action="" method="post">
-	<table width="90%" border="2">
-	 	<tr>
-	 		<td>品牌名称</td>
-	 		<td align = "center">
-	 			<input type="text" name="b_name" value="${brand.b_name }"/>
-	 		</td>   
-	 	</tr>
-	 	<tr>
-	 		<td>
-	 			<input type="button" value="添加商标" onclick="addBrand()">
-	 		</td>
-	 		<td>取消修改</td>  
-	 	</tr>	
-   </table>		
-</form>
-  
-   </body>
+  <body>
+  	<div id="body">
+  		<div id="top">
+  			<div id="top-menu1">
+  				
+  			</div>
+  		</div>
+  		<div id="content">
+  			<table width="90%" class="altrowstable" id="alternatecolor">
+				  <form action="" method="post">
+					 	<tr>
+					 		<td>品牌名称</td>
+					 		<td align = "center">
+					 			<input type="text" name="b_name" value="${brand.b_name }"/>
+					 		</td>   
+					 	</tr>
+					 	<tr>
+					 		<td>
+					 			<input type="button" value="添加商标" onclick="addBrand()"/>
+					 		</td>
+					 		<td>取消修改</td>  
+					 	</tr>	
+					 </form>
+		   </table>		
+	</div>
+</div>
+</body>
 </html>
-  

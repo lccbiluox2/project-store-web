@@ -275,6 +275,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="content-myfloat1-buttom">
 													
 						   <c:forEach items="${map['xpProductList'] }" var="product">
+						   <a href="www.baidu.com">
 						   		<div class="mynewProducts">
 						   		<div class="mynewProducts-img">
 						   			<img src="${product.p_img_path }" width="100%" height="100%"/>
@@ -290,6 +291,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						   		</div>
 						   		
 						   		</div>
+						   	</a>
 						   </c:forEach>
 						   
 						   <c:forEach items="${map['rmProductList'] }" var="product">
@@ -355,15 +357,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat2">
-					<div class="content-myfloat2-top">
+					<div id="content-myfloat2-top">
 						<div class="content-myfloat2-top-picture">
-							<img alt="" src="index/img/index/myfloat2.png">
+							<img alt="" src="index/img/index/myfloat2.png" >
 						</div>
-						<div class="content-myfloat2-top-text"></div>
+						<div id="content-myfloat2-top-text">
+						 
+						</div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow1'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow1'].children.children.category.c_name }
+						</div>
 					</div>
 						
 					<div class="content-myfloat2-buttom">
 						
+							<c:forEach items="${map['treeShow1'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
+						  
 					</div>
 				
 				</div>
@@ -375,15 +401,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat3">
-					<div class="content-myfloat3-top">
+					<div id="content-myfloat3-top">
 						<div class="content-myfloat3-top-picture">
 							<img alt="" src="index/img/index/myfloat3.png">
 						</div>
-						<div class="content-myfloat3-top-text"></div>
+						<div id="content-myfloat3-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow2'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow2'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat3-buttom">
-					
+						<c:forEach items="${map['treeShow2'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -391,15 +437,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat4">
-					<div class="content-myfloat4-top">
+					<div id="content-myfloat4-top">
 						<div class="content-myfloat4-top-picture">
 							<img alt="" src="index/img/index/myfloat4.png">
 						</div>
-						<div class="content-myfloat4-top-text"></div>
+						<div id="content-myfloat4-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow3'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow3'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat4-buttom">
-					
+							<c:forEach items="${map['treeShow3'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -407,15 +473,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat5">
-					<div class="content-myfloat5-top">
+					<div id="content-myfloat5-top">
 						<div class="content-myfloat5-top-picture">
 							<img alt="" src="index/img/index/myfloat5.png">
 						</div>
-						<div class="content-myfloat5-top-text"></div>
+						<div id="content-myfloat5-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow4'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow4'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat5-buttom">
-					
+							<c:forEach items="${map['treeShow4'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -424,15 +510,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat6">
-					<div class="content-myfloat6-top">
+					<div id="content-myfloat6-top">
 						<div class="content-myfloat6-top-picture">
 							<img alt="" src="index/img/index/myfloat6.png">
 						</div>
-						<div class="content-myfloat6-top-text"></div>
+						<div id="content-myfloat6-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow5'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow5'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat6-buttom">
-					
+							<c:forEach items="${map['treeShow5'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -441,15 +547,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat7">
-					<div class="content-myfloat7-top">
+					<div id="content-myfloat7-top">
 						<div class="content-myfloat7-top-picture">
 							<img alt="" src="index/img/index/myfloat7.png">
 						</div>
-						<div class="content-myfloat7-top-text"></div>
+						<div id="content-myfloat7-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow6'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow6'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat7-buttom">
-					
+							<c:forEach items="${map['treeShow6'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -458,15 +584,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat8">
-					<div class="content-myfloat8-top">
+					<div id="content-myfloat8-top">
 						<div class="content-myfloat8-top-picture">
 							<img alt="" src="index/img/index/myfloat8.png">
 						</div>
-						<div class="content-myfloat8-top-text"></div>
+						<div id="content-myfloat8-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow7'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow7'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat8-buttom">
-					
+							<c:forEach items="${map['treeShow7'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -477,15 +623,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat9">
-					<div class="content-myfloat9-top">
+					<div id="content-myfloat9-top">
 						<div class="content-myfloat9-top-picture">
 							<img alt="" src="index/img/index/myfloat9.png">
 						</div>
-						<div class="content-myfloat9-top-text"></div>
+						<div id="content-myfloat9-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow8'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow8'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat9-buttom">
-					
+							<c:forEach items="${map['treeShow8'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -496,15 +662,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat10">
-					<div class="content-myfloat10-top">
+					<div id="content-myfloat10-top">
 						<div class="content-myfloat10-top-picture">
 							<img alt="" src="index/img/index/myfloat10.png">
 						</div>
-						<div class="content-myfloat10-top-text"></div>
+						<div id="content-myfloat10-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow9'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow9'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat10-buttom">
-					
+						<c:forEach items="${map['treeShow9'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -516,15 +702,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat11">
-					<div class="content-myfloat11-top">
+					<div id="content-myfloat11-top">
 						<div class="content-myfloat11-top-picture">
 							<img alt="" src="index/img/index/myfloat11.png">
 						</div>
-						<div class="content-myfloat11-top-text"></div>
+						<div id="content-myfloat11-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow10'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow10'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat11-buttom">
-					
+						<c:forEach items="${map['treeShow10'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -539,15 +745,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat12">
-					<div class="content-myfloat12-top">
+					<div id="content-myfloat12-top">
 						<div class="content-myfloat12-top-picture">
 							<img alt="" src="index/img/index/myfloat12.png">
 						</div>
-						<div class="content-myfloat12-top-text"></div>
+						<div id="content-myfloat12-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow11'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow11'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat12-buttom">
-					
+							<c:forEach items="${map['treeShow11'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>
@@ -563,15 +789,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div id="content-myfloat13">
-					<div class="content-myfloat13-top">
+					<div id="content-myfloat13-top">
 						<div class="content-myfloat13-top-picture">
 							<img alt="" src="index/img/index/myfloat13.png">
 						</div>
-						<div class="content-myfloat13-top-text"></div>
+						<div id="content-myfloat13-top-text"></div>
+						<div class="content-myfloat2-top-text-show">
+						   &nbsp;》》&nbsp;
+						   ${map['treeShow12'].children.category.c_name }&nbsp;》》&nbsp;
+						   ${map['treeShow12'].children.children.category.c_name }
+						</div>
 					</div>
 					
 					<div class="content-myfloat13-buttom">
-					
+						<c:forEach items="${map['treeShow12'].children.children.childProducts }" var="product">	
+								 <div class="myrandomProductsFloat2">
+								   		<div class="mynewProducts-img">
+								   			<img src="${product.p_img_path }" width="100%" height="100%"/>
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_name }
+								   		</div>
+								   		<div class="mynewProducts-name">
+								   			${product.p_attr }
+								   		</div>
+								   		<div class="mynewProducts-price">
+								   			￥:${product.p_shop_price }
+								   		</div>
+								   	</div>
+						  		</c:forEach>
 					</div>
 				
 				</div>

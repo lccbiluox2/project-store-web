@@ -8,6 +8,6 @@
 </head>
 
 <body>
-<img src="admin/img/welcome.png" alt="" width="1200" height="450"/>
+<img src="admin/img/welcome.png" alt="" width="100%" height="100%"/>
 </body>
 </html>

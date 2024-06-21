@@ -22,6 +22,9 @@ public class IndexControl {
 	@Resource
 	private IndexService indexService;
 	
+	
+	
+	//主页面初始化数据
 	@RequestMapping("/indexList")
 	public ModelAndView indexList(){
 		System.out.println("------------进入主页处理厂--------------------");

@@ -98,15 +98,6 @@ window.onload=function(){
 			  <a href="brandManage?offset=1&pagesize=4&orientation=4">尾页</a>
   		</div>
   	</div>
-  	
-  
-   
-  
-  
-  
- 
-  
-  
-  
+
   </body>
 </html>

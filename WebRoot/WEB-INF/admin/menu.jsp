@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				<a href="javascript:void(0);" onclick="showBrand()" target="main">&nbsp;&nbsp;品牌管理</a>
   			</div>
   			<div class="content-menuitems-content" id="show1">
-  				<a href="/mystory/brandManage?offset=1&pagesize=3&orientation=1"  target="main">查看品牌</a>
+  				<a class="menu-item-a" href="/mystory/brandManage?offset=1&pagesize=3&orientation=1"  target="main">查看品牌</a>
 	  			<a class="menu-item-a" href="${pageContext.request.contextPath }/toJspPage?whatPage=/admin/brand/brand_add" target="main">添加品牌</a>
 	  				
   			</div>
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				<a href="javascript:void(0);" target="main" onclick="showCategory()" >&nbsp;&nbsp;类别管理</a>
   			</div>
   			<div class="content-menuitems-content" id="show2">
-  				<a href="/mystory/categoryList" target="main"  >查看类别</a>
+  				<a class="menu-item-a" href="/mystory/categoryList" target="main"  >查看类别</a>
   				<a class="menu-item-a" href="categoryAddUI" target="main">添加类别</a>
   				
   			</div>
@@ -58,17 +58,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				<a href="javascript:void(0);" target="main" onclick="showProduct()" >&nbsp;&nbsp;商品管理</a>
   			</div>
   			<div class="content-menuitems-content" id="show3">
-  				<a href="/mystory/productList?offset=1&pagesize=3&orientation=1" target="main"  >查看商品</a>
+  				<a class="menu-item-a" href="/mystory/productList?offset=1&pagesize=3&orientation=1" target="main"  >查看商品</a>
   				<a class="menu-item-a" href="productAddUI" target="main">添加商品</a>
 
   			</div>
   			
   			
   			<div class="content-menuitems" id="showd">
-  				<a href="/mystory/userManage?offset=1&pagesize=3&orientation=1" target="main" onclick="showUser()" >&nbsp;&nbsp;用户管理</a>
+  				<a href="javascript:void(0);" target="main" onclick="showUser()" >&nbsp;&nbsp;用户管理</a>
   			</div>
   			<div class="content-menuitems-content" id="show4">
-  				<a href="/mystory/userManage?offset=1&pagesize=3&orientation=1" target="main" >查看用户</a>
+  				<a class="menu-item-a" href="/mystory/userManage?offset=1&pagesize=3&orientation=1" target="main" >查看用户</a>
   			</div>
   			
   			

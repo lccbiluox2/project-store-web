@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>管理员界面</title>
 </head>
 
-<frameset rows="98,*,20" frameborder="no" border="0" framespacing="0">
+<frameset rows="100,*,76" frameborder="no" border="0" framespacing="0">
   <frame src="${pageContext.request.contextPath }/toJspPage?whatPage=/admin/oneTop" name="topFrame" scrolling="no" noresize="noresize" id="topFrame" />
   <frame src="${pageContext.request.contextPath }/toJspPage?whatPage=/admin/oneCenter" name="mainFrame" id="mainFrame" />
   

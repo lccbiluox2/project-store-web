@@ -417,14 +417,14 @@
 
 #content-myfloat2{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat2-top{
+#content-myfloat2-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -436,25 +436,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat2-top-text{
+#content-myfloat2-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext2.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat2-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat2-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
 
 
 
@@ -470,14 +475,14 @@
 
 #content-myfloat3{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat3-top{
+#content-myfloat3-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -489,30 +494,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat3-top-text{
+#content-myfloat3-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext3.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat3-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat3-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -524,14 +529,14 @@
 
 #content-myfloat4{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat4-top{
+#content-myfloat4-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -543,25 +548,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat4-top-text{
+#content-myfloat4-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext4.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat4-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat4-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
 
 
 
@@ -575,14 +585,14 @@
 
 #content-myfloat5{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat5-top{
+#content-myfloat5-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -594,28 +604,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat5-top-text{
+#content-myfloat5-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext5.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat5-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat5-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -633,14 +645,14 @@
 
 #content-myfloat6{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat6-top{
+#content-myfloat6-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -652,25 +664,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat6-top-text{
+#content-myfloat6-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext6.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat6-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat6-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
 
 
 
@@ -685,14 +702,14 @@
 
 #content-myfloat7{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat7-top{
+#content-myfloat7-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -704,36 +721,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat7-top-text{
+#content-myfloat7-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext7.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat7-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat7-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -742,14 +753,14 @@
 
 #content-myfloat8{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat8-top{
+#content-myfloat8-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -761,26 +772,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat8-top-text{
+#content-myfloat8-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext8.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat8-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat8-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
-
 
 
 
@@ -794,14 +809,14 @@
 
 #content-myfloat9{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat9-top{
+#content-myfloat9-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -813,33 +828,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat9-top-text{
+#content-myfloat2-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext9.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat9-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat9-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -848,14 +860,14 @@
 
 #content-myfloat10{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat10-top{
+#content-myfloat10-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -867,33 +879,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat10-top-text{
+#content-myfloat10-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext10.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat10-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat10-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -909,14 +918,14 @@
 
 #content-myfloat11{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat11-top{
+#content-myfloat11-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -928,29 +937,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat11-top-text{
+#content-myfloat11-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext11.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat11-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat11-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -968,14 +978,14 @@
 
 #content-myfloat12{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat12-top{
+#content-myfloat12-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -987,27 +997,30 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat12-top-text{
+#content-myfloat12-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext12.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat12-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat12-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
-
-
-
-
-
 
 
 
@@ -1020,14 +1033,14 @@
 
 #content-myfloat13{
 	width:100%;
-	height:400;
+
 	float:left;
 	background-color:blue;
 }
 
-.content-myfloat13-top{
+#content-myfloat13-top{
 	width:100%;
-	height:12%;
+	height:50px;
 	float:left;
 	background-color:#FFFFFF;
 }
@@ -1039,20 +1052,28 @@
 	float:left;
 	background-color:#FFFFFF;
 }
-.content-myfloat13-top-text{
+#content-myfloat13-top-text{
 	width:8%;
-	height:100%;
+	height:50px;
 	float:left;
 	background-image: url("../img/index/mytext13.png");
 	background-size :100% 100% ;
 	background-color:#FFFFFF;
 }
+.content-myfloat13-top-text-show{
+	width:60%;
+	height:100%;
+	float:left;
+	font-weight:bold;
+	color:black;
+	text-align:left;
+	line-height:60px;
+	
+}
 .content-myfloat13-buttom{
 	width:100%;
-	height:88%;
+	
 	float:left;
-	background-color:green;
+	background-color:#FFFFFF;
 }
-
-
 
